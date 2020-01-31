@@ -36,7 +36,7 @@ Lo consideramos como propuesta, ya que a pesar de contar con poca concurrencia, 
 Además la parte gráfica, en especial para dibujar/pintar cumple con los requisitos propuestos por el docente.
 Como se dijo anteriormente, ya existe un videojuego similar, sin embargo, se proponen **valores agregados**. 
 
-####Valores agregados 
+#### Valores agregados 
 
 
  
