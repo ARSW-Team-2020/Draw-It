@@ -9,7 +9,7 @@
 
  
 
-Draw it es un videojuego multijugador con la temática de dibujar basado en **Pinturillo**, pero por equipos donde cada ronda hay un tiempo limite para dibujar. Se elegirá un jugador lider en cada equipo, el cual intentará dibujar una palabra; asignada de forma aleatoria, y los demás jugadores (que no estén dibujando) tendrán que adivinar el nombre de dicha palabra. Cuando un integrante del equipo adivina la palabra, el equipo avanza a una siguiente ronda hasta que el tiempo haya terminado. Luego, se establecerá como ganador el equipo que mayor numero de rondas haya logrado y en el menor tiempo.
+Draw it es un videojuego multijugador con la temática de dibujar basado en **Pinturillo**, pero por equipos donde cada ronda hay un tiempo limite para dibujar. Se elegirá un jugador líder en cada equipo, el cual intentará dibujar una palabra; asignada de forma aleatoria, y los demás jugadores (que no estén dibujando) tendrán que adivinar el nombre de dicha palabra. Cuando un integrante del equipo adivina la palabra, el equipo avanza a una siguiente ronda hasta que el tiempo haya terminado. Luego, se establecerá como ganador el equipo que mayor numero de rondas haya logrado y en el menor tiempo.
 
 
 No obstante, **Draw It** cuenta con funcionalidades adicionales tales como: 
