@@ -32,13 +32,21 @@ No obstante, **Draw It** cuenta con funcionalidades adicionales tales como:
 
 ## Justificación: 
 
-Lo consideramos como propuesta, ya que a pesar de contar con poca concurrencia, se manejaría demasiado la parte de **tiempo real**.
+Lo consideramos como propuesta, ya que cuenta con concurrencia, se maneja demasiado la parte de **tiempo real** y paralelismo.
 Además la parte gráfica, en especial para dibujar/pintar cumple con los requisitos propuestos por el docente.
-Como se dijo anteriormente, ya existe un videojuego similar, sin embargo, se proponen **valores agregados**. 
+Como se dijo anteriormente, ya existe un videojuego con la temática principal de dibujar y adivinar, sin embargo, se proponen **valores agregados**. 
 
 #### Valores agregados 
-1. Dificultad (palabras Easy, medium, hard).
 
+1. Dificultad (palabras Easy, medium, hard).
+2. dos equipos de cuatro integrantes cada uno.
+3. Se hace rotación de pintores por cada palabra adivinada.
+4. Listas de palabras generadas aleatoriamente.
+5. Tres rondas con diferentes categorías. Gana el equipo que consiga dos victorias.
+6. Se inicia con una categoría preseleccionada, para la segunda y tercera ronda, la categoría será escogida por el ganador de la ronda anterior.
+7. Opciones para cambiar el idioma.
+8. En caso de ir en empate, dos integrantes dibujarán la palabra.
+9. Para poder jugar se debe estar registrado.
  
 
  
