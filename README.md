@@ -23,9 +23,6 @@ El juego consiste en que 2 equipos, de 4 jugadores cada uno, se enfrentan entre 
 ### Antes de iniciar...
 Para poder jugar, es necesario realizar una debida autenticación.    
 
-AUN NO ESTA CLARAMENTE DEFINIDO LO DE LAS CATEGORÍAS    
-
-
 
 ### El juego...
 
