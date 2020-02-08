@@ -63,21 +63,27 @@ Cada jugador ganará experiencia en su cuenta (dependerá de si ganó o perdió 
 
 ## Diagrama de casos de uso
 
+![CA1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/CU1.JPG)
+
+![CA2](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/CU2.JPG)
+
+![CA3](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/CU3.JPG)
+
 ## Historias de usuario
 
 ### 1.	Crear una cuenta 
 
  **Criterios de aceptación:**
 
-* Se debe poder saber si el nombre de usuario está disponible.
+*   Se debe poder saber si el nombre de usuario está disponible.
 
 *	No es posible tener más de un usuario con el mismo nombre.
 
-### 2.	Iniciar Sesión
+### 2.	Iniciar sesión
 
  **Criterios de aceptación:**
 
-*	Así como se debe iniciar sesión se debe poder cerrar sesión.
+*	Así como se debe iniciar sesión, debe haber una opción para poder cerrar sesión.
 
 *	Sin poder iniciar sesión no se puede jugar.
 
@@ -87,15 +93,15 @@ Cada jugador ganará experiencia en su cuenta (dependerá de si ganó o perdió 
 
 *	No es posible añadir a un amigo más de una vez.
 
-*	El perfil debe ser existente.
+*	El perfil a añadir debe ser existente.
 
-*	Se debe poder ver el perfil del usuario al que se va a añadir.
 
 ### 4.	Crear una sala 
 
  **Criterios de aceptación:**
 
-*	No es posible invitar a la sala a alguien que no esté conectado.
+*	Al momento de crear una sala, se pedirá al creador que genere una clave. Con esa clave, otros jugadores se podrán unir a dicha sala.
+*	Se puede crear una sala o unirse a una sala existente.
 
 *	No es posible que el mismo usuario este en diferentes salas.
 
@@ -109,7 +115,7 @@ Cada jugador ganará experiencia en su cuenta (dependerá de si ganó o perdió 
 
 *	Poder ver mis estadísticas en el juego. Ejemplo: partidas ganadas, partidas perdidas, etc.
 
-*	Poder ver cuanta experiencia me falta para poder alcanzar el siguiente nivel. (Barra de progreso)
+*	Poder ver cuanta experiencia me falta para poder alcanzar el siguiente nivel. (Barra de progreso).
 
 ### 6.	Dibujar
 
@@ -117,75 +123,73 @@ Cada jugador ganará experiencia en su cuenta (dependerá de si ganó o perdió 
 
 *	Tiene que ser en tiempo real.
 
-* Solamente el pintor puede dibujar, cambiar el color y el grosor del lápiz.
+*   Solamente el pintor puede dibujar, cambiar el color y el grosor del lápiz.
 
-*	Solamente los del equipo pueden ver lo que dibuja el pintor.
+*	Solamente los integrantes de cada equipo podrán ver lo que dibuja su pintor respectivo.
 
-*	Debe haber una opción que referencia la acción de dibujar (un lápiz o marcador).
+*	Debe haber una opción que haga referencia a la acción de dibujar (un lápiz o marcador).
 
 *	Debe haber una opción para cambiar el grosor del lápiz.
 
-*•	Debe haber una opción de cambio de color del lápiz (una paleta de colores).
+*	Debe haber una opción para poder cambiar el color del lápiz (una paleta de colores).
 
 ### 7.	Borrar
 
  **Criterios de aceptación:**
 
-*	Debe haber una opción para poder borrar (un borrador).
+*	Debe haber una opción para poder borrar lo que se seleccione (un borrador).
 
 *	Se debe poder borrar todo lo que está en el tablero.
 
-*	Solo puede borrar el pintor.
+*	Solo el pintor puede borrar.
 
 ### 8.	 Escribir en el chat de mi equipo 
 
  **Criterios de aceptación:**
 
-*	Ver el registro del chat.
+*	Se debe poder ver el registro del chat, es decir, las palabras que los adivinadores han escrito para intentar adivinar las palabras.
+*   Cada equipo tendrá su propio chat, y solo podrá ver su chat respectivo.
 
-*	Poder ver los comentarios previos de otros jugadores.
-
-*	No será posible ver las palabras adivinas en el chat.
-
-*	Los comentarios solo serán vistos por el equipo que los hizo.
 
 ### 9.	 Ver el tiempo restante de la ronda
 
  **Criterios de aceptación:**
 
-*	Se debe poder ver el tiempo restante de la ronda, la ronda actual y los puntos conseguidos hasta el momento.
+*	Debe poderse ver la ronda actual en la que está el juego.
+*	Se debe poder ver el tiempo restante de la ronda actual (en segundos).
+
 
 ### 10.	 Obtener puntos de experiencia
 
  **Criterios de aceptación:**
 
-*	Solo es posible ver mi nivel actual, cuantos puntos gané en la última partida y cuanto me falta para poder avanzar al siguiente nivel.
+*	Si el jugador está en el equipo ganador ganará 100 de XP, de lo contrario ganará 50 de XP.
 
 ### 11.	Conocer los jugadores de la partida finalizada 
 
  **Criterios de aceptación:**
 
-*	Se debe poder ver el perfil y el nivel de los demás jugadores.
+*	Se debe poder ver el nombre de usuario y el nivel de los demás jugadores.
+*	Debe haber una opción para poderlos agregar a la lista de amigos.
 
-*	Se debe poder agregarlos a mi lista de amigos.
 
 ## Mockups
 
-### Pagina de inicio
+### Página de inicio
 
-![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/P%C3%A1gina_de_inicio.png)
+![1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/P%C3%A1gina_de_inicio.png)
 
-### Registro
+### Registrarse
 
-![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/Registrarse.png)
+![2](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/Registrarse.png)
 
 ### Iniciar sesión
 
-![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/Iniciar_sesi%C3%B3n.png)
+![3](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/Iniciar_sesi%C3%B3n.png)
 
 ### Juego
 
-![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/Juego.png)
+![4](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups/Juego.png)
 
 
 ## Calidad del código
