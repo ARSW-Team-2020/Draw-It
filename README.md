@@ -59,6 +59,8 @@ Cada jugador ganará experiencia en su cuenta (dependerá de si ganó o perdió 
 
 ## Modelo E-R (Entidad-Relación)
 
+![ER1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/ER.png)
+
 ## Diagrama de clases
 
 ## Diagrama de casos de uso
