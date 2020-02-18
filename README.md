@@ -43,17 +43,15 @@ Finalmente, el equipo ganador de la partida será el que gane 3 de 5 rondas.
 
 ## Diagrama de clases
 
+![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/clases.PNG)
+
+
 ## Diagrama de casos de uso
 
-![CA1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/CU1.JPG)
+![CasosDeUso](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/casosDeUso.PNG)
 
-![CA2](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/CU2.JPG)
-
-![CA3](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/CU3.JPG)
 
 ## Historias de usuario
-
-
 
 ### 1.	Crear una sala 
 
@@ -146,12 +144,16 @@ PARA PODER conocer cual fue el equipo ganador.
 ## Mockups
 
 ### Página de inicio
-![4](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Jugar.jpeg)
+![inicio](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups%20nuevos/inicio.jpg)
 
 
 ### Juego
 
-![4](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/juego.jpeg)
+![2](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups%20nuevos/2.jpg)
+
+![3](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups%20nuevos/3.png)
+
+![4](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups%20nuevos/4.jpg)
 
 
 ## Calidad del código
