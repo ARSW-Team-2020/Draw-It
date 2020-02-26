@@ -159,7 +159,7 @@ PARA PODER conocer cual fue el equipo ganador.
 
 ## Modelo E-R (Entidad-Relación)
 
-![ER1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/ER.png)
+![ER1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/EntidadRelacion.png)
 
 ## Diagrama de clases
 
