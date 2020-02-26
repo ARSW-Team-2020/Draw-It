@@ -79,7 +79,7 @@ PARA PODER pintar la palabra indicada.
 
 *	Tiene que ser en tiempo real.
 
-* Solamente el pintor puede dibujar, cambiar el color y el grosor del lápiz.
+* Solamente el pintor puede dibujar, cambiar el color y el grosor del lápiz, borrar la ultima acción o borrar algo en específico.
 
 *	Solamente los integrantes de cada equipo podrán ver lo que dibuja su pintor respectivo.
 
@@ -89,18 +89,18 @@ PARA PODER pintar la palabra indicada.
 
 *	Debe haber una opción para poder cambiar el color del lápiz (una paleta de colores).
 
-### 3.	Borrar
+* Debe haber una opción para poder borrar (un borrador).
 
-COMO Jugador pintor
-QUIERO Borrar 
-PARA PODER eliminar dibujos no deseados.
+### 3.	Reiniciar el tablero
+
+Como jugador pintor
+Quiero reiniciar el tablero
+Para poder volver a comenzar con mi dibujo.
 
 
  **Criterios de aceptación:**
 
-*	Debe haber una opción para poder borrar lo que se seleccione (un borrador).
-
-*	Se debe poder borrar todo lo que está en el tablero.
+*	Debe haber una opción para poder reiniciar el tablero al estado original.
 
 *	Solo el pintor puede borrar.
 
@@ -118,14 +118,19 @@ PARA PODER adivinar la palabra que el pintor esté dibujando.
 
 ### 5.	 Ver el estado de la partida
 
-COMO Jugador 
+COMO Jugador pintor y adivinador
 QUIERO Ver el estado de la partida
 PARA PODER conocer cuanto tiempo falta, y quien va ganando.
 
  **Criterios de aceptación:**
 
 *	Debe poderse ver la ronda actual en la que está el juego.
+
 *	Se debe poder ver el tiempo restante de la ronda actual (en segundos).
+
+* Se debe poder conocer cuando un equipo adivinó la palabra.
+
+* Se debe poder conocer quien va ganando la partida.
 
 
 ### 6.	Ver un resumen de la partida
@@ -136,9 +141,11 @@ PARA PODER conocer cual fue el equipo ganador.
 
  **Criterios de aceptación:**
 
-*	Al finalizar la partida se debe poder ver el nombre de los demás jugadores.
-* Se debe mostrar el equipo ganador
-* Debe haber una opción para volver a jugar
+*	Al finalizar la partida se debe poder ver el nombre de los demás jugadores con sus palabras adivinadas.
+
+* Se debe mostrar el equipo ganador.
+
+* Debe haber una opción para volver a jugar.
 
 
 ## Mockups
