@@ -163,7 +163,7 @@ PARA PODER conocer cual fue el equipo ganador.
 
 ## Diagrama de clases
 
-![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/clases.PNG)
+![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/clases1.PNG)
 
 ## Calidad del código
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5777bc2a53ac41a3834545dc942a474b)](https://www.codacy.com/gh/ARSW-Team-2020/Draw-It?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020/Draw-It&amp;utm_campaign=Badge_Grade)
