@@ -37,18 +37,13 @@ Finalmente, el equipo ganador de la partida será el que gane 3 de 5 rondas.
 
 # Arquitectura y diseño detallado de la aplicación
 
-## Modelo E-R (Entidad-Relación)
-
-![ER1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/ER.png)
-
-## Diagrama de clases
-
-![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/clases.PNG)
-
-
 ## Diagrama de casos de uso
 
-![CasosDeUso](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/casosDeUso.PNG)
+![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/AntesCU.PNG)
+
+![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/DuranteCU.PNG)
+
+![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/DespuesCU.PNG)
 
 
 ## Historias de usuario
@@ -162,6 +157,13 @@ PARA PODER conocer cual fue el equipo ganador.
 
 ![4](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups%20nuevos/4.jpg)
 
+## Modelo E-R (Entidad-Relación)
+
+![ER1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/ER.png)
+
+## Diagrama de clases
+
+![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/clases.PNG)
 
 ## Calidad del código
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5777bc2a53ac41a3834545dc942a474b)](https://www.codacy.com/gh/ARSW-Team-2020/Draw-It?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020/Draw-It&amp;utm_campaign=Badge_Grade)
