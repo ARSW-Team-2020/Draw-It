@@ -168,6 +168,10 @@ PARA PODER conocer cual fue el equipo ganador.
 ## Calidad del código
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5777bc2a53ac41a3834545dc942a474b)](https://www.codacy.com/gh/ARSW-Team-2020/Draw-It?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020/Draw-It&amp;utm_campaign=Badge_Grade)
 
+## Integración continua
+
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/ARSW-Team-2020/Draw-It)
+
 # Descripción del proceso
 
 ## Sprint 1
