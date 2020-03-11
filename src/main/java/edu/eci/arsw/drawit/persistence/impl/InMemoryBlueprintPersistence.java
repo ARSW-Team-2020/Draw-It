@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.blueprints.persistence.impl;
+package edu.eci.arsw.drawit.persistence.impl;
 
-import edu.eci.arsw.blueprints.model.Blueprint;
-import edu.eci.arsw.blueprints.model.Point;
-import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
-import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
-import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
+import edu.eci.arsw.drawit.model.Blueprint;
+import edu.eci.arsw.drawit.model.Point;
+import edu.eci.arsw.drawit.persistence.BlueprintNotFoundException;
+import edu.eci.arsw.drawit.persistence.BlueprintPersistenceException;
+import edu.eci.arsw.drawit.persistence.BlueprintsPersistence;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

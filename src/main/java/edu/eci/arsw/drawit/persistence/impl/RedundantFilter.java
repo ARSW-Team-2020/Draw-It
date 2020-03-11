@@ -1,12 +1,11 @@
-package edu.eci.arsw.blueprints.persistence.impl;
+package edu.eci.arsw.drawit.persistence.impl;
 
-import edu.eci.arsw.blueprints.model.Blueprint;
-import edu.eci.arsw.blueprints.model.Point;
-import edu.eci.arsw.blueprints.persistence.Filter;
+import edu.eci.arsw.drawit.model.Blueprint;
+import edu.eci.arsw.drawit.model.Point;
+import edu.eci.arsw.drawit.persistence.Filter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service("redundant")
 public class RedundantFilter implements Filter {

@@ -1,4 +1,4 @@
-package edu.eci.arsw.blueprints.persistence.impl;
+package edu.eci.arsw.drawit.persistence.impl;
 
 import java.util.Objects;
 

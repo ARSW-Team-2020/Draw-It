@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.blueprints.persistence;
+package edu.eci.arsw.drawit.persistence;
 
 /**
  *
  * @author hcadavid
  */
-public class BlueprintPersistenceException extends Exception{
+public class BlueprintNotFoundException extends Exception{
 
-    public BlueprintPersistenceException(String message) {
+    public BlueprintNotFoundException(String message) {
         super(message);
     }
 
-    public BlueprintPersistenceException(String message, Throwable cause) {
+    public BlueprintNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
     

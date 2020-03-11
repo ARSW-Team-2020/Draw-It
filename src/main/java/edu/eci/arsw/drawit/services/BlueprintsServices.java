@@ -3,20 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.blueprints.services;
+package edu.eci.arsw.drawit.services;
 
-import edu.eci.arsw.blueprints.model.Blueprint;
-import edu.eci.arsw.blueprints.model.Point;
-import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
-import edu.eci.arsw.blueprints.persistence.BlueprintPersistenceException;
-import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
+import edu.eci.arsw.drawit.model.Blueprint;
+import edu.eci.arsw.drawit.persistence.BlueprintNotFoundException;
+import edu.eci.arsw.drawit.persistence.BlueprintPersistenceException;
+import edu.eci.arsw.drawit.persistence.BlueprintsPersistence;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Set;
 
-import edu.eci.arsw.blueprints.persistence.Filter;
-import edu.eci.arsw.blueprints.persistence.impl.RedundantFilter;
+import edu.eci.arsw.drawit.persistence.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;

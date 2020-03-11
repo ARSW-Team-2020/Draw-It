@@ -1,5 +1,5 @@
 
-package edu.eci.arsw.blueprints.model;
+package edu.eci.arsw.drawit.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

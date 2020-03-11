@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.blueprints.persistence;
+package edu.eci.arsw.drawit.persistence;
 
-import edu.eci.arsw.blueprints.model.Blueprint;
+import edu.eci.arsw.drawit.model.Blueprint;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author hcadavid
