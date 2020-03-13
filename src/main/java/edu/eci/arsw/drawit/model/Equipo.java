@@ -6,15 +6,16 @@ public class Equipo {
 
     private char nombre;
     private int rondasGanadas;
-    private List jugadores;
+    private Jugador[] jugadores= new Jugador[4];
 
     public Equipo(){
         super();
     }
 
-    public Equipo(char nombre, int rondasGanadas){
+    public Equipo(char nombre, int rondasGanadas, Jugador[] jugadores){
         this.nombre=nombre;
         this.rondasGanadas=rondasGanadas;
+        this.jugadores=jugadores;
     }
 
     public char getNombre() {
@@ -23,6 +24,10 @@ public class Equipo {
 
     public int getRondasGanadas() {
         return rondasGanadas;
+    }
+
+    public Jugador[] getJugadores() {
+        return jugadores;
     }
 
     public void setNombre(char nombre) {
