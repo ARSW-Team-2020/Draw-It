@@ -14,6 +14,17 @@ La temática del juego está basada en uno existente llamado **Pinturillo**, el 
 Sin embargo, **Draw it** cuenta con una dinámica diferente y con algunas reglas de juego adicionales, y está implementado para que además de ser un juego en **tiempo real** también cuente con características de **concurrencia** y **paralelismo**.
 
  
+ ## Calidad del código
+ [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5777bc2a53ac41a3834545dc942a474b)](https://www.codacy.com/gh/ARSW-Team-2020/Draw-It?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020/Draw-It&amp;utm_campaign=Badge_Grade)
+ 
+ ## Integración continua
+ 
+ [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/ARSW-Team-2020/Draw-It)
+ 
+ ## Despliegue en Heroku
+ 
+ [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://drawitt.herokuapp.com/)
+ 
 ## Descripción del juego
 
 El juego consiste en que 2 equipos, de 4 jugadores cada uno, se enfrentan entre sí para competir por quién es el mejor **pintor** y **adivinador**. Cada partida tiene 5 rondas, con una duración aproximada de 2 minutos cada una.
@@ -165,12 +176,6 @@ PARA PODER conocer cual fue el equipo ganador.
 
 ![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/clases1.PNG)
 
-## Calidad del código
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5777bc2a53ac41a3834545dc942a474b)](https://www.codacy.com/gh/ARSW-Team-2020/Draw-It?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020/Draw-It&amp;utm_campaign=Badge_Grade)
-
-## Integración continua
-
-[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/ARSW-Team-2020/Draw-It)
 
 # Descripción del proceso
 
