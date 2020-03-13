@@ -1,35 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <title>DrawIt</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="utf-8">
+  <title>Draw It</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico"	/>
+  <!-- Bootstrap CSS File -->
+  <link href="inicio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="inicio/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="inicio/lib/animate-css/animate.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="inicio/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div id="preloader"></div>
+
+  <section id="hero">
+    <div class="hero-container">
+      <div class="fadeIn">
+        <div class="hero-logo">
+          <img class="" src="inicio/img/logo.png" alt="Imperial">
+        </div>
+
+        
+        <h2>Ingresa tu nombre:</h2>
+        <input type="text" placeholder="Nombre">
+        <br>    
+        <br>
+        <br>
+        <div class="actions">
+          <a href="crearSala.html" class="btn-get-started">Crear una sala</a>
+          <a href="unirseASala.html" class="btn-get-started">Unirse a una sala</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
-    </head>
+  <!-- Required JavaScript Libraries -->
+  <script src="inicio/lib/jquery/jquery.min.js"></script>
+  <script src="inicio/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="inicio/lib/superfish/hoverIntent.js"></script>
+  <script src="inicio/lib/superfish/superfish.min.js"></script>
+  <script src="inicio/lib/morphext/morphext.min.js"></script>
+  <script src="inicio/lib/wow/wow.min.js"></script>
+  <script src="inicio/lib/stickyjs/sticky.js"></script>
+  <script src="inicio/lib/easing/easing.js"></script>
 
-    <body>
-    <!--  header class="ml-5 pt-3 "-->
-        <header>
-            <div class="container-fluid">
-                <h1>
-                    <p class="font-weight-bolder">
-                        Draw It
-                    </p>
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="inicio/js/custom.js"></script>
 
-                    <img src="img/logo.png" alt="Icono">
-                </h1>
-            </div>
-        </header>
+  <script src="inicio/contactform/contactform.js"></script>
 
-    </body>
+
+</body>
+
 </html>
