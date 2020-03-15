@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>edu.eci.arsw</groupId>
+  <artifactId>DrawIt</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -9,51 +14,29 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
-  <groupId>edu.eci.arsw</groupId>
-  <artifactId>DrawIt</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+
 
   <name>Draw It</name>
 
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>com.google.code.gson</groupId>
-      <artifactId>gson</artifactId>
-      <version>2.8.6</version>
-    </dependency>
-
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
-
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <optional>true</optional>
-    </dependency>
+    
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-tomcat</artifactId>
-      <scope>provided</scope>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+   
     <dependency>
-      <groupId>org.json</groupId>
-      <artifactId>json</artifactId>
-      <version>20190722</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -65,48 +48,35 @@
         </exclusion>
       </exclusions>
     </dependency>
+    
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-websocket</artifactId>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.5</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>alertifyjs</artifactId>
+      <version>1.8.0</version>
+    </dependency>
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
     </dependency>
+    
     <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>stomp-websocket</artifactId>
-      <version>2.3.3</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.ibatis</groupId>
-      <artifactId>ibatis-core</artifactId>
-      <version>3.0</version>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
     </dependency>
 
-    <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-web-api</artifactId>
-      <version>8.0</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>
+
   </dependencies>
 
   <build>
-
-    <extensions>
-      <extension>
-        <groupId>io.packagecloud.maven.wagon</groupId>
-        <artifactId>maven-packagecloud-wagon</artifactId>
-        <version>0.0.4</version>
-      </extension>
-    </extensions>
 
     <plugins>
       <plugin>
@@ -119,11 +89,11 @@
         <version>2.0.11</version>
       </plugin>
 
-      <!-- Plugin configuration for Heroku compatibility. -->
+      <!-- Plugin configuration for Heroku compatibility. 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.6</version> <!--$NO-MVN-MAN-VER$-->
+        <version>2.6</version> <$NO-MVN-MAN-VER$>
         <executions>
           <execution>
             <phase>package</phase>
@@ -144,7 +114,7 @@
           </execution>
 
         </executions>
-      </plugin>
+      </plugin-->
     </plugins>
   </build>
 
