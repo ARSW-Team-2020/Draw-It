@@ -14,14 +14,14 @@ public class DrawitServices {
 
     @Autowired
     @Qualifier("Action")
-    DrawitPersistence dip = null;
+    DrawitPersistence drawitPersistence = null;
 
-    public void addNewSala(Sala sl) throws DrawitPersistenceException {
-        dip.addSala(sl);
+    public void addNewSala(Sala sala) throws DrawitPersistenceException {
+        drawitPersistence.addSala(sala);
     }
 
-    public void addJugadorToSala(Jugador jg, Sala sl) throws DrawitPersistenceException {
-        dip.addJugadorToSala(jg,sl);
+    public void addJugadorToSala(Jugador jugador, Sala sala) throws DrawitPersistenceException {
+        drawitPersistence.addJugadorToSala(jugador, sala);
     }
 
 }

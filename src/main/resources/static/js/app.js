@@ -1,15 +1,17 @@
-var app = (function (){
+var app = (function () {
 
-    function crearSala() {
-        if ($("#Nombre").val()== ""){alert("No hay un nombre especificado"); return false}
-        else{
+    function ingresarNombre() {
+        if ($("#Nombre").val() == "") {
+            alert("¡Debes ingresar un nombre!");
+            return false
+        } else {
 
         }
 
     }
 
-    return{
-        crearSala:crearSala
+    return {
+        ingresarNombre: ingresarNombre
 
     }
 })();
