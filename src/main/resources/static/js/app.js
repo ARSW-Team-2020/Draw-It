@@ -5,7 +5,7 @@ var app = (function () {
             alert("¡Debes ingresar un nombre!");
             return false
         } else {
-
+            api.crearSala($("#Nombre").val());
         }
 
     }

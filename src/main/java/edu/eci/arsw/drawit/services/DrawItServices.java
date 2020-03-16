@@ -17,6 +17,7 @@ public class DrawItServices {
     DrawitPersistence drawitPersistence = null;
 
     public void addNewSala(Sala sala) throws DrawItException {
+        System.out.println(sala);
         drawitPersistence.addSala(sala);
     }
 

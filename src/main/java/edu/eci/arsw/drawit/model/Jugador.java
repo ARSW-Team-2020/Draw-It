@@ -9,9 +9,9 @@ public class Jugador {
     public Jugador() {
     }
 
-    public Jugador(String usuario, int puntaje) {
+    public Jugador(String usuario) {
         this.usuario = usuario;
-        this.puntaje = puntaje;
+        this.puntaje = 0;
     }
 
     public String getUsuario() {

@@ -6,6 +6,7 @@
 package edu.eci.arsw.drawit.controllers;
 
 import edu.eci.arsw.drawit.model.Jugador;
+import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.services.DrawItServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,21 @@ public class DrawItAPIController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> crearSala(@RequestBody String usuario) {
+        System.out.println("aaaaaaaaaa");
+        Jugador autor= new Jugador(usuario);
+        Sala sala= new Sala(autor);
+        try {
+            drawItServices.addNewSala(sala);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (DrawItException ex) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+    }
 //
 //    @RequestMapping(value = {"/{author}/{name}"}, method = RequestMethod.GET)
 //    public ResponseEntity getBlueprint(@PathVariable String author, @PathVariable String name) {
@@ -57,17 +73,7 @@ public class DrawItAPIController {
 //    }
 //
 //
-//    @RequestMapping(method = RequestMethod.POST)
-//    public ResponseEntity<?> crearPlano(@RequestBody Blueprint plano) {
-//        try {
-//            bpp.addNewBlueprint(plano);
-//            return new ResponseEntity<>(HttpStatus.CREATED);
-//        } catch (BlueprintPersistenceException ex) {
-//            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
-//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        }
-//
-//    }
+
 //
 //
 //    @RequestMapping(value = {"/{author}/{name}"}, method = RequestMethod.PUT)
