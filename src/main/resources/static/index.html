@@ -2,64 +2,70 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Draw It</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="utf-8">
+    <title>Draw It</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
 
-  <!-- Bootstrap CSS File -->
-  <link href="inicio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="inicio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Libraries CSS Files -->
-  <link href="inicio/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="inicio/lib/animate-css/animate.min.css" rel="stylesheet">
+    <!-- Libraries CSS Files -->
+    <link href="inicio/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="inicio/lib/animate-css/animate.min.css" rel="stylesheet">
 
-  <!-- Main Stylesheet File -->
-  <link href="inicio/css/style.css" rel="stylesheet">
+    <!-- Main Stylesheet File -->
+    <link href="inicio/css/style.css" rel="stylesheet">
+
+    <script src="js/apiclient.js"></script>
+    <script src="js/app.js"></script>
 
 </head>
 
 <body>
-  <div id="preloader"></div>
+<div id="preloader"></div>
 
-  <section id="hero">
+<section id="hero">
     <div class="hero-container">
-      <div class="fadeIn">
-        <div class="hero-logo">
-          <img class="" src="inicio/img/logo.png" alt="Imperial">
-        </div>
+        <div class="fadeIn">
+            <div class="hero-logo">
+                <img class="" src="inicio/img/logo.png" alt="Imperial">
+            </div>
 
-        
-        <h2>Ingresa tu nombre:</h2>
-        <input type="text" placeholder="Nombre">
-        <br>    
-        <br>
-        <br>
-        <div class="actions">
-          <a href="crearSala.html" class="btn-get-started">Crear una sala</a>
-          <a href="unirseASala.html" class="btn-get-started">Unirse a una sala</a>
+
+            <h2>Ingresa tu nombre:</h2>
+            <input type="text" placeholder="Nombre" id="Nombre">
+            <br>
+            <br>
+            <br>
+            <div class="actions">
+                <a href="crearSala.html" class="btn-get-started" onclick="return app.ingresarNombre()">Crear una
+                    sala</a>
+                <a href="unirseASala.html" class="btn-get-started" onclick="return app.ingresarNombre()">Unirse a una
+                    sala</a>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
 
-  <!-- Required JavaScript Libraries -->
-  <script src="inicio/lib/jquery/jquery.min.js"></script>
-  <script src="inicio/lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="inicio/lib/superfish/hoverIntent.js"></script>
-  <script src="inicio/lib/superfish/superfish.min.js"></script>
-  <script src="inicio/lib/morphext/morphext.min.js"></script>
-  <script src="inicio/lib/wow/wow.min.js"></script>
-  <script src="inicio/lib/stickyjs/sticky.js"></script>
-  <script src="inicio/lib/easing/easing.js"></script>
+<!-- Required JavaScript Libraries -->
+<script src="inicio/lib/jquery/jquery.min.js"></script>
+<script src="inicio/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="inicio/lib/superfish/hoverIntent.js"></script>
+<script src="inicio/lib/superfish/superfish.min.js"></script>
+<script src="inicio/lib/morphext/morphext.min.js"></script>
+<script src="inicio/lib/wow/wow.min.js"></script>
+<script src="inicio/lib/stickyjs/sticky.js"></script>
+<script src="inicio/lib/easing/easing.js"></script>
 
-  <!-- Template Specisifc Custom Javascript File -->
-  <script src="inicio/js/custom.js"></script>
+<!-- Template Specisifc Custom Javascript File -->
+<script src="inicio/js/custom.js"></script>
 
-  <script src="inicio/contactform/contactform.js"></script>
+<script src="inicio/contactform/contactform.js"></script>
 
 
 </body>

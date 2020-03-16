@@ -2,21 +2,21 @@ package edu.eci.arsw.drawit.model;
 
 public class Palabra {
 
-    private char palabra;
+    private String palabra;
 
-    public Palabra(){
+    public Palabra() {
         super();
     }
 
-    public Palabra (char palabra){
-        this.palabra=palabra;
+    public Palabra(String palabra) {
+        this.palabra = palabra;
     }
 
-    public char getPalabra() {
+    public String getPalabra() {
         return palabra;
     }
 
-    public void setPalabra(char palabra) {
+    public void setPalabra(String palabra) {
         this.palabra = palabra;
     }
 }
