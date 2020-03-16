@@ -5,7 +5,7 @@ public class Palabra {
     private String palabra;
 
     public Palabra() {
-        super();
+
     }
 
     public Palabra(String palabra) {

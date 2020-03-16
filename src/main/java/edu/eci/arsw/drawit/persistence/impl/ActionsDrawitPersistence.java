@@ -18,7 +18,7 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     private Map<Map<Tuple<Jugador, String>, ArrayList<Jugador>>, Sala> sala = new ConcurrentHashMap<>();
     private Map<Tuple<Jugador, String>, ArrayList<Jugador>> salaIni = new ConcurrentHashMap<>();
 
-    public ActionsDrawitPersistence(){
+    public ActionsDrawitPersistence() {
         Jugador carlos = new Jugador("Carlos", 4);
 
     }
