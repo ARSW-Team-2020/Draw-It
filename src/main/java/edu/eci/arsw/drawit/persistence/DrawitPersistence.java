@@ -11,6 +11,8 @@ public interface DrawitPersistence {
 
     public void addJugadorToSala(Jugador jg, Sala sl) throws DrawItException;
 
+    public String getCodigoUnicoDeLaSala(Jugador jugador) throws  DrawItException;
+
     public String getCodigoUnicoDeLaSala() throws  DrawItException;
 
 

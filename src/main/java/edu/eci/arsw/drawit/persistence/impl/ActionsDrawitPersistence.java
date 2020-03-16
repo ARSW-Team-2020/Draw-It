@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service("Action")
@@ -16,6 +17,11 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
 
     private Map<Map<Tuple<Jugador, String>, ArrayList<Jugador>>, Sala> sala = new ConcurrentHashMap<>();
     private Map<Tuple<Jugador, String>, ArrayList<Jugador>> salaIni = new ConcurrentHashMap<>();
+
+    public ActionsDrawitPersistence() {
+        Jugador carlos = new Jugador("Carlos", 4);
+
+    }
 
     @Override
     public void addSala(Sala sl) throws DrawItException {
@@ -39,8 +45,15 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     }
 
     @Override
+    public String getCodigoUnicoDeLaSala(Jugador jugador) throws DrawItException {
+        Sala sala = new Sala(jugador);
+        return sala.getCodigo();
+    }
+
+    @Override
     public String getCodigoUnicoDeLaSala() throws DrawItException {
-        return "Not implemented yet";
+        Sala sala = new Sala();
+        return sala.getCodigo();
     }
 
 

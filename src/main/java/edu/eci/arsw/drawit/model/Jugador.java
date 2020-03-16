@@ -2,41 +2,39 @@ package edu.eci.arsw.drawit.model;
 
 public class Jugador {
 
-    private int userName;
+    private String usuario;
     private int puntaje;
-    private char correo;
 
-    public Jugador(){
-        super();
+
+    public Jugador() {
     }
 
-    public Jugador(int UserName, int puntaje, char correo){
-        this.userName=userName;
-        this.puntaje=puntaje;
-        this.correo=correo;
+    public Jugador(String usuario, int puntaje) {
+        this.usuario = usuario;
+        this.puntaje = puntaje;
     }
 
-    public int getUserName() {
-        return userName;
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public int getPuntaje() {
         return puntaje;
     }
 
-    public char getCorreo() {
-        return correo;
-    }
-
-    public void setUserName(int userName) {
-        this.userName = userName;
-    }
-
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
 
-    public void setCorreo(char correo) {
-        this.correo = correo;
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "usuario='" + usuario + '\'' +
+                ", puntaje=" + puntaje +
+                '}';
     }
 }

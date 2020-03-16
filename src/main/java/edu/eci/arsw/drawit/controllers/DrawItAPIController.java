@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.drawit.controllers;
 
+import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.services.DrawItServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +36,15 @@ public class DrawItAPIController {
         }
     }
 
-//    @RequestMapping(value = "/{author}", method = RequestMethod.GET)
-//    public ResponseEntity getBlueprintsByAuthor(@PathVariable String author) {
-//        try {
-//            return new ResponseEntity<>(bpp.getBlueprintsByAuthor(author), HttpStatus.ACCEPTED);
-//        } catch (BlueprintNotFoundException e) {
-//            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
+    @RequestMapping(value = "/{jugador}", method = RequestMethod.GET)
+    public ResponseEntity getBlueprintsByAuthor(@PathVariable Jugador jugador) {
+        try {
+            return new ResponseEntity<>(drawItServices.getCodigoUnicoDeLaSala(jugador), HttpStatus.ACCEPTED);
+        } catch (DrawItException e) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 //
 //    @RequestMapping(value = {"/{author}/{name}"}, method = RequestMethod.GET)
 //    public ResponseEntity getBlueprint(@PathVariable String author, @PathVariable String name) {

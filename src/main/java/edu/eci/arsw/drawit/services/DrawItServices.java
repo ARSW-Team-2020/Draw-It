@@ -24,6 +24,11 @@ public class DrawItServices {
         drawitPersistence.addJugadorToSala(jugador, sala);
     }
 
+    public String getCodigoUnicoDeLaSala(Jugador jugador) throws DrawItException {
+
+        return drawitPersistence.getCodigoUnicoDeLaSala(jugador);
+    }
+
     public String getCodigoUnicoDeLaSala() throws DrawItException {
 
         return drawitPersistence.getCodigoUnicoDeLaSala();
