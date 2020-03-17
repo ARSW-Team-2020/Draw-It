@@ -18,6 +18,8 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     private Map<Map<Tuple<Jugador, String>, ArrayList<Jugador>>, Sala> sala = new ConcurrentHashMap<>();
     private Map<Tuple<Jugador, String>, ArrayList<Jugador>> salaIni = new ConcurrentHashMap<>();
 
+    private  Map<String,Jugador> jugador= new ConcurrentHashMap<>();
+
     public ActionsDrawitPersistence() {
         Jugador carlos = new Jugador("Carlos");
 
@@ -32,6 +34,16 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
             sala.put(salaIni, sl);
         }
     }
+
+    @Override
+    public void addJugador(Jugador jg) throws DrawItException {
+        if (jugador.containsKey(jg.getUsuario())) {
+            throw new DrawItException("el jugador " + jg + "ya existe");
+        } else {
+            jugador.put(jg.getUsuario(),jg);
+        }
+    }
+
 
     @Override
     public void addJugadorToSala(Jugador jg, Sala sl) throws DrawItException {

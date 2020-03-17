@@ -61,6 +61,20 @@ public class DrawItAPIController {
         }
 
     }
+
+    @RequestMapping(value = "/{usuario}", method = RequestMethod.POST)
+    public ResponseEntity<?> crearjugador(@RequestBody String usuario) {
+        System.out.println("1111");
+        Jugador autor= new Jugador(usuario);
+        try {
+            drawItServices.addNewJugador(autor);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (DrawItException ex) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+    }
 //
 //    @RequestMapping(value = {"/{author}/{name}"}, method = RequestMethod.GET)
 //    public ResponseEntity getBlueprint(@PathVariable String author, @PathVariable String name) {
@@ -76,10 +90,10 @@ public class DrawItAPIController {
 
 //
 //
-//    @RequestMapping(value = {"/{author}/{name}"}, method = RequestMethod.PUT)
-//    public ResponseEntity<?> actualizarPlano(@RequestBody Blueprint plano) {
+//    @RequestMapping(value = {"/{codigo}"}, method = RequestMethod.PUT)
+//    public ResponseEntity<?> actualizarSala(@RequestBody Sala sala) {
 //        try {
-//            bpp.updateBlueprint(plano);
+//            drawItServices.updateBlueprint(plano);
 //            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 //        } catch (BlueprintNotFoundException ex) {
 //            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
