@@ -15,9 +15,11 @@ import org.springframework.stereotype.Service;
 public class DrawItServices {
 
     @Autowired
+    @Qualifier("jugador")
     JugadorRepository jugadorRepository;
 
     @Autowired
+    @Qualifier("sala")
     SalaRepository salaRepository;
 
 
