@@ -15,7 +15,7 @@ public class Equipo {
     public Equipo(char nombre, int rondasGanadas, Jugador[] jugadores) {
         this.nombre = nombre;
         this.rondasGanadas = rondasGanadas;
-        this.jugadores = jugadores;
+        //(this.jugadores = jugadores;
     }
 
     public char getNombre() {
