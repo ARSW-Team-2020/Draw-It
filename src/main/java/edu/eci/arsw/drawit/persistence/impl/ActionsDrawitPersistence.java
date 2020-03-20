@@ -2,6 +2,7 @@ package edu.eci.arsw.drawit.persistence.impl;
 
 
 import edu.eci.arsw.drawit.model.Jugador;
+import edu.eci.arsw.drawit.model.Quintuple;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.persistence.DrawitPersistence;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service("Action")
 public class ActionsDrawitPersistence implements DrawitPersistence {
@@ -20,19 +22,32 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
 
     private  Map<String,Jugador> jugador= new ConcurrentHashMap<>();
 
+    private CopyOnWriteArrayList<Quintuple> salas= new CopyOnWriteArrayList<>();
+
     public ActionsDrawitPersistence() {
         Jugador carlos = new Jugador("Carlos");
-
+        Sala jupiter= new Sala(carlos);
+        salas.add(new Quintuple(jupiter.getAutor(),jupiter.getCodigo(),jupiter.getJugadores(),jupiter.getPalabras(),jupiter));
     }
 
     @Override
     public void addSala(Sala sl) throws DrawItException {
-        if (salaIni.containsKey(new Tuple<>(sl.getAutor(), sl.getCodigo()))) {
-            throw new DrawItException("La sala " + sl + "ya existe");
-        } else {
-            salaIni.put(new Tuple<>(sl.getAutor(), sl.getCodigo()), sl.getJugadores());
-            sala.put(salaIni, sl);
+        for (int i=0; i<salas.size();i++){
+            if(salas.get(i).getCodigo().equals(sl.getCodigo())){
+                throw new DrawItException("La sala " + sl + "ya existe");
+            }
         }
+        salas.add(new Quintuple(sl.getAutor(),sl.getCodigo(),sl.getJugadores(),sl.getPalabras(),sl));
+    }
+
+    @Override
+    public ArrayList<Sala> getSalas() throws DrawItException{
+        ArrayList<Sala> listaSalas=new ArrayList<>();
+        if(salas.size()==0){throw new DrawItException("No hay salas creadas");}
+        for (int i=0; i<salas.size();i++){
+            listaSalas.add(salas.get(i).getSala());
+        }
+        return listaSalas;
     }
 
     @Override
@@ -46,27 +61,21 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
 
 
     @Override
-    public void addJugadorToSala(Jugador jg, Sala sl) throws DrawItException {
-        if (salaIni.containsKey(new Tuple<>(sl.getAutor(), sl.getCodigo()))) {
-            ArrayList<Jugador> jugadoresAgregados = sl.getJugadores();
-            jugadoresAgregados.add(jg);
-            sl.setJugadores(jugadoresAgregados);
-        } else {
-            throw new DrawItException("La sala " + sl + " no existe");
+    public void addJugadorToSala(Jugador jg, String codigo) throws DrawItException {
+        boolean ex=true;
+        for(int i=0; i<salas.size();i++){
+            if(salas.get(i).getCodigo().equals(codigo)){
+                if(!salas.get(i).getJugadores().contains(jg)){
+                    salas.get(i).getJugadores().add(jg);
+                    ex=false;
+                }
+                break;
+            }
         }
+        if(ex){throw new DrawItException("La sala no existe o ya hay un jugador con ese nombre");}
+
     }
 
-    @Override
-    public String getCodigoUnicoDeLaSala(Jugador jugador) throws DrawItException {
-        Sala sala = new Sala(jugador);
-        return sala.getCodigo();
-    }
-
-    @Override
-    public String getCodigoUnicoDeLaSala() throws DrawItException {
-        Sala sala = new Sala();
-        return sala.getCodigo();
-    }
 
 
 }

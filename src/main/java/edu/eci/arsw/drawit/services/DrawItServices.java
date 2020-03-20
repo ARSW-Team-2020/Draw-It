@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service("drawItServices")
 public class DrawItServices {
 
@@ -33,26 +35,21 @@ public class DrawItServices {
         drawitPersistence.addSala(sala);
     }
 
+    public ArrayList<Sala> getSalas() throws DrawItException{
+        return drawitPersistence.getSalas();
+    }
+    public void addJugadorToSala(Jugador jugador, String codigo) throws DrawItException {
+        drawitPersistence.addJugadorToSala(jugador, codigo);
+    }
+
     public void addNewJugador(Jugador jugador) throws DrawItException {
         System.out.println(jugador);
         drawitPersistence.addJugador(jugador);
     }
 
-    public void addJugadorToSala(Jugador jugador, Sala sala) throws DrawItException {
-        drawitPersistence.addJugadorToSala(jugador, sala);
-    }
 
 
 
-    public String getCodigoUnicoDeLaSala(Jugador jugador) throws DrawItException {
-
-        return drawitPersistence.getCodigoUnicoDeLaSala(jugador);
-    }
-
-    public String getCodigoUnicoDeLaSala() throws DrawItException {
-
-        return drawitPersistence.getCodigoUnicoDeLaSala();
-    }
 
 
 }

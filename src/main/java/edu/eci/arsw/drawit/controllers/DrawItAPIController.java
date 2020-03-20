@@ -26,30 +26,8 @@ public class DrawItAPIController {
     @Qualifier("drawItServices")
     DrawItServices drawItServices;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> getAllBlueprints() {
-        try {
-            //obtener datos que se enviarán a través del API
-            return new ResponseEntity<>(drawItServices.getCodigoUnicoDeLaSala(), HttpStatus.ACCEPTED);
-        } catch (DrawItException ex) {
-            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @RequestMapping(value = "/{jugador}", method = RequestMethod.GET)
-    public ResponseEntity getBlueprintsByAuthor(@PathVariable Jugador jugador) {
-        try {
-            return new ResponseEntity<>(drawItServices.getCodigoUnicoDeLaSala(jugador), HttpStatus.ACCEPTED);
-        } catch (DrawItException e) {
-            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> crearSala(@RequestBody String usuario) {
-        System.out.println("aaaaaaaaaa");
         Jugador autor= new Jugador(usuario);
         Sala sala= new Sala(autor);
         try {
@@ -59,7 +37,28 @@ public class DrawItAPIController {
             Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
+    }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> getAllSalas() {
+        try {
+            return new ResponseEntity<>(drawItServices.getSalas(), HttpStatus.ACCEPTED);
+        } catch (DrawItException ex) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = {"/{codigo}/{usuario}"}, method = RequestMethod.PUT)
+    public ResponseEntity<?> actualizarSala(@PathVariable("codigo") String codigo, @PathVariable("usuario") String usuario) {
+        try {
+            Jugador jugador= new Jugador(usuario);
+            drawItServices.addJugadorToSala(jugador,codigo);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (DrawItException ex) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 
     @RequestMapping(value = "/{usuario}", method = RequestMethod.POST)
@@ -90,17 +89,7 @@ public class DrawItAPIController {
 
 //
 //
-//    @RequestMapping(value = {"/{codigo}"}, method = RequestMethod.PUT)
-//    public ResponseEntity<?> actualizarSala(@RequestBody Sala sala) {
-//        try {
-//            drawItServices.updateBlueprint(plano);
-//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//        } catch (BlueprintNotFoundException ex) {
-//            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
-//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        }
-//
-//    }
+
 
 
 }
