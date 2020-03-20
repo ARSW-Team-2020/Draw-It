@@ -19,7 +19,9 @@
 
     <!-- Main Stylesheet File -->
     <link href="inicio/css/style.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/apiclient.js"></script>
     <script src="js/app.js"></script>
 
@@ -35,7 +37,6 @@
                 <img class="" src="inicio/img/logo.png" alt="Imperial">
             </div>
 
-
             <h2>Ingresa tu nombre:</h2>
             <input type="text" placeholder="Nombre" id="Nombre">
             <br>
@@ -44,10 +45,23 @@
             <div class="actions">
                 <a href="crearSala.html" class="btn-get-started" onclick="return app.crearSala()"> Crear una
                     sala</a>
-                <a href="unirseASala.html" class="btn-get-started" onclick="return app.crearJugador()">Unirse a una
+                <a class="btn-get-started" onclick="app.mostrarTabla()">Unirse a una
                     sala</a>
             </div>
         </div>
+    </div>
+
+    <div id="displaytable">
+        <table class="table " id="table" style="display: none; width: 100%">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Autor</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">Unirse</th>
+            </tr>
+            </thead>
+            <tbody id ="filasSala"></tbody>
+        </table>
     </div>
 </section>
 

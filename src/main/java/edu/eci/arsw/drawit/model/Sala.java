@@ -7,22 +7,23 @@ public class Sala {
 
     private String codigo;
     private int ronda;
-    private Jugador autor;
+    private String autor;
     private ArrayList<Jugador> jugadores;
+    private ArrayList<String> palabras;
 
     public Sala() {
         this.codigo = crearCodigo(8);
     }
 
     public Sala(Jugador autor) {
-        this.autor = autor;
+        this.autor = autor.getUsuario();
         this.codigo = crearCodigo(8);
         ronda = 0;
         jugadores = new ArrayList<Jugador>();
         jugadores.add(autor);
     }
 
-    public Jugador getAutor() {
+    public String getAutor() {
         return autor;
     }
 
@@ -38,7 +39,11 @@ public class Sala {
         return jugadores;
     }
 
-    public void setAutor(Jugador autor) {
+    public ArrayList<String> getPalabras() {
+        return palabras;
+    }
+
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 
@@ -52,6 +57,10 @@ public class Sala {
 
     public void setJugadores(ArrayList<Jugador> jugadores) {
         this.jugadores = jugadores;
+    }
+
+    public void setPalabras(ArrayList<String> palabras) {
+        this.palabras = palabras;
     }
 
     public static String crearCodigo(int len) {
