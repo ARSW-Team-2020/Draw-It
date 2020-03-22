@@ -42,10 +42,10 @@ public class DrawItServices {
         drawitPersistence.addJugadorToSala(jugador, codigo);
     }
 
-    public void addNewJugador(Jugador jugador) throws DrawItException {
-        System.out.println(jugador);
-        drawitPersistence.addJugador(jugador);
+    public ArrayList<String> getJugadoresBySala (String codigo) throws DrawItException{
+        return drawitPersistence.getJugadoresBySala(codigo);
     }
+
 
 
 

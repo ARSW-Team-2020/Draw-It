@@ -1,10 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Draw It</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="inicio/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="inicio/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="inicio/lib/animate-css/animate.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="inicio/css/style.css" rel="stylesheet">
+
+    <link href="inicio/css/logoCarga.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/apiclient.js"></script>
+    <script src="js/app.js"></script>
+
+    <style type="text/css">
+        .loader:before,
+        .loader:after,
+        .loader {
+          border-radius: 50%;
+          width: 1.5em;
+          height: 1.5em;
+          -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+          -webkit-animation: load7 1.8s infinite ease-in-out;
+          animation: load7 1.8s infinite ease-in-out;
+        }
+        .loader {
+          margin: 8em auto;
+          font-size: 7px;
+          position: relative;
+          text-indent: -9999em;
+          -webkit-animation-delay: 0.16s;
+          animation-delay: 0.16s;
+        }
+        .loader:before {
+          left: -3.5em;
+        }
+        .loader:after {
+          left: 3.5em;
+          -webkit-animation-delay: 0.32s;
+          animation-delay: 0.32s;
+        }
+        .loader:before,
+        .loader:after {
+          content: '';
+          position: absolute;
+          top: 0;
+        }
+        @-webkit-keyframes load7 {
+          0%,
+          80%,
+          100% {
+            box-shadow: 0 1.5em 0 -1.3em #FFF;
+          }
+          40% {
+            box-shadow: 0 1.5em 0 0 #7d7c7c;
+          }
+        }
+        @keyframes load7 {
+          0%,
+          80%,
+          100% {
+            box-shadow: 0 1.5em 0 -1.3em #FFF;
+          }
+          40% {
+            box-shadow: 0 1.5em 0 0 #7d7c7c;
+          }
+        }
+
+        .displaytable {
+	        width: 20%;
+	        height: 50%;
+	        margin: 0px auto;
+        }
+    </style>
+
 </head>
-<body>
+
+<body onload= "app.createJugadores()">
+
+<section id="hero">
+
+    <div class="hero-container">
+        <div class="fadeIn">
+            <div class="hero-logo">
+                <img class="" src="inicio/img/logo.png" alt="Imperial">
+            </div>
+
+            <h2 class="service-title">Esperando jugadores <div class="loader" id="loader"><i class="fa fa-desktop"></i></div> </h2>
+        </div>
+        <div class="displaytable">
+            <table class="table" id="jugadores">
+                <thead>
+                <tr style="margin: 0px auto;">
+                    <th scope="col" >Jugadores</th>
+                </tr>
+                </thead>
+                <tbody id ="filasJugador"></tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+</section>
+
+
+
+
+<!-- Required JavaScript Libraries -->
+<script src="inicio/lib/jquery/jquery.min.js"></script>
+<script src="inicio/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="inicio/lib/superfish/hoverIntent.js"></script>
+<script src="inicio/lib/superfish/superfish.min.js"></script>
+<script src="inicio/lib/morphext/morphext.min.js"></script>
+<script src="inicio/lib/wow/wow.min.js"></script>
+<script src="inicio/lib/stickyjs/sticky.js"></script>
+<script src="inicio/lib/easing/easing.js"></script>
+
+<!-- Template Specisifc Custom Javascript File -->
+<script src="inicio/js/custom.js"></script>
+
+<script src="inicio/contactform/contactform.js"></script>
+
 
 </body>
+
 </html>

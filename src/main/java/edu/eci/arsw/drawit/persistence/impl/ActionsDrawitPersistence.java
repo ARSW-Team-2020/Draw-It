@@ -17,11 +17,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Service("Action")
 public class ActionsDrawitPersistence implements DrawitPersistence {
 
-    private Map<Map<Tuple<Jugador, String>, ArrayList<Jugador>>, Sala> sala = new ConcurrentHashMap<>();
-    private Map<Tuple<Jugador, String>, ArrayList<Jugador>> salaIni = new ConcurrentHashMap<>();
-
-    private  Map<String,Jugador> jugador= new ConcurrentHashMap<>();
-
     private CopyOnWriteArrayList<Quintuple> salas= new CopyOnWriteArrayList<>();
 
     public ActionsDrawitPersistence() {
@@ -50,29 +45,49 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         return listaSalas;
     }
 
-    @Override
-    public void addJugador(Jugador jg) throws DrawItException {
-        if (jugador.containsKey(jg.getUsuario())) {
-            throw new DrawItException("el jugador " + jg + "ya existe");
-        } else {
-            jugador.put(jg.getUsuario(),jg);
-        }
-    }
-
 
     @Override
     public void addJugadorToSala(Jugador jg, String codigo) throws DrawItException {
         boolean ex=true;
+        boolean esta=false;
         for(int i=0; i<salas.size();i++){
             if(salas.get(i).getCodigo().equals(codigo)){
-                if(!salas.get(i).getJugadores().contains(jg)){
+                for(int j=0; j<salas.get(i).getJugadores().size(); j++){
+                    if(salas.get(i).getJugadores().get(j).getUsuario().equals(jg.getUsuario())){
+                        esta=true;
+                        break;
+                    }
+                }
+                if(!esta){
                     salas.get(i).getJugadores().add(jg);
                     ex=false;
                 }
+                System.out.println(salas.get(i).getJugadores());
                 break;
             }
         }
+
         if(ex){throw new DrawItException("La sala no existe o ya hay un jugador con ese nombre");}
+
+    }
+
+    @Override
+    public ArrayList<String> getJugadoresBySala(String codigo) throws DrawItException{
+
+        ArrayList<String> listaJugadores=new ArrayList<>();
+        boolean ex=true;
+        for (int i=0;i<salas.size();i++){
+            if(salas.get(i).getCodigo().equals(codigo)){
+                for(int j=0; j<salas.get(i).getJugadores().size();j++){
+                    listaJugadores.add(salas.get(i).getJugadores().get(j).getUsuario());
+                }
+                ex=false;
+                break;
+            }
+        }
+        System.out.println(listaJugadores);
+        if(ex){throw new DrawItException("La sala no existe o ya hay un jugador con ese nombre");}
+        else{ return listaJugadores;}
 
     }
 

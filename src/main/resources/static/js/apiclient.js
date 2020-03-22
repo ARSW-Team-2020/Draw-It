@@ -1,61 +1,62 @@
 var api = (function () {
 
-    function crearSala(autor) {
-        var data = {"autor": autor};
-        var promise = $.ajax({
-            type: 'POST',
-            url: 'http://localhost:8080/drawIt',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-        });
+    function crearSalas(autor) {
+        console.log(autor),
+        axios({
+            method:'post',
+            url: "/drawIt" ,
+            data:autor,
+        })
+        .then(response => console.log(response))
+        .catch(error => console.log(error));
     }
 
     function getSalas(){
         axios({
             method:'get',
-            url: "http://localhost:8080/drawIt" ,
+            url: "/drawIt" ,
         })
         .then(response => app.createTable(response.data))
         .catch(error => console.log(error));
     }
 
-    function unirseASala(direccion){
+    function unirJugadorToSala(direccion){
         console.log(direccion);
-        var exito=false;
+        codigo= direccion.split('/');
+        console.log(codigo[0]);
         axios({
             method:'put',
-            url: "http://localhost:8080/drawIt/"+direccion ,
+            url: "/drawIt/"+direccion ,
         })
-        .then(response => exito=true)
-        .catch(error => exito=false);
-        return exito
+        //.then(response => getJugadoresBySala(codigo[0]))
+        .then(response => cookie(codigo[0]))
+        .catch(error => console.log(error));
     }
 
-//    function crearJugador(autor) {
-//        var data = {"autor": autor};
-//        var promise = $.ajax({
-//            type: 'POST',
-//            url: 'http://localhost:8080/drawIt/'+autor,
-//            contentType: 'application/json',
-//            data: JSON.stringify(data),
-//        });
-//    }
+    function getJugadoresBySala(sala){
+        axios({
+            method:'get',
+            url: "/drawIt/"+sala,
+        })
+        .then(response => app.createTableJugadores(response.data))
+        .catch(error => console.log(error));
+    }
 
-//    function unirseASala(){
-//        var data = {"codigo": codigo};
-//        var promise = $.ajax({
-//            type: 'PUT',
-//            url: 'http://localhost:8080/drawIt/'+ codigo,
-//            contentType: 'application/json',
-//            data: JSON.stringify(data),
-//        });
-//    }
+    function cookie (respuesta){
+        location.assign("crearSala.html");
+        document.cookie = respuesta;
+    }
+
+
+
+
 
 
     return{
-        crearSala:crearSala,
+        crearSalas:crearSalas,
         getSalas:getSalas,
-        unirseASala:unirseASala
+        unirJugadorToSala:unirJugadorToSala,
+        getJugadoresBySala:getJugadoresBySala
     }
 
 
