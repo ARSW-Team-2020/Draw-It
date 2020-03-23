@@ -72,14 +72,4 @@ public class DrawItAPIController {
         }
     }
 
-
-
-//
-//
-
-//
-//
-
-
-
 }

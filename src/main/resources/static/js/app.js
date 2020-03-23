@@ -6,6 +6,9 @@ var app = (function () {
             return false
         } else {
             api.crearSalas($("#Nombre").val());
+            window.location = "/crearSala.html";
+            //podriamos agregar un alert en caso de que la respuesta no dea 201
+
         }
 
     }
