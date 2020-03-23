@@ -41,7 +41,7 @@ var app = (function () {
         console.log(localStorage.getItem("codigo"));
         var codigo= localStorage.getItem("codigo");
         api.getJugadoresBySala(codigo);
-        var eventInterval = setInterval(function(){api.getJugadoresBySala(codigo); },1000); //<-- in milliseconds
+        var eventInterval = setInterval(function(){api.getJugadoresBySala(codigo); },5000); //<-- in milliseconds
 
     }
 

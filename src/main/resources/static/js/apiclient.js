@@ -29,6 +29,7 @@ var api = (function () {
     }
 
     function getJugadoresBySala(sala){
+        console.log("aaaaa")
         axios({
             method:'get',
             url: "/drawIt/"+sala,
