@@ -1,0 +1,30 @@
+#leftSide {
+    border-radius: 0px 15px 15px 0px;
+    -moz-border-radius: 0px 15px 15px 0px;
+    -webkit-border-radius: 0px 15px 15px 0px;
+    border: 0px dotted #000000;
+    background-color: #08f724;
+}
+
+#rightSide {
+
+    border-radius: 15px 0px 0px 15px;
+    -moz-border-radius: 15px 0px 0px 15px;
+    -webkit-border-radius: 15px 0px 0px 15px;
+    border: 0px dotted #000000;
+    background-color: #f50a0a;
+
+}
+
+body {
+    background-image: url("../img/fondoJuego.png");
+}
+
+#myCanvas {
+    border:1px solid #000000;
+    background-color: whitesmoke;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+
+}
