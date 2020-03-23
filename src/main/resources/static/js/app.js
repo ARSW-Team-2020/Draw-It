@@ -5,10 +5,7 @@ var app = (function () {
             alert("¡Debes ingresar un nombre!");
             return false
         } else {
-            api.crearSalas($("#Nombre").val());
-            window.location = "/crearSala.html";
-            //podriamos agregar un alert en caso de que la respuesta no dea 201
-
+            api.crearSala($("#Nombre").val());
         }
 
     }
@@ -41,16 +38,13 @@ var app = (function () {
     }
 
     function createJugadores(){
-        console.log(document.cookie);
-        var jugadores= document.cookie;
-        api.getJugadoresBySala(jugadores);
+        console.log(localStorage.getItem("codigo"));
+        var codigo= localStorage.getItem("codigo");
+        api.getJugadoresBySala(codigo);
 
     }
 
     function createTableJugadores(jugadores){
-        //console.log(document.cookie);
-        //jugadores=document.cookie;
-        //jugadores=jugadores.split(',');
         var fila= $("#filasJugador");
         jugadores.map(function(element){
             console.log(element)

@@ -36,6 +36,20 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     }
 
     @Override
+    public ArrayList<String> getSalaCreada (Sala sl) throws DrawItException{
+        ArrayList<String> lista= new ArrayList<>();
+        for (int i=0; i<salas.size();i++){
+            if(salas.get(i).getCodigo().equals(sl.getCodigo())){
+                throw new DrawItException("La sala " + sl + "ya existe");
+            }
+        }
+        salas.add(new Quintuple(sl.getAutor(),sl.getCodigo(),sl.getJugadores(),sl.getPalabras(),sl));
+        lista.add(sl.getCodigo());
+        lista.add(sl.getAutor());
+        return lista;
+    }
+
+    @Override
     public ArrayList<Sala> getSalas() throws DrawItException{
         ArrayList<Sala> listaSalas=new ArrayList<>();
         if(salas.size()==0){throw new DrawItException("No hay salas creadas");}

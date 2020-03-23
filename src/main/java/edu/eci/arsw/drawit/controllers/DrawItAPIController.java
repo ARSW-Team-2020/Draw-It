@@ -40,6 +40,18 @@ public class DrawItAPIController {
         }
     }
 
+    @RequestMapping(value = {"/1/{usuario}"}, method = RequestMethod.GET)
+    public ResponseEntity getSalaCreada(@PathVariable() String usuario) {
+        Jugador autor= new Jugador(usuario);
+        Sala sala= new Sala(autor);
+        try {
+            return new ResponseEntity<>(drawItServices.getSalaCreada(sala), HttpStatus.ACCEPTED);
+        } catch (DrawItException e) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getAllSalas() {
         try {

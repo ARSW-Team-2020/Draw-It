@@ -1,13 +1,12 @@
 var api = (function () {
 
-    function crearSalas(autor) {
+    function crearSala(autor) {
         console.log(autor),
         axios({
-            method:'post',
-            url: "/drawIt" ,
-            data:autor,
+            method:'get',
+            url: "/drawIt/1/" +  autor ,
         })
-        .then(response => console.log(response))
+        .then(response => storage(response.data))
         .catch(error => console.log(error));
     }
 
@@ -21,15 +20,11 @@ var api = (function () {
     }
 
     function unirJugadorToSala(direccion){
-        console.log(direccion);
-        codigo= direccion.split('/');
-        console.log(codigo[0]);
         axios({
             method:'put',
             url: "/drawIt/"+direccion ,
         })
-        //.then(response => getJugadoresBySala(codigo[0]))
-        .then(response => cookie(codigo[0]))
+        .then(response => cookie(direccion))
         .catch(error => console.log(error));
     }
 
@@ -43,17 +38,22 @@ var api = (function () {
     }
 
     function cookie (respuesta){
+        codigo= respuesta.split('/');
+        storage(codigo);
+    }
+
+    function storage(info){
         location.assign("crearSala.html");
-        document.cookie = respuesta;
+        localStorage.setItem("codigo",info[0]);
+        localStorage.setItem("usuario",info[1]);
     }
 
 
 
 
 
-
     return{
-        crearSalas:crearSalas,
+        crearSala:crearSala,
         getSalas:getSalas,
         unirJugadorToSala:unirJugadorToSala,
         getJugadoresBySala:getJugadoresBySala
