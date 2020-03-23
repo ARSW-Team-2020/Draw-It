@@ -6,7 +6,7 @@ var api = (function () {
             method:'get',
             url: "/drawIt/1/" +  autor ,
         })
-        .then(response => storage(response.data))
+        .then(response => storage(response.data,"autor"))
         .catch(error => console.log(error));
     }
 
@@ -39,14 +39,15 @@ var api = (function () {
 
     function cookie (respuesta){
         codigo= respuesta.split('/');
-        storage(codigo);
+        storage(codigo,"usuario");
     }
 
-    function storage(info){
+    function storage(info,usuario){
         location.assign("crearSala.html");
         localStorage.setItem("codigo",info[0]);
-        localStorage.setItem("usuario",info[1]);
+        localStorage.setItem(usuario,info[1]);
     }
+
 
 
 

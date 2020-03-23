@@ -41,17 +41,24 @@ var app = (function () {
         console.log(localStorage.getItem("codigo"));
         var codigo= localStorage.getItem("codigo");
         api.getJugadoresBySala(codigo);
+        var eventInterval = setInterval(function(){api.getJugadoresBySala(codigo); },1000); //<-- in milliseconds
 
     }
 
     function createTableJugadores(jugadores){
+        $('#jugadores tbody').empty();
         var fila= $("#filasJugador");
+        console.log(jugadores.length);
+        console.log(localStorage.getItem("autor"));
         jugadores.map(function(element){
             console.log(element)
             var markup = "<tr> <td>"+ element+"</td> </tr>";
             fila.append(markup)
         })
         $("jugadores").append(fila);
+        if(localStorage.getItem("autor")!= null && jugadores.length >=8){
+            document.getElementById("empezar").style.display="block";
+        }
     }
 
 
