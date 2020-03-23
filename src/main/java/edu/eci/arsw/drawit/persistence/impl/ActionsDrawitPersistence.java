@@ -72,7 +72,7 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
                         break;
                     }
                 }
-                if(!esta){
+                if(!esta && salas.get(i).getJugadores().size()<8){
                     salas.get(i).getJugadores().add(jg);
                     ex=false;
                 }

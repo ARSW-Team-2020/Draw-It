@@ -76,6 +76,7 @@ public class DrawItAPIController {
 
     @RequestMapping(value = {"/{codigo}"}, method = RequestMethod.GET)
     public ResponseEntity getJugadoresBySala(@PathVariable() String codigo) {
+        System.out.println(codigo);
         try {
             return new ResponseEntity<>(drawItServices.getJugadoresBySala(codigo), HttpStatus.ACCEPTED);
         } catch (DrawItException e) {
