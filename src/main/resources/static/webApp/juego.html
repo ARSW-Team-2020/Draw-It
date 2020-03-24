@@ -21,7 +21,7 @@
     <body>
         <header>
             <div class="container">
-                <button type="button" class="btn btn-outline-danger">Exit</button>
+                <!button type="button" class="btn btn-outline-danger btn-sm">Exit</button>
                 <h1 align="center">
                     <p class="font-weight-bolder">
                         Puntos
@@ -32,12 +32,25 @@
         <div class="container">
             <div class="main row" >
                 <div class="col-md-2" id="leftSide">
-
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-
                 </div>
                 <div class="container col-md-8" align="center" >
                     <canvas width="600" height="300" id="myCanvas"></canvas>
+                     <!-- El chat -->
+                    <div class ="container" id="containerChat" >
+                        <div id="menu">
+                            <p class="welcome">Welcome, <b></b></p>
+                            <div style="clear:both"></div>
+                        </div>
+
+                        <div id="chatbox"></div>
+
+                        <form name="message" action="">
+                            <input name="usermsg" type="text" id="usermsg" size="63" />
+                            <button type="button" class="btn btn-outline-secondary btn-sm">Enviar</button>
+                        </form>
+                    </div>
+
                 </div>
                 <div class="col-md-2" id="rightSide">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
@@ -45,5 +58,8 @@
                 </div>
             </div>
         </div>
+        <script type="application/javascript" src="../js/dibujo.js">
+
+        </script>
     </body>
 </html>

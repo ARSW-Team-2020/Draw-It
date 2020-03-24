@@ -3,7 +3,7 @@
     -moz-border-radius: 0px 15px 15px 0px;
     -webkit-border-radius: 0px 15px 15px 0px;
     border: 0px dotted #000000;
-    background-color: #08f724;
+    background-color: #6495ED;
 }
 
 #rightSide {
@@ -12,19 +12,88 @@
     -moz-border-radius: 15px 0px 0px 15px;
     -webkit-border-radius: 15px 0px 0px 15px;
     border: 0px dotted #000000;
-    background-color: #f50a0a;
+    background-color: #32CD32;
 
 }
 
 body {
-    background-image: url("../img/fondoJuego.png");
+    background-image: url("../img/amarillo.png");
 }
 
 #myCanvas {
-    border:1px solid #000000;
+    border:1px solid #e7a61a;
     background-color: whitesmoke;
     border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
-
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(112,112,112,1);
+    box-shadow: 10px 10px 5px 0px rgba(112,112,112,1);
 }
+
+#containerChat {
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border: 0px dotted #000000;
+    background-color: white;
+}
+
+/* CSS Document */
+/*
+body {
+    font:12px arial;
+    color: #222;
+    text-align:center;
+    padding:35px; }
+*/
+form, p, span {
+    margin:0;
+    padding:0; }
+
+input { font:12px arial; }
+
+a {
+    color:#e7a61a;
+    text-decoration:none; }
+
+a:hover { text-decoration:underline; }
+
+#containerChat, #loginform {
+    margin:15px;
+    /*margin-left: 80px;*/
+    padding-bottom:25px;
+    background:#e9e9e9;
+    width:600px;
+    height: 200px;
+    border:1px solid #e7a61a; }
+
+#loginform { padding-top:8px; }
+
+#loginform p { margin: 5px; }
+
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#e9e9e9;
+    height:90px;
+    width:530px;
+    border:1px solid #e7a61a;
+    overflow:auto; }
+
+#usermsg {
+    width:395px;
+    border:1px solid #e7a61a; }
+
+#submit { width: 60px; }
+
+.error { color: #ff0000; }
+
+#menu { padding:12.5px 25px 12.5px 25px; }
+
+.welcome { float:left; }
+
+
+.msgln { margin:0 0 2px 0; }
