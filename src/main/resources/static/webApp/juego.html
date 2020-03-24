@@ -34,7 +34,13 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
                 </div>
                 <div class="container col-md-8" align="center" >
+                    <input type="color" id="colorcito" oninput="defColor(this.value);"/>
+                    <input type="range" id="grosor" oninput="defGrosor(this.value);" min="1" max="5" value="1"/>
+
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="borrar">Borrar</button>
+
                     <canvas width="600" height="300" id="myCanvas"></canvas>
+
                      <!-- El chat -->
                     <div class ="container" id="containerChat" >
                         <div id="menu">

@@ -1,15 +1,29 @@
 var canvas =document.getElementById("myCanvas");
 var lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
-console.log(delta);
-console.log(localStorage.getItem("jugador1"));
+var borrar  = document.getElementById("borrar");
+borrar.addEventListener('click',defBorrar);
+//console.log(delta);
+//console.log(localStorage.getItem("jugador1"));
 
 var x=0,y=0,dibujando=false, color="black",grosor = 1;
+
+function defColor(c ) {
+    color = c;
+}
+
+function defGrosor(g) {
+    grosor =g;
+}
+
+function defBorrar() {
+    lienzo.clearRect(0, 0, canvas.width, canvas.height);
+}
 
 canvas.addEventListener('mousedown',function (e) {
     x=e.clientX - delta.left;
     y=e.clientY -delta.top;
-    console.log(x,y);
+    //console.log(x,y);
     dibujando=true;
 });
 
