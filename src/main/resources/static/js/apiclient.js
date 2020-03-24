@@ -53,7 +53,7 @@ var api = (function () {
             method:'get',
             url: "/drawIt/"+sala+"/"+usuario,
         })
-        .then(response => console.log(response.data))
+        .then(response => app.organizar(response.data))
         .catch(error => console.log(error));
     }
 

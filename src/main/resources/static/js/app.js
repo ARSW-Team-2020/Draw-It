@@ -59,12 +59,20 @@ var app = (function () {
     }
 
     function empezar(){
-        location.assign("webApp/juego.html");
         if(localStorage.getItem("autor")!= null){
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"))
         }else{
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("usuario"))
         }
+    }
+
+    function organizar(equipo){
+        console.log(equipo);
+        localStorage.setItem("jugador1",equipo[0]),
+        localStorage.setItem("jugador2",equipo[1]),
+        localStorage.setItem("jugador3",equipo[2]),
+        localStorage.setItem("jugador4",equipo[3]);
+        location.assign("webApp/juego.html");
     }
 
 
@@ -74,6 +82,7 @@ var app = (function () {
         createTable:createTable,
         createJugadores:createJugadores,
         createTableJugadores:createTableJugadores,
-        empezar:empezar
+        empezar:empezar,
+        organizar:organizar
     }
 })();

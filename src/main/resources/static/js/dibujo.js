@@ -2,6 +2,7 @@ var canvas =document.getElementById("myCanvas");
 var lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
 console.log(delta);
+console.log(localStorage.getItem("jugador1"));
 
 var x=0,y=0,dibujando=false, color="black",grosor = 1;
 
