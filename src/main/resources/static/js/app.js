@@ -38,7 +38,6 @@ var app = (function () {
     }
 
     function createJugadores(){
-        console.log(localStorage.getItem("codigo"));
         var codigo= localStorage.getItem("codigo");
         api.getJugadoresBySala(codigo);
         var eventInterval = setInterval(function(){api.getJugadoresBySala(codigo); },5000); //<-- in milliseconds
@@ -48,16 +47,23 @@ var app = (function () {
     function createTableJugadores(jugadores){
         $('#jugadores tbody').empty();
         var fila= $("#filasJugador");
-        console.log(jugadores.length);
-        console.log(localStorage.getItem("autor"));
         jugadores.map(function(element){
-            console.log(element)
             var markup = "<tr> <td>"+ element+"</td> </tr>";
             fila.append(markup)
         })
         $("jugadores").append(fila);
-        if(localStorage.getItem("autor")!= null && jugadores.length >=8){
+        //if(localStorage.getItem("autor")!= null && jugadores.length >=8){
+        if(jugadores.length >=8){
             document.getElementById("empezar").style.display="block";
+        }
+    }
+
+    function empezar(){
+        location.assign("webApp/juego.html");
+        if(localStorage.getItem("autor")!= null){
+            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"))
+        }else{
+            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("usuario"))
         }
     }
 
@@ -67,6 +73,7 @@ var app = (function () {
         mostrarTabla:mostrarTabla,
         createTable:createTable,
         createJugadores:createJugadores,
-        createTableJugadores:createTableJugadores
+        createTableJugadores:createTableJugadores,
+        empezar:empezar
     }
 })();

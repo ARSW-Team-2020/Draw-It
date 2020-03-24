@@ -4,21 +4,22 @@ import java.util.List;
 
 public class Equipo {
 
-    private char nombre;
+    private String nombre;
     private int rondasGanadas;
-    private Jugador[] jugadores = new Jugador[4];
+    private String[] jugadores = new String[4];
+    private Sala sala;
 
     public Equipo() {
         super();
     }
 
-    public Equipo(char nombre, int rondasGanadas, Jugador[] jugadores) {
+    public Equipo(String nombre, Sala sala) {
         this.nombre = nombre;
-        this.rondasGanadas = rondasGanadas;
-        //(this.jugadores = jugadores;
+        this.rondasGanadas = 0;
+        this.sala=sala;
     }
 
-    public char getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -26,15 +27,27 @@ public class Equipo {
         return rondasGanadas;
     }
 
-    public Jugador[] getJugadores() {
+    public String[] getJugadores() {
         return jugadores;
     }
 
-    public void setNombre(char nombre) {
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     public void setRondasGanadas(int rondasGanadas) {
         this.rondasGanadas = rondasGanadas;
+    }
+
+    public void setJugadores(String[] jugadores) {
+        this.jugadores = jugadores;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
 }

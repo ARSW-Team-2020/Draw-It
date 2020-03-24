@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.drawit.controllers;
 
+import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
@@ -79,6 +80,16 @@ public class DrawItAPIController {
         System.out.println(codigo);
         try {
             return new ResponseEntity<>(drawItServices.getJugadoresBySala(codigo), HttpStatus.ACCEPTED);
+        } catch (DrawItException e) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @RequestMapping(value = {"/{codigo}/{autor}"}, method = RequestMethod.GET)
+    public ResponseEntity getEquiposBySalaAndAuthor(@PathVariable() String codigo, @PathVariable() String autor) {
+        try {
+            return new ResponseEntity<>(drawItServices.getEquiposBySalaAndAuthor(codigo,autor), HttpStatus.ACCEPTED);
         } catch (DrawItException e) {
             Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

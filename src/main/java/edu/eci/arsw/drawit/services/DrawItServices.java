@@ -50,7 +50,9 @@ public class DrawItServices {
         return drawitPersistence.getJugadoresBySala(codigo);
     }
 
-
+    public String[] getEquiposBySalaAndAuthor (String codigo, String autor) throws DrawItException{
+        return drawitPersistence.getEquiposBySalaAndAuthor(codigo,autor);
+    }
 
 
 

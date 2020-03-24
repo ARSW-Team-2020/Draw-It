@@ -1,6 +1,7 @@
 package edu.eci.arsw.drawit.persistence.impl;
 
 
+import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Quintuple;
 import edu.eci.arsw.drawit.model.Sala;
@@ -18,6 +19,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class ActionsDrawitPersistence implements DrawitPersistence {
 
     private CopyOnWriteArrayList<Quintuple> salas= new CopyOnWriteArrayList<>();
+
+    private CopyOnWriteArrayList<Equipo> equipos= new CopyOnWriteArrayList<>();
 
     public ActionsDrawitPersistence() {
         Jugador carlos = new Jugador("Carlos");
@@ -87,7 +90,6 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
 
     @Override
     public ArrayList<String> getJugadoresBySala(String codigo) throws DrawItException{
-
         ArrayList<String> listaJugadores=new ArrayList<>();
         boolean ex=true;
         for (int i=0;i<salas.size();i++){
@@ -105,6 +107,56 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
 
     }
 
+    @Override
+    public String[] getEquiposBySalaAndAuthor(String codigo,String usuario) throws DrawItException {
+        String[] jugadores = new String[4];
+        for (int i = 0; i < equipos.size(); i++) {
+            if (equipos.get(i).getSala().getCodigo().equals(codigo)) {
+                for (int j = 0; j < equipos.get(i).getJugadores().length; j++) {
+                    if (equipos.get(i).getJugadores()[j].equals(usuario)) {
+                        jugadores = equipos.get(i).getJugadores();
+                        return jugadores;
+                    }
+                }
+            }
+        }
+
+        return crearEquipo(codigo,usuario);
+    }
+
+     public String[] crearEquipo(String codigo,String usuario) throws DrawItException {
+        boolean ex=true;
+        boolean estaE1=false;
+        String[] lista1= new String[4];
+        String[] lista2= new String[4];
+        for (int i=0;i<salas.size();i++) {
+            if (salas.get(i).getCodigo().equals(codigo)) {
+                Equipo equipo1= new Equipo("1", salas.get(i).getSala());
+                Equipo equipo2= new Equipo("2", salas.get(i).getSala());
+                for(int j=0; j<4;j++){
+                    if(salas.get(i).getJugadores().get(j).getUsuario().equals(usuario)){
+                        estaE1=true;
+                    }
+                    lista1[j]=salas.get(i).getJugadores().get(j).getUsuario();
+                    lista2[j]=salas.get(i).getJugadores().get(j+4).getUsuario();
+                }
+                equipo1.setJugadores(lista1);
+                equipo2.setJugadores(lista2);
+                equipos.add(equipo1);
+                equipos.add(equipo2);
+                ex=false;
+                break;
+            }
+        }
+        if(ex){throw new DrawItException("La sala no existe");}
+        else {
+            if (estaE1) {
+                return lista1;
+            } else {
+                return lista2;
+            }
+        }
+    }
 
 
 }

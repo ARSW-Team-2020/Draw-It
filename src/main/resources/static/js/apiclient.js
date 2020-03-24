@@ -29,7 +29,6 @@ var api = (function () {
     }
 
     function getJugadoresBySala(sala){
-        console.log("aaaaa")
         axios({
             method:'get',
             url: "/drawIt/"+sala,
@@ -49,7 +48,14 @@ var api = (function () {
         localStorage.setItem(usuario,info[1]);
     }
 
-
+    function getEquipoBySalaAndUsuario(sala,usuario){
+        axios({
+            method:'get',
+            url: "/drawIt/"+sala+"/"+usuario,
+        })
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error));
+    }
 
 
 
@@ -58,7 +64,8 @@ var api = (function () {
         crearSala:crearSala,
         getSalas:getSalas,
         unirJugadorToSala:unirJugadorToSala,
-        getJugadoresBySala:getJugadoresBySala
+        getJugadoresBySala:getJugadoresBySala,
+        getEquipoBySalaAndUsuario:getEquipoBySalaAndUsuario
     }
 
 

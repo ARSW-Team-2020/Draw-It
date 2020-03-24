@@ -95,7 +95,7 @@
 <body onload= "app.createJugadores()">
 
 <section id="hero">
-
+    <div w3-include-html="webApp/juego.html"></div>
     <div class="hero-container">
         <div class="fadeIn">
             <div class="hero-logo">
@@ -116,7 +116,7 @@
         </div>
 
         <div class="actions">
-            <a id="empezar" class="btn-get-started" style="display: none;"> Empezar a jugar</a>
+            <a id="empezar"  class="btn-get-started" style="display: none;" onclick="app.empezar()"> Empezar a jugar</a>
         </div>
 
     </div>

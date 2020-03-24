@@ -19,7 +19,7 @@ public interface DrawitPersistence {
 
     public ArrayList<String> getJugadoresBySala(String codigo) throws DrawItException;
 
-
+    public String[] getEquiposBySalaAndAuthor(String codigo,String autor) throws DrawItException;
 
 
 
