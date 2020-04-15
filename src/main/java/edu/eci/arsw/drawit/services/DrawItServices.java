@@ -3,6 +3,7 @@ package edu.eci.arsw.drawit.services;
 
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
+import edu.eci.arsw.drawit.model.Tablero;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.persistence.DrawitPersistence;
 import edu.eci.arsw.drawit.repository.JugadorRepository;
@@ -53,7 +54,10 @@ public class DrawItServices {
     public String[] getEquiposBySalaAndAuthor (String codigo, String autor) throws DrawItException{
         return drawitPersistence.getEquiposBySalaAndAuthor(codigo,autor);
     }
-
+    
+    public void actualizarTablero(String codigo, String equipo,Tablero tablero) throws DrawItException{
+    	drawitPersistence.actualizarTablero(codigo,equipo,tablero);
+    }
 
 
 

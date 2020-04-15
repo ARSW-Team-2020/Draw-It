@@ -2,6 +2,8 @@ package edu.eci.arsw.drawit.persistence;
 
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
+import edu.eci.arsw.drawit.model.Tablero;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,6 +22,8 @@ public interface DrawitPersistence {
     public ArrayList<String> getJugadoresBySala(String codigo) throws DrawItException;
 
     public String[] getEquiposBySalaAndAuthor(String codigo,String autor) throws DrawItException;
+    
+    public void actualizarTablero(String codigo, String equipo, Tablero tablero) throws DrawItException;
 
 
 

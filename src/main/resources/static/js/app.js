@@ -7,7 +7,6 @@ var app = (function () {
         } else {
             api.crearSala($("#Nombre").val());
         }
-
     }
 
     function mostrarTabla(){

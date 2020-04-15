@@ -8,6 +8,7 @@ package edu.eci.arsw.drawit.controllers;
 import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
+import edu.eci.arsw.drawit.model.Tablero;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.services.DrawItServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -94,6 +96,18 @@ public class DrawItAPIController {
             Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    
+    @RequestMapping(value= {"/{codigo}/{equipo}"}, method = RequestMethod.PUT)
+    public ResponseEntity<?> actualizarTablero(@PathVariable() String codigo, @PathVariable String equipo,@RequestBody Tablero tablero){
+    	try {
+    		drawItServices.actualizarTablero(codigo, equipo,tablero);
+    		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    	}catch(DrawItException ex) {
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+    	}
+    	
     }
 
 }

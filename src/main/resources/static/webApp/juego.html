@@ -17,15 +17,15 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/estilos.css">
     </head>
-    <body>
+    <body onload="dibujo.init()">
         <header>
             <div class="container">
-                <!button type="button" class="btn btn-outline-danger btn-sm">Exit</button>
-                <h1 align="center">
+                <button type="button" class="btn btn-outline-danger btn-sm">Salir</button>
+                <h2 align="center">
                     <p class="font-weight-bolder">
                         Puntos
                     </p>
-                </h1>
+                </h2>
             </div>
         </header>
         <div class="container">
@@ -34,12 +34,19 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
                 </div>
                 <div class="container col-md-8" align="center" >
-                    <input type="color" id="colorcito" oninput="defColor(this.value);"/>
-                    <input type="range" id="grosor" oninput="defGrosor(this.value);" min="1" max="5" value="1"/>
+                    <div class="container">
+                        <input class="ml-4 " type="color" id="colorcito"  oninput="dibujo.defColor(this.value);"/>
+                        <input class="ml-4" type="range" id="grosor" oninput="dibujo.defGrosor(this.value);" min="1" max="5" value="1"/>
 
-                    <button type="button" class="btn btn-outline-secondary btn-sm" id="borrar">Borrar</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm ml-4" id="borrar">Borrar</button>
 
-                    <canvas width="600" height="300" id="myCanvas"></canvas>
+
+                    </div>
+
+                    <div>
+                        <canvas  width="600" height="300" id="myCanvas"></canvas>
+                    </div>
+
 
                      <!-- El chat -->
                     <div class ="container" id="containerChat" >
@@ -63,8 +70,6 @@
                 </div>
             </div>
         </div>
-        <script type="application/javascript" src="../js/dibujo.js">
-
-        </script>
+        <script type="application/javascript" src="../js/dibujo.js"></script>
     </body>
 </html>

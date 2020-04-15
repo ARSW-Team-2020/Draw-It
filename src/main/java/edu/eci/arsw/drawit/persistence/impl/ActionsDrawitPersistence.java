@@ -5,6 +5,7 @@ import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Quintuple;
 import edu.eci.arsw.drawit.model.Sala;
+import edu.eci.arsw.drawit.model.Tablero;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.persistence.DrawitPersistence;
 import org.springframework.stereotype.Service;
@@ -168,6 +169,14 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
                 return lista2;
             }
         }
+    }
+     
+    public void actualizarTablero(String codigo, String equipo, Tablero tablero) throws DrawItException {
+    	for(Equipo e:equipos) {
+    		if(e.getNombre().equals(equipo)) {
+    			//e.setTablero(tablero);
+    		}
+    	}
     }
 
 

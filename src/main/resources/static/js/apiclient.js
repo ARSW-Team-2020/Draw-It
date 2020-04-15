@@ -55,6 +55,16 @@ var api = (function () {
         })
         .then(response => app.organizar(response.data))
         .catch(error => console.log(error));
+    } 
+	
+    function saveTablero(blueprint,codigo,equipo){
+        axios({
+			method: 'put',
+			url: "/drawIt/"+codigo+"/"+equipo,
+			data : blueprint
+
+        }).catch(error => console.log(error));
+
     }
 
 
@@ -65,8 +75,9 @@ var api = (function () {
         getSalas:getSalas,
         unirJugadorToSala:unirJugadorToSala,
         getJugadoresBySala:getJugadoresBySala,
-        getEquipoBySalaAndUsuario:getEquipoBySalaAndUsuario
-    }
+        getEquipoBySalaAndUsuario:getEquipoBySalaAndUsuario,
+    	saveTablero:saveTablero
+	}
 
 
 
