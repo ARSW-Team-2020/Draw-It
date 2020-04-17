@@ -7,16 +7,14 @@ public class Equipo {
     private String nombre;
     private int rondasGanadas;
     private String[] jugadores = new String[4];
-    private Sala sala;
 
     public Equipo() {
         super();
     }
 
-    public Equipo(String nombre, Sala sala) {
+    public Equipo(String nombre) {
         this.nombre = nombre;
         this.rondasGanadas = 0;
-        this.sala=sala;
     }
 
     public String getNombre() {
@@ -31,10 +29,6 @@ public class Equipo {
         return jugadores;
     }
 
-    public Sala getSala() {
-        return sala;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -47,7 +41,4 @@ public class Equipo {
         this.jugadores = jugadores;
     }
 
-    public void setSala(Sala sala) {
-        this.sala = sala;
-    }
 }

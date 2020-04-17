@@ -34,14 +34,12 @@ var app = (function () {
             var markup = "<tr> <td>"+ element.autor +"</td> <td>"+element.codigo+"</td><td><a type='button' class='btn-get-started' onclick= "+onclick+">Unirse</a></td> </tr>";
             fila.append(markup)
         })
-
     }
 
     function createJugadores(){
         var codigo= localStorage.getItem("codigo");
         api.getJugadoresBySala(codigo);
         var eventInterval = setInterval(function(){api.getJugadoresBySala(codigo); },5000); //<-- in milliseconds
-
     }
 
     function createTableJugadores(jugadores){
@@ -85,4 +83,5 @@ var app = (function () {
         empezar:empezar,
         organizar:organizar
     }
+
 })();
