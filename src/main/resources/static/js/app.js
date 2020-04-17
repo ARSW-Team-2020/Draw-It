@@ -10,6 +10,18 @@ var app = (function () {
 
     }
 
+    function subSala(){
+        var codigo =  localStorage.getItem("codigo");
+        stompClient.subscribe('/topic/'+codigo,function (eventbody) {
+            var jugadores = JSON.parse(eventbody.body);
+            createTableJugadores(jugadores);
+        },{id:codigo});
+        stompClient.subscribe('/topic/'+codigo+'/empezar',function (eventbody) {
+            empezar();
+        },{id:codigo+'/empezar'});
+        stompClient.send("/app/union/"+codigo);
+    }
+
     function mostrarTabla(){
         if ($("#Nombre").val() == "") {
             alert("¡Debes ingresar un nombre!");
@@ -64,13 +76,25 @@ var app = (function () {
         }
     }
 
+
+    var stompClient = null;
+    var connect = function () {
+        console.info('Connecting to WS...');
+        var socket = new SockJS('/stompendpoint');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            subSala();
+        });
+    };
+
     function organizar(equipo){
+        location.assign("webApp/juego.html");
         console.log(equipo);
         localStorage.setItem("jugador1",equipo[0]),
         localStorage.setItem("jugador2",equipo[1]),
         localStorage.setItem("jugador3",equipo[2]),
         localStorage.setItem("jugador4",equipo[3]);
-        location.assign("webApp/juego.html");
     }
 
 
@@ -80,8 +104,13 @@ var app = (function () {
         createTable:createTable,
         createJugadores:createJugadores,
         createTableJugadores:createTableJugadores,
-        empezar:empezar,
-        organizar:organizar
+        empezar:function(){
+            var codigo = localStorage.getItem("codigo");
+            stompClient.send("/app/"+codigo+"/empezar");
+        },
+        organizar:organizar,
+        connect:connect,
+        subSala:subSala
     }
 
 })();

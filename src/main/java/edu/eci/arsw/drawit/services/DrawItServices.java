@@ -25,7 +25,6 @@ public class DrawItServices {
     @Qualifier("sala")
     SalaRepository salaRepository;
 
-
     @Autowired
     @Qualifier("Action")
     DrawitPersistence drawitPersistence = null;
@@ -45,6 +44,7 @@ public class DrawItServices {
 
     public void addJugadorToSala(Jugador jugador, String codigo) throws DrawItException {
         drawitPersistence.addJugadorToSala(jugador, codigo);
+
     }
 
     public ArrayList<String> getJugadoresBySala (String codigo) throws DrawItException{

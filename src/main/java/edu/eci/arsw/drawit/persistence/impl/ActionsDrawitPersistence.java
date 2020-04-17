@@ -30,16 +30,13 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         Jugador javier= new Jugador("Javier");
         Jugador oscar= new Jugador("Oscar");
         Jugador daniel= new Jugador("Daniel");
-        Jugador juan= new Jugador("Juan");
         Jugador sebastian= new Jugador("Sebastian");
         Sala jupiter= new Sala(carlos);
         jupiter.getJugadores().add(yeisson);
         jupiter.getJugadores().add(javier);
         jupiter.getJugadores().add(oscar);
         jupiter.getJugadores().add(daniel);
-        jupiter.getJugadores().add(juan);
         jupiter.getJugadores().add(sebastian);
-        salas.add(new Quintuple(jupiter.getAutor(),jupiter.getCodigo(),jupiter.getJugadores(),jupiter.getPalabras(),jupiter));
         salas1.put(jupiter.getCodigo(),jupiter);
     }
 

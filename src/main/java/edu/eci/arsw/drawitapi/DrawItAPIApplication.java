@@ -5,12 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-
 @SpringBootApplication
 @EnableJpaRepositories
-@ComponentScan(basePackages = {"edu.eci.arsw.drawit"})
+@ComponentScan(basePackages = {"edu.eci.arsw"})
 public class DrawItAPIApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(DrawItAPIApplication.class, args);
 	}

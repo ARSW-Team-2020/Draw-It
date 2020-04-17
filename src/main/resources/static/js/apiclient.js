@@ -57,9 +57,6 @@ var api = (function () {
         .catch(error => console.log(error));
     }
 
-
-
-
     return{
         crearSala:crearSala,
         getSalas:getSalas,
