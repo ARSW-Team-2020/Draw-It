@@ -247,12 +247,22 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     }
 
     private String[] returnEquipo(Sala salaI, String usuario){
+        String[] equipo = null;
+        String team="";
         for(int i=0; i<salaI.getEquipos().get(0).getJugadores().length; i++){
             if(salaI.getEquipos().get(0).getJugadores()[i].equals(usuario)){
-                return salaI.getEquipos().get(0).getJugadores();
+                equipo = salaI.getEquipos().get(0).getJugadores();
+                team = "0";
             }
         }
-        return salaI.getEquipos().get(1).getJugadores();
+        equipo = (team == "0")?equipo:salaI.getEquipos().get(1).getJugadores();
+        team = (team == "0")?team:"1";
+        String[] nuevo = new String[5];
+        for (int i = 0;i < 4;i++){
+            nuevo[i] = equipo[i];
+        }
+        nuevo[4] = team;
+        return nuevo;
     }
 
     //public String[] crearEquipo(String codigo,String usuario) throws DrawItException {

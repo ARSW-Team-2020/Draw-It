@@ -1,11 +1,13 @@
 package edu.eci.arsw.drawit.controllers;
 
+import edu.eci.arsw.drawit.model.ChatMessage;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawitPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -30,8 +32,15 @@ public class DrawItSocketController {
     @SendTo("/topic/{name}/empezar")
     public String empezarPartida(@DestinationVariable String name) throws Exception {
         System.out.println("La partida "+name+" ha empezado");
-        String s = "-m-";
+        String s = "-";
         return s;
+    }
+
+    @MessageMapping("/{name}/chat/{equipo}")
+    @SendTo("/topic/{name}/chat/{equipo}")
+    public ChatMessage chatPartidaEquipo(@DestinationVariable String name,@DestinationVariable String equipo,@Payload ChatMessage chatMessage){
+        System.out.println("Mensaje en la sala "+name+" del equipo "+equipo+" con mensaje: "+chatMessage.getContent());
+        return chatMessage;
     }
 
 }

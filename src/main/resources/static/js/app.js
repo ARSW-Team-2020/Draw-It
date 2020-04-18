@@ -48,12 +48,6 @@ var app = (function () {
         })
     }
 
-    function createJugadores(){
-        var codigo= localStorage.getItem("codigo");
-        api.getJugadoresBySala(codigo);
-        var eventInterval = setInterval(function(){api.getJugadoresBySala(codigo); },5000); //<-- in milliseconds
-    }
-
     function createTableJugadores(jugadores){
         $('#jugadores tbody').empty();
         var fila= $("#filasJugador");
@@ -69,11 +63,13 @@ var app = (function () {
     }
 
     function empezar(){
+
         if(localStorage.getItem("autor")!= null){
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"))
         }else{
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("usuario"))
         }
+        stompClient.disconnect();
     }
 
 
@@ -95,14 +91,13 @@ var app = (function () {
         localStorage.setItem("jugador2",equipo[1]),
         localStorage.setItem("jugador3",equipo[2]),
         localStorage.setItem("jugador4",equipo[3]);
+        localStorage.setItem("equipo",equipo[4]);
     }
-
 
     return {
         crearSala:crearSala,
         mostrarTabla:mostrarTabla,
         createTable:createTable,
-        createJugadores:createJugadores,
         createTableJugadores:createTableJugadores,
         empezar:function(){
             var codigo = localStorage.getItem("codigo");

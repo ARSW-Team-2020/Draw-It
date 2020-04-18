@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/estilos.css">
     </head>
-    <body>
+    <body onload="connect()">
         <header>
             <div class="container">
                 <!button type="button" class="btn btn-outline-danger btn-sm">Exit</button>
@@ -44,20 +44,19 @@
                     <canvas width="600" height="300" id="myCanvas"></canvas>
 
                      <!-- El chat -->
-                    <div class ="container" id="containerChat" >
-                        <div id="menu">
-                            <p class="welcome">Welcome, <b></b></p>
-                            <div style="clear:both"></div>
+                    <div id="chat-page">
+                        <div class="chat-container">
+                            <ul id="messageArea">
+                            </ul>
+                            <div class="form-group">
+                                <div class="input-group clearfix">
+                                    <input type="text" id="message" placeholder="Type a message..."
+                                           autocomplete="off" />
+                                    <button id="botonChat" onclick="send()">Send</button>
+                                </div>
+                            </div>
                         </div>
-
-                        <div id="chatbox"></div>
-
-                        <form name="message" action="">
-                            <input name="usermsg" type="text" id="usermsg" size="63" />
-                            <button type="button" class="btn btn-outline-secondary btn-sm">Enviar</button>
-                        </form>
                     </div>
-
                 </div>
                 <div class="col-md-2" id="rightSide">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
@@ -67,5 +66,6 @@
         </div>
         <script type="application/javascript" src="../js/dibujo.js">  </script>
         <script src="../js/app.js"></script>
+        <script src="../js/chat.js"></script>
     </body>
 </html>
