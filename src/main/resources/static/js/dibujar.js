@@ -1,3 +1,4 @@
+var stompClient = null;
 
 function connectDibujar() {
     console.info("Connecting to WS dibujar...");

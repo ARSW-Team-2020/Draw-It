@@ -25,6 +25,7 @@ function onConnected() {
     var codigo = localStorage.getItem("codigo");
     var equipo = localStorage.getItem("equipo");
     stompClient.subscribe('/topic/'+codigo+'/chat/'+equipo, onMessageReceived);
+    connectDibujar();
 }
 
 function send() {
@@ -60,7 +61,4 @@ $("#message").keyup(function(event) {
     }
 });
 
-function  main() {
-    connect();
-    connectDibujar();
-}
+
