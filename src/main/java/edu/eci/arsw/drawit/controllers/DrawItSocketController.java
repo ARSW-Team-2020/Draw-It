@@ -43,14 +43,22 @@ public class DrawItSocketController {
         System.out.println("Mensaje en la sala "+name+" del equipo "+equipo+" con mensaje: "+chatMessage.getContent());
         return chatMessage;
     }
+
     @MessageMapping("/{name}/dibujar/{equipo}")
     @SendTo("/topic/{name}/dibujar/{equipo}")
-    public Line dibujarPartidaEquipo(@DestinationVariable String name, @DestinationVariable String equipo, Line linea){
-
+    public Line dibujarTableroEquipo(@DestinationVariable String name, @DestinationVariable String equipo, Line linea){
         //System.out.println("Mensaje en la sala "+name+" del equipo "+equipo+" con mensaje: "+linea.toString());
-
         return linea;
     }
+
+    @MessageMapping("/{name}/borrar/{equipo}")
+    @SendTo("/topic/{name}/borrar/{equipo}")
+    public ChatMessage borrarTableroEquipo(@DestinationVariable String name, @DestinationVariable String equipo, @Payload ChatMessage erase){
+        //System.out.println
+        return erase;
+    }
+
+
 
 
 }

@@ -2,7 +2,7 @@
 
 ## Integrantes
 
-*   Juan Sebastian Frásica Galeano
+*   Juan Sebastian Gomez LOPEZ
 *   Yeisson Gualdron Vivas
 *   Carlos Julian Gomez Ardila
 

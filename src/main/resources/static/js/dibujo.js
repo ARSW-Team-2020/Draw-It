@@ -1,12 +1,10 @@
 var canvas =document.getElementById("myCanvas");
 var lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
-var borrar  = document.getElementById("borrar");
-borrar.addEventListener('click',defBorrar);
 //console.log(delta);
 //console.log(localStorage.getItem("jugador1"));
 
-var x=0,y=0,dibujando=false, color="black",grosor = 1;
+var x=0,y=0,dibujando=false, color="black",grosor = 3;
 
 
 function defColor(c ) {
@@ -31,7 +29,7 @@ canvas.addEventListener('mousedown',function (e) {
 canvas.addEventListener('mousemove',function (e) {
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
-        sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top);
+        sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top,color,grosor);
         x = e.clientX-delta.left;
         y = e.clientY -delta.top;
     }
@@ -40,14 +38,14 @@ canvas.addEventListener('mousemove',function (e) {
 canvas.addEventListener('mouseup',function (e) {
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
-        sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top);
+        sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top,color,grosor);
         x = 0;
         y = 0;
         dibujando=false;
     }
 });
 
-function dibujar(x1,y1,x2,y2) {
+function dibujar(x1,y1,x2,y2,color,grosor) {
 
     lienzo.beginPath();
     lienzo.strokeStyle=color;
