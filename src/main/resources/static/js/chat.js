@@ -9,6 +9,10 @@ var messageArea = document.querySelector('#messageArea');
 
 var stompClient = null;
 
+function  main() {
+    connect();
+    connectDibujar();
+}
 function connect() {
     console.info('Connecting to WS...');
     var socket = new SockJS('/stompendpoint');

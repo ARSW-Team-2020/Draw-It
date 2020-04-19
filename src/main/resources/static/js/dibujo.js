@@ -8,6 +8,7 @@ borrar.addEventListener('click',defBorrar);
 
 var x=0,y=0,dibujando=false, color="black",grosor = 1;
 
+
 function defColor(c ) {
     color = c;
 }
@@ -29,7 +30,8 @@ canvas.addEventListener('mousedown',function (e) {
 
 canvas.addEventListener('mousemove',function (e) {
     if(dibujando) {
-        dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
+        //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
+        sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top);
         x = e.clientX-delta.left;
         y = e.clientY -delta.top;
     }
@@ -37,7 +39,8 @@ canvas.addEventListener('mousemove',function (e) {
 
 canvas.addEventListener('mouseup',function (e) {
     if(dibujando) {
-        dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
+        //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
+        sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top);
         x = 0;
         y = 0;
         dibujando=false;
@@ -45,6 +48,7 @@ canvas.addEventListener('mouseup',function (e) {
 });
 
 function dibujar(x1,y1,x2,y2) {
+
     lienzo.beginPath();
     lienzo.strokeStyle=color;
     lienzo.lineWidth=grosor;

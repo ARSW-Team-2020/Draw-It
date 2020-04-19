@@ -1,6 +1,7 @@
 package edu.eci.arsw.drawit.controllers;
 
 import edu.eci.arsw.drawit.model.ChatMessage;
+import edu.eci.arsw.drawit.model.Line;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawitPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,14 @@ public class DrawItSocketController {
         System.out.println("Mensaje en la sala "+name+" del equipo "+equipo+" con mensaje: "+chatMessage.getContent());
         return chatMessage;
     }
+    @MessageMapping("/{name}/dibujar/{equipo}")
+    @SendTo("/topic/{name}/dibujar/{equipo}")
+    public Line dibujarPartidaEquipo(@DestinationVariable String name, @DestinationVariable String equipo, Line linea){
+
+        //System.out.println("Mensaje en la sala "+name+" del equipo "+equipo+" con mensaje: "+linea.toString());
+
+        return linea;
+    }
+
 
 }
