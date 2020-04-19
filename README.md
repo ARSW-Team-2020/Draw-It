@@ -2,7 +2,7 @@
 
 ## Integrantes
 
-*   Juan Sebastian Gomez LOPEZ
+*   Juan Sebastian Gomez Lopez
 *   Yeisson Gualdron Vivas
 *   Carlos Julian Gomez Ardila
 
