@@ -18,8 +18,9 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/estilos.css">
+        <link rel="stylesheet" href="../css/chat.css">
     </head>
-    <body onload="connect()">
+     <body onload="connect();app.mostrarNombres()">
         <header>
             <div class="container">
                 <input type="button" class="btn btn-outline-danger btn-sm" onclick="" value="Salir"/>
@@ -33,34 +34,28 @@
         <div class="container">
             <div class="main row" >
                 <div class="col-md-2" id="leftSide">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
                 </div>
                 <div class="container col-md-8" align="center" onload="connectDibujar()">
                     <input class="ml-4" type="color" id="colorcito" oninput="defColor(this.value);"/>
                     <input class="ml-4" type="range" id="grosor"  oninput="defGrosor(this.value);" min="1" max="5" value="3"/>
-
                     <input type="button" class="btn btn-outline-secondary btn-sm ml-4" onclick="sendBorrar()" id="borrar"  value="Borrar"/>
-
                     <canvas  width="700" height="300" id="myCanvas" ></canvas>
-
-                     <!-- El chat -->
-                    <div id="chat-page">
-                        <div class="chat-container ">
-                            <ul id="messageArea">
-                            </ul>
-                            <div class="form-group">
-                                <div class="input-group clearfix ">
-                                    <input type="text" id="message" placeholder="Type a message..."
-                                           autocomplete="off" />
-                                    <button id="botonChat" onclick="send()">Send</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-md-2" id="rightSide">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                    </p>
+                </div>
+            </div>
+            <!-- El chat -->
+            <div id="chat-page">
+                <div class="chat-container ">
+                    <ul id="messageArea">
+                    </ul>
+                    <div class="form-group">
+                        <div class="input-group clearfix ">
+                            <input type="text" id="message" placeholder="Type a message..."
+                                   autocomplete="off" />
+                            <button id="botonChat" onclick="send()">Send</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

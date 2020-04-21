@@ -1,34 +1,31 @@
 #chat-page {
     position: relative;
-    height: 100%;
+    height: 300px;
+    margin: 0 0 10px 0;
 }
 
 .chat-container {
-    max-width: 700px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    margin-top: 30px;
-    height: calc(100% - 60px);
-    max-height: 600px;
+    margin-top: 20px;
+    height: 100%;
     position: relative;
+    border-radius: 25px;
+    padding-top: 25px;
 }
 
 #chat-page ul {
     list-style-type: none;
-    background-color: #FFF;
-    margin: 0;
+    margin: 0 25px 0px 25px;
     overflow: auto;
     overflow-y: scroll;
-    padding: 0 20px 0px 20px;
-    height: calc(100% - 150px);
+    padding: 0 0 0 0;
+    height: calc(100% - 60px);
 }
 
-#chat-page #messageForm {
-
-    padding: 20px;
-}
 
 #chat-page ul li {
     line-height: 1.5rem;
@@ -41,22 +38,6 @@
     margin: 0;
 }
 
-#chat-page .event-message {
-    width: 100%;
-    text-align: center;
-    clear: both;
-}
-
-#chat-page .event-message p {
-    color: #777;
-    font-size: 14px;
-    word-wrap: break-word;
-}
-
-#chat-page .chat-message {
-    padding-left: 68px;
-    position: relative;
-}
 
 #chat-page .chat-message i {
     position: absolute;
@@ -84,15 +65,23 @@
     color: #43464b;
 }
 
-#messageForm .input-group input {
+
+
+.form-group .input-group input {
+    border-radius: 15px;
     margin-left: 30px;
     float: left;
-    width: calc(100% - 85px);
+    width: calc(100% - 150px);
 }
 
-#messageForm .input-group button {
+.form-group .input-group button {
+    border-radius: 25px;
     float: left;
     width: 80px;
     height: 38px;
     margin-left: 5px;
+}
+
+.form-group {
+    margin-top: 5px;
 }

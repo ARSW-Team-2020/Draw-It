@@ -87,11 +87,40 @@ var app = (function () {
     function organizar(equipo){
         location.assign("webApp/juego.html");
         console.log(equipo);
-        localStorage.setItem("jugador1",equipo[0]),
-        localStorage.setItem("jugador2",equipo[1]),
-        localStorage.setItem("jugador3",equipo[2]),
-        localStorage.setItem("jugador4",equipo[3]);
-        localStorage.setItem("equipo",equipo[4]);
+        localStorage.setItem("equipo",equipo[0]);
+        localStorage.setItem("jugador1",equipo[1]);
+        localStorage.setItem("jugador2",equipo[2]);
+        localStorage.setItem("jugador3",equipo[3]);
+        localStorage.setItem("jugador4",equipo[4]);
+        localStorage.setItem("jugador5",equipo[5]);
+        localStorage.setItem("jugador6",equipo[6]);
+        localStorage.setItem("jugador7",equipo[7]);
+        localStorage.setItem("jugador8",equipo[8]);
+    }
+
+    function mostrarNombres(){
+        var left = document.getElementById("leftSide");
+        var right = document.getElementById("rightSide");
+        var divL;
+        var divR;
+        var textElement;
+        var messageText;
+        for (var i = 1; i < 5; i++) {
+            divL = document.createElement('div');
+            divL.classList.add('item');
+            divR = document.createElement('div');
+            divR.classList.add('item');
+            textElement = document.createElement('p');
+            messageText = document.createTextNode(localStorage.getItem("jugador"+i));
+            textElement.append(messageText);
+            divL.append(textElement);
+            textElement = document.createElement('p');
+            messageText = document.createTextNode(localStorage.getItem("jugador"+(i+4)));
+            textElement.append(messageText);
+            divR.append(textElement);
+            left.append(divL);
+            right.append(divR);
+        }
     }
 
     return {
@@ -105,7 +134,7 @@ var app = (function () {
         },
         organizar:organizar,
         connect:connect,
-        subSala:subSala
+        mostrarNombres:mostrarNombres
     }
 
 })();

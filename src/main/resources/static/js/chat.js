@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 var chatPage = document.querySelector('#chat-page');
@@ -35,6 +33,7 @@ function send() {
     var chatMessage = {
         content: messageInput.value,
     };
+    messageInput.value = "";
     console.log("/app/"+codigo+"/chat/"+equipo);
     stompClient.send("/app/"+codigo+"/chat/"+equipo, {},JSON.stringify(chatMessage));
 }

@@ -1,21 +1,3 @@
-#leftSide {
-    border-radius: 0px 15px 15px 0px;
-    -moz-border-radius: 0px 15px 15px 0px;
-    -webkit-border-radius: 0px 15px 15px 0px;
-    border: 0px dotted #000000;
-    background-color: #6495ED;
-}
-
-#rightSide {
-
-    border-radius: 15px 0px 0px 15px;
-    -moz-border-radius: 15px 0px 0px 15px;
-    -webkit-border-radius: 15px 0px 0px 15px;
-    border: 0px dotted #000000;
-    background-color: #32CD32;
-
-}
-
 body {
     background-image: url("../img/amarillo.png");
 }
@@ -204,4 +186,25 @@ input[type="color"]::-webkit-color-swatch {
     border-color: #e7a61a;
     color: #e78500;
 
+}
+
+/* Paneles */
+#leftSide .item{
+    border-radius: 15px 15px 15px 15px;
+    border: 0px dotted #000000;
+    background-color: #6495ED;
+}
+
+#rightSide .item{
+    border-radius: 15px 15px 15px 15px;
+    border: 0px dotted #000000;
+    background-color: #32CD32;
+}
+
+.item{
+    margin: 0 0 30px 0;
+    padding: 10px 0 10px 0;
+    font-size: 25px;
+    text-align: center;
+    font-family: "Century Gothic";
 }

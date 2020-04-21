@@ -248,20 +248,26 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
 
     private String[] returnEquipo(Sala salaI, String usuario){
         String[] equipo = null;
+        String[] equipo2 = null;
         String team="";
         for(int i=0; i<salaI.getEquipos().get(0).getJugadores().length; i++){
             if(salaI.getEquipos().get(0).getJugadores()[i].equals(usuario)){
                 equipo = salaI.getEquipos().get(0).getJugadores();
+                equipo2 = salaI.getEquipos().get(1).getJugadores();
                 team = "0";
             }
         }
-        equipo = (team == "0")?equipo:salaI.getEquipos().get(1).getJugadores();
-        team = (team == "0")?team:"1";
-        String[] nuevo = new String[5];
-        for (int i = 0;i < 4;i++){
-            nuevo[i] = equipo[i];
+        if (!team.contains("0")){
+            equipo = salaI.getEquipos().get(1).getJugadores();
+            equipo2 = salaI.getEquipos().get(0).getJugadores();
+            team = "1";
         }
-        nuevo[4] = team;
+        String[] nuevo = new String[9];
+        for (int i = 1;i < 5;i++){
+            nuevo[i] = equipo[i-1];
+            nuevo[i+4] = equipo2[i-1];
+        }
+        nuevo[0] = team;
         return nuevo;
     }
 
@@ -298,7 +304,4 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     //        }
     //    }
     //}
-
-
 }
-
