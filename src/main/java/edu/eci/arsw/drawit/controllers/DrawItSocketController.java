@@ -18,6 +18,8 @@ import java.util.List;
 @Controller
 public class DrawItSocketController {
 
+
+
     @Autowired
     @Qualifier("Action")
     DrawitPersistence cache;
@@ -35,6 +37,14 @@ public class DrawItSocketController {
         System.out.println("La partida "+name+" ha empezado");
         String s = "-";
         return s;
+    }
+
+    @MessageMapping("/{name}/palabra")
+    @SendTo("/topic/{name}/palabra")
+    public String getPalabra(@DestinationVariable String name) throws Exception {
+        String palabra= cache.getPalabra();
+        System.out.println("Se obtivo la palabra "+ palabra);
+        return palabra;
     }
 
     @MessageMapping("/{name}/chat/{equipo}")

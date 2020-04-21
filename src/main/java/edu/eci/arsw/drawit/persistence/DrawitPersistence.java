@@ -21,7 +21,7 @@ public interface DrawitPersistence {
 
     public String[] getEquiposBySalaAndAuthor(String codigo,String autor) throws DrawItException;
 
-
+    public String getPalabra();
 
 
 }

@@ -96,4 +96,9 @@ public class DrawItAPIController {
         }
     }
 
+    @RequestMapping(value = {"/1"}, method = RequestMethod.GET)
+    public ResponseEntity getPalabra() {
+        return new ResponseEntity<>(drawItServices.getPalabra(), HttpStatus.ACCEPTED);
+    }
+
 }

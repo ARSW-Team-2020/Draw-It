@@ -1,6 +1,8 @@
 package edu.eci.arsw.drawit.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Sala {
@@ -9,7 +11,7 @@ public class Sala {
     private int ronda;
     private String autor;
     private ArrayList<Jugador> jugadores;
-    private ArrayList<String> palabras;
+    private List<String> palabras;
     private ArrayList<Equipo> equipos;
 
     public Sala() {
@@ -25,6 +27,10 @@ public class Sala {
         equipos= new ArrayList<>();
         equipos.add(new Equipo("equipo1"));
         equipos.add(new Equipo("equipo2"));
+        palabras = new ArrayList<>(Arrays.asList("Koala","Conejo","Mono","Mantarraya","Elefante", "Caballo",
+                "Cerdo","Mariposa","Cabra","Lobo","Dentista","Carnicero","Escritor","Cocinera","Cirujano",
+                "Mecánico","Profesora","Arquitecto","Granjero","Bombero","Agricultor","Espalda","Mente",
+                "Piel","Boca","Trampa","Terraza","Bolsa","Frio","Asteroide","Arruga","Picante"));
     }
 
     public String getAutor() {
@@ -43,7 +49,7 @@ public class Sala {
         return jugadores;
     }
 
-    public ArrayList<String> getPalabras() {
+    public List<String> getPalabras() {
         return palabras;
     }
 
@@ -67,7 +73,7 @@ public class Sala {
         this.jugadores = jugadores;
     }
 
-    public void setPalabras(ArrayList<String> palabras) {
+    public void setPalabras(List<String> palabras) {
         this.palabras = palabras;
     }
 

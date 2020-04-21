@@ -57,12 +57,22 @@ var api = (function () {
         .catch(error => console.log(error));
     }
 
+    function getPalabra(){
+        axios({
+             method:'get',
+             url: "/drawIt/1",
+         })
+        .then(response => sendPalabra(response.data))
+        .catch(error => console.log(error));
+    }
+
     return{
         crearSala:crearSala,
         getSalas:getSalas,
         unirJugadorToSala:unirJugadorToSala,
         getJugadoresBySala:getJugadoresBySala,
-        getEquipoBySalaAndUsuario:getEquipoBySalaAndUsuario
+        getEquipoBySalaAndUsuario:getEquipoBySalaAndUsuario,
+        getPalabra:getPalabra
     }
 
 

@@ -55,8 +55,8 @@ public class DrawItServices {
         return drawitPersistence.getEquiposBySalaAndAuthor(codigo,autor);
     }
 
-
-
-
+    public String getPalabra () {
+        return drawitPersistence.getPalabra();
+    }
 
 }

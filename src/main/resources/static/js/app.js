@@ -73,6 +73,7 @@ var app = (function () {
     }
 
 
+
     var stompClient = null;
     var connect = function () {
         console.info('Connecting to WS...');
@@ -99,6 +100,7 @@ var app = (function () {
     }
 
     function mostrarNombres(){
+        console.log("Hola")
         var left = document.getElementById("leftSide");
         var right = document.getElementById("rightSide");
         var divL;
@@ -121,6 +123,11 @@ var app = (function () {
             left.append(divL);
             right.append(divR);
         }
+
+        var eventInterval = setInterval(function(){api.getPalabra(); },5000);
+
+
+        //var eventInterval = setInterval(function(){api.getPalabra(); },120000); //<-- in milliseconds
     }
 
     return {

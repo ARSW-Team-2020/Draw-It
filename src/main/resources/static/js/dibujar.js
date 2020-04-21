@@ -17,6 +17,15 @@ function onConnectedDibujar() {
     var equipo = localStorage.getItem("equipo");
     stompClient.subscribe('/topic/'+codigo+'/dibujar/'+equipo, onArrayReceived);
     stompClient.subscribe('/topic/'+codigo+'/borrar/'+equipo, onBorrandoReceived);
+    stompClient.subscribe('/topic/'+codigo+'/palabra/', function (eventbody) {
+        api.getPalabra();
+        //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
+    });
+}
+
+function sendPalabra(palabra){
+    var codigo = localStorage.getItem("codigo");
+    stompClient.send("app/"+codigo+"/palabra/", {},JSON.stringify(palabra))
 }
 
 function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
