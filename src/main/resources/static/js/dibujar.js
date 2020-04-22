@@ -17,8 +17,9 @@ function onConnectedDibujar() {
     var equipo = localStorage.getItem("equipo");
     stompClient.subscribe('/topic/'+codigo+'/dibujar/'+equipo, onArrayReceived);
     stompClient.subscribe('/topic/'+codigo+'/borrar/'+equipo, onBorrandoReceived);
+
     stompClient.subscribe('/topic/'+codigo+'/palabra/', function (eventbody) {
-        api.getPalabra();
+        console.log(eventbody.body);
         //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
     });
 }
