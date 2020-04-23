@@ -77,6 +77,13 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     }
 
     @Override
+    public Sala getSala(String sala) throws DrawItException {
+        if (!salas1.containsKey(sala))
+            throw new DrawItException("La sala no existe");
+        return salas1.get(sala);
+    }
+
+    @Override
     public ArrayList<Sala> getSalas() throws DrawItException{
         ArrayList<Sala> listaSalas=new ArrayList<>();
         if(salas1.isEmpty()){throw new DrawItException("No hay salas creadas");}

@@ -17,6 +17,10 @@ var app = (function () {
             createTableJugadores(jugadores);
         },{id:codigo});
         stompClient.subscribe('/topic/'+codigo+'/empezar',function (eventbody) {
+            var horaFin = JSON.parse(eventbody.body);
+            console.log(eventbody);
+            console.log(eventbody.body);
+            console.log(horaFin);
             empezar();
         },{id:codigo+'/empezar'});
         stompClient.send("/app/union/"+codigo);
@@ -123,10 +127,7 @@ var app = (function () {
             left.append(divL);
             right.append(divR);
         }
-
-        var eventInterval = setInterval(function(){api.getPalabra(); },5000);
-
-
+        //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
         //var eventInterval = setInterval(function(){api.getPalabra(); },120000); //<-- in milliseconds
     }
 
@@ -137,7 +138,9 @@ var app = (function () {
         createTableJugadores:createTableJugadores,
         empezar:function(){
             var codigo = localStorage.getItem("codigo");
-            stompClient.send("/app/"+codigo+"/empezar");
+            var now  = new Date();
+            now.setMinutes(now.getMinutes()+2);
+            stompClient.send("/app/"+codigo+"/empezar",{},JSON.stringify(now));
         },
         organizar:organizar,
         connect:connect,

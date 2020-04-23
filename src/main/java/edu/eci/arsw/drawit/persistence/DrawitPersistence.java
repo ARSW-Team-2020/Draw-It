@@ -13,6 +13,8 @@ public interface DrawitPersistence {
 
     public ArrayList<String> getSalaCreada (Sala sala) throws DrawItException;
 
+    public Sala getSala (String sala) throws DrawItException;
+
     public ArrayList<Sala> getSalas() throws DrawItException;
 
     public void addJugadorToSala(Jugador jg, String codigo) throws DrawItException;

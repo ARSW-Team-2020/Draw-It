@@ -13,6 +13,7 @@ public class Sala {
     private ArrayList<Jugador> jugadores;
     private List<String> palabras;
     private ArrayList<Equipo> equipos;
+    private Ronda[] rondasActuales;
 
     public Sala() {
         this.codigo = crearCodigo(8);
@@ -27,10 +28,7 @@ public class Sala {
         equipos= new ArrayList<>();
         equipos.add(new Equipo("equipo1"));
         equipos.add(new Equipo("equipo2"));
-        palabras = new ArrayList<>(Arrays.asList("Koala","Conejo","Mono","Mantarraya","Elefante", "Caballo",
-                "Cerdo","Mariposa","Cabra","Lobo","Dentista","Carnicero","Escritor","Cocinera","Cirujano",
-                "Mecánico","Profesora","Arquitecto","Granjero","Bombero","Agricultor","Espalda","Mente",
-                "Piel","Boca","Trampa","Terraza","Bolsa","Frio","Asteroide","Arruga","Picante"));
+        rondasActuales = new Ronda[2];
     }
 
     public String getAutor() {
@@ -81,9 +79,19 @@ public class Sala {
         this.equipos = equipos;
     }
 
+    public void crearRonda(){
+        rondasActuales[0] = new Ronda();
+        rondasActuales[0].cambiarPalabra();
+        rondasActuales[1] = new Ronda();
+        rondasActuales[1].cambiarPalabra();
+    }
+
+    public void asignarHoraFin(String horaFin){
+        rondasActuales[0].setFecha_fin(horaFin);
+        rondasActuales[1].setFecha_fin(horaFin);
+    }
+
     public static String crearCodigo(int len) {
-
-
         // A strong password has Cap_chars, Lower_chars,
         // numeric value and symbols. So we are using all of
         // them to generate our password
@@ -91,10 +99,8 @@ public class Sala {
         String Small_chars = "abcdefghijklmnopqrstuvwxyz";
         String numbers = "0123456789";
 
-
         String values = Capital_chars + Small_chars +
                 numbers;
-
         // Using random method
         Random rndm_method = new Random();
 

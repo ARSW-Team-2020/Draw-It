@@ -33,10 +33,14 @@ public class DrawItSocketController {
 
     @MessageMapping("/{name}/empezar")
     @SendTo("/topic/{name}/empezar")
-    public String empezarPartida(@DestinationVariable String name) throws Exception {
+    public String empezarPartida(@DestinationVariable String name,@Payload String fechaFin) throws Exception {
         System.out.println("La partida "+name+" ha empezado");
+        System.out.println("Fecha fin "+fechaFin);
         String s = "-";
-        return s;
+        Sala sala = cache.getSala(name);
+        sala.crearRonda();
+        sala.asignarHoraFin(fechaFin);
+        return fechaFin;
     }
 
     @MessageMapping("/{name}/palabra")
@@ -67,8 +71,4 @@ public class DrawItSocketController {
         //System.out.println
         return erase;
     }
-
-
-
-
 }

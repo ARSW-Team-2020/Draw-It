@@ -59,5 +59,3 @@ $("#message").keyup(function(event) {
         $("#botonChat").click();
     }
 });
-
-
