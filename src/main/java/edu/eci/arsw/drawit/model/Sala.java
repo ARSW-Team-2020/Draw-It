@@ -51,6 +51,11 @@ public class Sala {
         return palabras;
     }
 
+    public String getPalabra(){
+        Random rand = new Random();
+        return palabras.get(rand.nextInt(palabras.size()));
+    }
+
     public ArrayList<Equipo> getEquipos() {
         return equipos;
     }
