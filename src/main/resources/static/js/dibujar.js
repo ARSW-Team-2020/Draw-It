@@ -17,11 +17,12 @@ function onConnectedDibujar() {
     var equipo = localStorage.getItem("equipo");
     stompClient.subscribe('/topic/'+codigo+'/dibujar/'+equipo, onArrayReceived);
     stompClient.subscribe('/topic/'+codigo+'/borrar/'+equipo, onBorrandoReceived);
-
+    stompClient.subscribe('/topic/'+codigo+'/painterName/'+equipo, onPainterNameReceived)
     stompClient.subscribe('/topic/'+codigo+'/palabra/', function (eventbody) {
         console.log(eventbody.body);
         //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
     });
+    sendPainter();
 }
 
 function sendPalabra(palabra){
@@ -54,6 +55,16 @@ function sendBorrar() {
     };
     stompClient.send("/app/"+codigo+"/borrar/"+equipo,{},JSON.stringify(erase));
 }
+
+function sendPainter() {
+    var codigo = localStorage.getItem("codigo");
+    var equipo = localStorage.getItem("equipo");
+    var painter = {
+        content: "player",
+    };
+    stompClient.send("/app/"+codigo+"/painterName/"+equipo,{},JSON.stringify(painter));
+}
+
 function onArrayReceived(payload) {
     var arrayDibujo = JSON.parse(payload.body);
     //console.log(arrayDibujo);
@@ -64,4 +75,10 @@ function onBorrandoReceived(payload) {
     //console.log("received borrar");
     var message = JSON.parse(payload.body);
     defBorrar();
+}
+
+function onPainterNameReceived(payload) {
+    var painterName = JSON.parse(payload.body);
+    //console.log(painterName+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    setPainterName(painterName.content);
 }

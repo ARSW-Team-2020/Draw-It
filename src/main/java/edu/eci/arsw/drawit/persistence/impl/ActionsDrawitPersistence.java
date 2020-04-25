@@ -1,6 +1,7 @@
 package edu.eci.arsw.drawit.persistence.impl;
 
 
+import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
@@ -156,13 +157,13 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
             if(salaI.getEquipos().get(0).getJugadores()[i].equals(usuario)){
                 equipo = salaI.getEquipos().get(0).getJugadores();
                 equipo2 = salaI.getEquipos().get(1).getJugadores();
-                team = "0";
+                team = "1";
             }
         }
-        if (!team.contains("0")){
+        if (!team.contains("1")){
             equipo = salaI.getEquipos().get(1).getJugadores();
             equipo2 = salaI.getEquipos().get(0).getJugadores();
-            team = "1";
+            team = "2";
         }
         String[] nuevo = new String[9];
         for (int i = 1;i < 5;i++){
@@ -178,4 +179,20 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         return palabras.get(rand.nextInt(palabras.size()));
     }
 
+    @Override
+    public String getPainterName(String sala, String equipo) throws DrawItException{
+        String painter="player";
+        if(hashIterator(sala)){
+            Sala localSala = salas1.get(sala);
+            for(Equipo e: localSala.getEquipos()){
+                System.out.println(e.getNombre()+" "+equipo);
+                if(e.getNombre().contains("equipo"+equipo)){
+                    painter = e.getJugadores()[0];
+                }
+            }
+        }else{
+            throw new DrawItException("La sala no existe");
+        }
+        return painter;
+    }
 }

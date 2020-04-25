@@ -1,6 +1,7 @@
 package edu.eci.arsw.drawit.services;
 
 
+import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
@@ -10,6 +11,7 @@ import edu.eci.arsw.drawit.repository.SalaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -59,4 +61,7 @@ public class DrawItServices {
         return drawitPersistence.getPalabra();
     }
 
+    public String getPainterName(String sala, String equipo) throws DrawItException {
+        return drawitPersistence.getPainterName(sala,equipo);
+    }
 }

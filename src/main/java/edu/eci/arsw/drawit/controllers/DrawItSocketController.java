@@ -67,6 +67,14 @@ public class DrawItSocketController {
         //System.out.println
         return erase;
     }
+    @MessageMapping("/{name}/painterName/{equipo}")
+    @SendTo("/topic/{name}/painterName/{equipo}")
+    public ChatMessage sendPainterName(@DestinationVariable String name, @DestinationVariable String equipo,@Payload ChatMessage painter) throws Exception{
+        String localName = cache.getPainterName(name, equipo);
+        painter.setContent(localName);
+        System.out.println(localName);
+        return painter;
+    }
 
 
 

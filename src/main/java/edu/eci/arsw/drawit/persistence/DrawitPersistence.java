@@ -1,5 +1,6 @@
 package edu.eci.arsw.drawit.persistence;
 
+import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,6 @@ public interface DrawitPersistence {
 
     public String getPalabra();
 
+    public String getPainterName(String sala, String equipo) throws DrawItException;
 
 }

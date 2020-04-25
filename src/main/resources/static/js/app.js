@@ -1,4 +1,5 @@
 var app = (function () {
+    
 
     function crearSala() {
         if ($("#Nombre").val() == "") {

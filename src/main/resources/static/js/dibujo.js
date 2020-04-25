@@ -1,8 +1,8 @@
-var canvas =document.getElementById("myCanvas");
-var lienzo = canvas.getContext("2d");
+const canvas =document.getElementById("myCanvas");
+const lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
-//console.log(delta);
-//console.log(localStorage.getItem("jugador1"));
+var player =  "player";
+var painter = "painter";
 
 var x=0,y=0,dibujando=false, color="black",grosor = 3;
 
@@ -15,15 +15,35 @@ function defGrosor(g) {
     grosor =g;
 }
 
+function setName(name ) {
+    player = name;
+}
+
+function setPainterName(name) {
+    painter =name;
+    drawName();
+}
+
+function drawName() {
+
+    lienzo.font = "caption";
+    lienzo.strokeText(painter, 10, 30);
+}
+
 function defBorrar() {
     lienzo.clearRect(0, 0, canvas.width, canvas.height);
+    drawName();
 }
 
 canvas.addEventListener('mousedown',function (e) {
-    x=e.clientX - delta.left;
-    y=e.clientY -delta.top;
-    //console.log(x,y);
-    dibujando=true;
+    if(player==painter){
+        x=e.clientX - delta.left;
+        y=e.clientY -delta.top;
+        //console.log(x,y);
+
+        dibujando=true;
+    }
+
 });
 
 canvas.addEventListener('mousemove',function (e) {
@@ -54,4 +74,5 @@ function dibujar(x1,y1,x2,y2,color,grosor) {
     lienzo.lineTo(x2,y2);
     lienzo.stroke();
     lienzo.closePath();
+
 }
