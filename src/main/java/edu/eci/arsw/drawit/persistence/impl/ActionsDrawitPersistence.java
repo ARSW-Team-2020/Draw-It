@@ -15,11 +15,6 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
 
     private ConcurrentHashMap<String,Sala> salas1= new ConcurrentHashMap<>();
 
-    private List<String>  palabras = new ArrayList<>(Arrays.asList("Koala","Conejo","Mono","Mantarraya","Elefante", "Caballo",
-            "Cerdo","Mariposa","Cabra","Lobo","Dentista","Carnicero","Escritor","Cocinera","Cirujano",
-            "Mecánico","Profesora","Arquitecto","Granjero","Bombero","Agricultor","Espalda","Mente",
-            "Piel","Boca","Trampa","Terraza","Bolsa","Frio","Asteroide","Arruga","Picante"));
-
     public ActionsDrawitPersistence() {
         Jugador carlos = new Jugador("Carlos");
         Jugador yeisson= new Jugador("Yeisson");
@@ -71,7 +66,6 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
             salas1.put(sl.getCodigo(), sl);
             lista.add(sl.getCodigo());
             lista.add(sl.getAutor());
-            System.out.println(lista);
             return lista;
         }
     }
@@ -84,7 +78,7 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     }
 
     @Override
-    public ArrayList<Sala> getSalas() throws DrawItException{
+    public ArrayList<Sala> getSalas() throws DrawItException {
         ArrayList<Sala> listaSalas=new ArrayList<>();
         if(salas1.isEmpty()){throw new DrawItException("No hay salas creadas");}
         Iterator<Map.Entry<String, Sala>> iterator = salas1.entrySet().iterator();
@@ -92,7 +86,6 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
             Map.Entry<String, Sala> entry = iterator.next();
             listaSalas.add(entry.getValue());
         }
-
         return listaSalas;
     }
 
@@ -113,7 +106,6 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
                 salaI.getJugadores().add(jg);
                 ex=false;
             }
-            System.out.println(salaI.getJugadores());
         }
         if(ex){throw new DrawItException("La sala no existe o ya hay un jugador con ese nombre");}
     }
@@ -121,7 +113,6 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     @Override
     public ArrayList<String> getJugadoresBySala(String codigo) throws DrawItException{
         ArrayList<String> listaJugadores=new ArrayList<>();
-        boolean ex=true;
         if(hashIterator(codigo)){
             Sala salaI;
             salaI = salas1.get(codigo);
@@ -180,9 +171,12 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         return nuevo;
     }
 
-    public String getPalabra() {
-        Random rand = new Random();
-        return palabras.get(rand.nextInt(palabras.size()));
+    @Override
+    public String getPalabra(String codigo,int equipo) throws DrawItException {
+        if (!salas1.containsKey(codigo)){
+            throw new DrawItException("La sala no existe");
+        }
+        return salas1.get(codigo).getPalabra(equipo);
     }
 
 }

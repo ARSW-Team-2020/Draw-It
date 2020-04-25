@@ -1,7 +1,5 @@
 #chat-page {
-    position: relative;
     height: 300px;
-    margin: 0 0 10px 0;
 }
 
 .chat-container {
@@ -65,8 +63,6 @@
     color: #43464b;
 }
 
-
-
 .form-group .input-group input {
     border-radius: 15px;
     margin-left: 30px;
@@ -80,8 +76,16 @@
     width: 80px;
     height: 38px;
     margin-left: 5px;
+    background: #03C4EB;
+    border: 2px solid #03C4EB;
+    color: #fff;
 }
 
 .form-group {
     margin-top: 5px;
+}
+
+#palabra, #ronda{
+    font-size: 50px;
+
 }

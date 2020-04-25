@@ -5,7 +5,6 @@
  */
 package edu.eci.arsw.drawit.controllers;
 
-import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
@@ -42,7 +41,7 @@ public class DrawItAPIController {
     }
 
     @RequestMapping(value = {"/1/{usuario}"}, method = RequestMethod.GET)
-    public ResponseEntity getSalaCreada(@PathVariable() String usuario) {
+    public ResponseEntity<?> getSalaCreada(@PathVariable() String usuario) {
         Jugador autor= new Jugador(usuario);
         Sala sala= new Sala(autor);
         try {
@@ -76,7 +75,7 @@ public class DrawItAPIController {
     }
 
     @RequestMapping(value = {"/{codigo}"}, method = RequestMethod.GET)
-    public ResponseEntity getJugadoresBySala(@PathVariable() String codigo) {
+    public ResponseEntity<?> getJugadoresBySala(@PathVariable() String codigo) {
         System.out.println(codigo);
         try {
             return new ResponseEntity<>(drawItServices.getJugadoresBySala(codigo), HttpStatus.ACCEPTED);
@@ -87,7 +86,7 @@ public class DrawItAPIController {
     }
 
     @RequestMapping(value = {"/{codigo}/{autor}"}, method = RequestMethod.GET)
-    public ResponseEntity getEquiposBySalaAndAuthor(@PathVariable() String codigo, @PathVariable() String autor) {
+    public ResponseEntity<?> getEquiposBySalaAndAuthor(@PathVariable() String codigo, @PathVariable() String autor) {
         try {
             return new ResponseEntity<>(drawItServices.getEquiposBySalaAndAuthor(codigo,autor), HttpStatus.ACCEPTED);
         } catch (DrawItException e) {
@@ -96,9 +95,14 @@ public class DrawItAPIController {
         }
     }
 
-    @RequestMapping(value = {"/1"}, method = RequestMethod.GET)
-    public ResponseEntity getPalabra() {
-        return new ResponseEntity<>(drawItServices.getPalabra(), HttpStatus.ACCEPTED);
+    @RequestMapping(value = {"/palabra/{codigo}/{equipo}"}, method = RequestMethod.GET)
+    public ResponseEntity<?> getPalabra(@PathVariable() String codigo,@PathVariable() int equipo){
+        try{
+            return new ResponseEntity<>(drawItServices.getPalabra(codigo,equipo), HttpStatus.ACCEPTED);
+        }catch(DrawItException e){
+            Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 }

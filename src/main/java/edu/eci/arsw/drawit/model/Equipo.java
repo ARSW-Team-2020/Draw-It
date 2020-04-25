@@ -1,7 +1,5 @@
 package edu.eci.arsw.drawit.model;
 
-import java.util.List;
-
 public class Equipo {
 
     private String nombre;

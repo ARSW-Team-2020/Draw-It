@@ -1,9 +1,10 @@
 package edu.eci.arsw.drawit.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 public class Sala {
 
@@ -11,9 +12,9 @@ public class Sala {
     private int ronda;
     private String autor;
     private ArrayList<Jugador> jugadores;
-    private List<String> palabras;
     private ArrayList<Equipo> equipos;
     private Ronda[] rondasActuales;
+    private boolean cambiar;
 
     public Sala() {
         this.codigo = crearCodigo(8);
@@ -22,13 +23,14 @@ public class Sala {
     public Sala(Jugador autor) {
         this.autor = autor.getUsuario();
         this.codigo = crearCodigo(8);
-        ronda = 0;
+        ronda = 1;
         jugadores = new ArrayList<Jugador>();
         jugadores.add(autor);
         equipos= new ArrayList<>();
         equipos.add(new Equipo("equipo1"));
         equipos.add(new Equipo("equipo2"));
         rondasActuales = new Ronda[2];
+        cambiar = true;
     }
 
     public String getAutor() {
@@ -45,15 +47,6 @@ public class Sala {
 
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
-    }
-
-    public List<String> getPalabras() {
-        return palabras;
-    }
-
-    public String getPalabra(){
-        Random rand = new Random();
-        return palabras.get(rand.nextInt(palabras.size()));
     }
 
     public ArrayList<Equipo> getEquipos() {
@@ -76,10 +69,6 @@ public class Sala {
         this.jugadores = jugadores;
     }
 
-    public void setPalabras(List<String> palabras) {
-        this.palabras = palabras;
-    }
-
     public void setEquipos(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
     }
@@ -91,9 +80,29 @@ public class Sala {
         rondasActuales[1].cambiarPalabra();
     }
 
-    public void asignarHoraFin(String horaFin){
-        rondasActuales[0].setFecha_fin(horaFin);
-        rondasActuales[1].setFecha_fin(horaFin);
+    public void cambiarPalabra(int equipo){
+        rondasActuales[equipo].cambiarPalabra();
+    }
+
+    public String getPalabra(int equipo){
+        return rondasActuales[equipo].getPalabra();
+    }
+
+    public void avanzarRonda(){
+        ronda++;
+        crearRonda();
+        cambiar = false;
+        Timer timer = new Timer(30000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cambiar = true;
+            }
+        });
+        timer.start();
+    }
+
+    public boolean cambiar(){
+        return cambiar;
     }
 
     public static String crearCodigo(int len) {
@@ -131,5 +140,4 @@ public class Sala {
                 ", jugadores=" + jugadores +
                 '}';
     }
-
 }

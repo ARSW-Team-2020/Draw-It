@@ -25,7 +25,10 @@ var api = (function () {
             url: "/drawIt/"+direccion ,
         })
         .then(response => cookie(direccion))
-        .catch(error => console.log(error));
+        .catch(function(error){
+            toastr["warning"]("Ya hay un jugador en con tu nombre","Oops! Cambia de nombre");
+            console.log(error);
+        });
     }
 
     function getJugadoresBySala(sala){
@@ -57,12 +60,12 @@ var api = (function () {
         .catch(error => console.log(error));
     }
 
-    function getPalabra(){
+    function getPalabra(codigo,equipo){
         axios({
              method:'get',
-             url: "/drawIt/1",
+             url: "/drawIt/palabra/"+codigo+"/"+equipo,
          })
-        .then(response => sendPalabra(response.data))
+        .then(response => app.mostrarPalabra(response.data))
         .catch(error => console.log(error));
     }
 

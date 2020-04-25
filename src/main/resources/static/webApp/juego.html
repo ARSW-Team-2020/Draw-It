@@ -5,64 +5,83 @@
         <title>Draw It</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
-        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/estilos.css">
         <link rel="stylesheet" href="../css/chat.css">
+        <link rel="stylesheet" href="/webjars/toastr/2.1.2/build/toastr.min.css" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+        <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+        <script src="/webjars/toastr/2.1.2/build/toastr.min.js"></script>
+
+
     </head>
      <body onload="connect();app.mostrarNombres()">
         <header>
             <div class="container">
-                <input type="button" class="btn btn-outline-danger btn-sm" onclick="" value="Salir"/>
-                <h2 align="center">
-                    <p class="font-weight-bolder">
-                        Puntos
-                    </p>
-                </h2>
+                <input type="button" class="btn btn-outline-danger btn-sm" onclick="cancelar()" value="Salir"/>
             </div>
         </header>
         <div class="container">
-            <div class="main row" >
-                <div class="col-md-2" id="leftSide">
-                </div>
-                <div class="container col-md-8" align="center" onload="connectDibujar()">
-                    <input class="ml-4" type="color" id="colorcito" oninput="defColor(this.value);"/>
-                    <input class="ml-4" type="range" id="grosor"  oninput="defGrosor(this.value);" min="1" max="5" value="3"/>
-                    <input type="button" class="btn btn-outline-secondary btn-sm ml-4" onclick="sendBorrar()" id="borrar"  value="Borrar"/>
-                    <canvas  width="700" height="300" id="myCanvas" ></canvas>
-                </div>
-                <div class="col-md-2" id="rightSide">
-                </div>
-            </div>
-            <!-- El chat -->
-            <div id="chat-page">
-                <div class="chat-container ">
-                    <ul id="messageArea">
-                    </ul>
-                    <div class="form-group">
-                        <div class="input-group clearfix ">
-                            <input type="text" id="message" placeholder="Type a message..."
-                                   autocomplete="off" />
-                            <button id="botonChat" onclick="send()">Send</button>
+            <div class="main row">
+                <div class="container col-md-5"  id="leftSide">
+                    <p class="font-weight-bolder" align="center" id="ronda">
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="team1">
+                                <div class="font-weight-bolder" id="puntosL">Puntos:</div>
+                            </div>
                         </div>
+                        <div class="col-md-6">
+                            <div id="team2">
+                                <div class="font-weight-bolder" id="puntosL">Puntos:</div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="chat-page">
+                                <div class="chat-container ">
+                                    <ul id="messageArea">
+                                    </ul>
+                                    <div class="form-group">
+                                        <div class="input-group clearfix ">
+                                            <input type="text" id="message" placeholder="Type a message..."
+                                                   autocomplete="off" />
+                                            <button id="botonChat" onclick="send()">Send</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container col-md-7" align="center" onload="connectDibujar()">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <p class="font-weight-bolder" id="palabra">
+                            </p>
+                            <div id="clock"></div>
+                            <input class="ml-4" type="color" id="colorcito" oninput="defColor(this.value);"/>
+                            <input class="ml-4" type="range" id="grosor"  oninput="defGrosor(this.value);" min="1" max="5" value="3"/>
+                            <input type="button" class="btn btn-outline-danger btn-sm" onclick="sendBorrar()" id="borrar"  value="Borrar"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <canvas width="600px" height="480px" id="myCanvas" ></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="application/javascript" src="../js/dibujo.js">  </script>
-        <script src="../js/app.js"></script>
         <script src="../js/apiclient.js"></script>
+        <script src="../js/app.js"></script>
         <script src="../js/chat.js"></script>
+        <script src="../js/clock.js"></script>
         <script src="../js/dibujar.js"></script>
+        <script src="../js/dibujo.js"></script>
     </body>
 </html>
