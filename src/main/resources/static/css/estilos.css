@@ -1,5 +1,6 @@
 body {
     background-image: url("../img/amarillo.png");
+
 }
 
 #myCanvas {
@@ -19,10 +20,6 @@ body {
     -webkit-border-radius: 20px 20px 20px 20px;
     border: 0px dotted #000000;
     background-color: white;
-}
-
-#borrar {
-
 }
 
 form, p, span {
@@ -181,30 +178,32 @@ input[type="color"]::-webkit-color-swatch {
     border-radius: 5px 5px 5px 5px;
 }
 
-/*                buttons                    */
-#borrar {
-    border-color: #e7a61a;
-    color: #e78500;
-
-}
 
 /* Paneles */
-#leftSide .item{
+#team1, #team2 {
+    font-size: 30px;
+}
+
+#team1 .item{
     border-radius: 15px 15px 15px 15px;
     border: 0px dotted #000000;
     background-color: #6495ED;
 }
 
-#rightSide .item{
+#team2 .item{
     border-radius: 15px 15px 15px 15px;
     border: 0px dotted #000000;
     background-color: #32CD32;
 }
 
 .item{
-    margin: 0 0 30px 0;
     padding: 10px 0 10px 0;
-    font-size: 25px;
+    margin-top:  5px;
+    font-size: 15px;
     text-align: center;
     font-family: "Century Gothic";
+}
+
+.row{
+    margin:0;
 }

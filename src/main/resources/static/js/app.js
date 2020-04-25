@@ -1,11 +1,13 @@
 var app = (function () {
-    
+
+
 
     function crearSala() {
         if ($("#Nombre").val() == "") {
-            alert("¡Debes ingresar un nombre!");
+            toastr["warning"]("El nombre de usuario no puede ser vacio","Oops! escoge tu nombre");
             return false
         } else {
+            localStorage.setItem("thisPlayer", $("#Nombre").val());
             api.crearSala($("#Nombre").val());
         }
 
@@ -18,6 +20,7 @@ var app = (function () {
             createTableJugadores(jugadores);
         },{id:codigo});
         stompClient.subscribe('/topic/'+codigo+'/empezar',function (eventbody) {
+            localStorage.setItem("hora",eventbody.body);
             empezar();
         },{id:codigo+'/empezar'});
         stompClient.send("/app/union/"+codigo);
@@ -25,11 +28,13 @@ var app = (function () {
 
     function mostrarTabla(){
         if ($("#Nombre").val() == "") {
-            alert("¡Debes ingresar un nombre!");
+            toastr["warning"]("El nombre de usuario no puede ser vacio","Oops! escoge tu nombre");
         } else {
+            localStorage.setItem("thisPlayer", $("#Nombre").val());
             $('#table tbody').empty();
             visible();
             api.getSalas();
+
         }
     }
 
@@ -64,7 +69,7 @@ var app = (function () {
     }
 
     function empezar(){
-
+        localStorage.setItem("ronda",1);
         if(localStorage.getItem("autor")!= null){
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"))
         }else{
@@ -72,8 +77,6 @@ var app = (function () {
         }
         stompClient.disconnect();
     }
-
-
 
     var stompClient = null;
     var connect = function () {
@@ -89,6 +92,7 @@ var app = (function () {
     function organizar(equipo){
         location.assign("webApp/juego.html");
         console.log(equipo);
+
         localStorage.setItem("equipo",equipo[0]);
         localStorage.setItem("jugador1",equipo[1]);
         localStorage.setItem("jugador2",equipo[2]);
@@ -100,10 +104,18 @@ var app = (function () {
         localStorage.setItem("jugador8",equipo[8]);
     }
 
+    function mostrarRonda(){
+        var ronda = localStorage.getItem("ronda");
+        var text = document.getElementById("ronda");
+        text.innerText = "Ronda "+ronda;
+    }
+
     function mostrarNombres(){
-        console.log("Hola")
-        var left = document.getElementById("leftSide");
-        var right = document.getElementById("rightSide");
+        countdown(localStorage.getItem("hora"),"clock");
+        mostrarRonda();
+        api.getPalabra(localStorage.getItem("codigo"),localStorage.getItem("equipo"));
+        var left = document.getElementById("team1");
+        var right = document.getElementById("team2");
         var divL;
         var divR;
         var textElement;
@@ -124,11 +136,12 @@ var app = (function () {
             left.append(divL);
             right.append(divR);
         }
+    }
 
-        var eventInterval = setInterval(function(){api.getPalabra(); },5000);
-
-
-        //var eventInterval = setInterval(function(){api.getPalabra(); },120000); //<-- in milliseconds
+    function mostrarPalabra(data){
+        var pal = document.getElementById("palabra");
+        localStorage.setItem("palabra",data);
+        pal.innerText = data;
     }
 
     return {
@@ -138,11 +151,15 @@ var app = (function () {
         createTableJugadores:createTableJugadores,
         empezar:function(){
             var codigo = localStorage.getItem("codigo");
-            stompClient.send("/app/"+codigo+"/empezar");
+            var now  = new Date();
+            now.setMinutes(now.getMinutes()+1);
+            stompClient.send("/app/"+codigo+"/empezar",{},now.toString());
         },
         organizar:organizar,
         connect:connect,
-        mostrarNombres:mostrarNombres
+        mostrarNombres:mostrarNombres,
+        mostrarPalabra:mostrarPalabra,
+        mostrarRonda:mostrarRonda
     }
 
 })();

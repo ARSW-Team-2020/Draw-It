@@ -1,8 +1,10 @@
 const canvas =document.getElementById("myCanvas");
 const lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
-var player =  "player";
+var player =  localStorage.getItem("thisPlayer");
 var painter = "painter";
+console.log("PLAYER ");
+console.log(player);
 
 var x=0,y=0,dibujando=false, color="black",grosor = 3;
 
@@ -17,6 +19,7 @@ function defGrosor(g) {
 
 function setName(name ) {
     player = name;
+    console.log(name);
 }
 
 function setPainterName(name) {

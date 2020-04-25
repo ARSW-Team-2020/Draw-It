@@ -46,7 +46,6 @@ public class DrawItServices {
 
     public void addJugadorToSala(Jugador jugador, String codigo) throws DrawItException {
         drawitPersistence.addJugadorToSala(jugador, codigo);
-
     }
 
     public ArrayList<String> getJugadoresBySala (String codigo) throws DrawItException{
@@ -57,8 +56,8 @@ public class DrawItServices {
         return drawitPersistence.getEquiposBySalaAndAuthor(codigo,autor);
     }
 
-    public String getPalabra () {
-        return drawitPersistence.getPalabra();
+    public String getPalabra (String codigo,int equipo) throws DrawItException {
+        return drawitPersistence.getPalabra(codigo,equipo);
     }
 
     public String getPainterName(String sala, String equipo) throws DrawItException {

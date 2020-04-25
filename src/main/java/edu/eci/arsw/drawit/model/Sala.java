@@ -1,9 +1,10 @@
 package edu.eci.arsw.drawit.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 public class Sala {
 
@@ -11,8 +12,9 @@ public class Sala {
     private int ronda;
     private String autor;
     private ArrayList<Jugador> jugadores;
-    private List<String> palabras;
     private ArrayList<Equipo> equipos;
+    private Ronda[] rondasActuales;
+    private boolean cambiar;
 
     public Sala() {
         this.codigo = crearCodigo(8);
@@ -21,16 +23,14 @@ public class Sala {
     public Sala(Jugador autor) {
         this.autor = autor.getUsuario();
         this.codigo = crearCodigo(8);
-        ronda = 0;
+        ronda = 1;
         jugadores = new ArrayList<Jugador>();
         jugadores.add(autor);
         equipos= new ArrayList<>();
         equipos.add(new Equipo("equipo1"));
         equipos.add(new Equipo("equipo2"));
-        palabras = new ArrayList<>(Arrays.asList("Koala","Conejo","Mono","Mantarraya","Elefante", "Caballo",
-                "Cerdo","Mariposa","Cabra","Lobo","Dentista","Carnicero","Escritor","Cocinera","Cirujano",
-                "Mecánico","Profesora","Arquitecto","Granjero","Bombero","Agricultor","Espalda","Mente",
-                "Piel","Boca","Trampa","Terraza","Bolsa","Frio","Asteroide","Arruga","Picante"));
+        rondasActuales = new Ronda[2];
+        cambiar = true;
     }
 
     public String getAutor() {
@@ -47,15 +47,6 @@ public class Sala {
 
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
-    }
-
-    public List<String> getPalabras() {
-        return palabras;
-    }
-
-    public String getPalabra(){
-        Random rand = new Random();
-        return palabras.get(rand.nextInt(palabras.size()));
     }
 
     public ArrayList<Equipo> getEquipos() {
@@ -78,17 +69,43 @@ public class Sala {
         this.jugadores = jugadores;
     }
 
-    public void setPalabras(List<String> palabras) {
-        this.palabras = palabras;
-    }
-
     public void setEquipos(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
     }
 
+    public void crearRonda(){
+        rondasActuales[0] = new Ronda();
+        rondasActuales[0].cambiarPalabra();
+        rondasActuales[1] = new Ronda();
+        rondasActuales[1].cambiarPalabra();
+    }
+
+    public void cambiarPalabra(int equipo){
+        rondasActuales[equipo].cambiarPalabra();
+    }
+
+    public String getPalabra(int equipo){
+        return rondasActuales[equipo].getPalabra();
+    }
+
+    public void avanzarRonda(){
+        ronda++;
+        crearRonda();
+        cambiar = false;
+        Timer timer = new Timer(30000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cambiar = true;
+            }
+        });
+        timer.start();
+    }
+
+    public boolean cambiar(){
+        return cambiar;
+    }
+
     public static String crearCodigo(int len) {
-
-
         // A strong password has Cap_chars, Lower_chars,
         // numeric value and symbols. So we are using all of
         // them to generate our password
@@ -96,10 +113,8 @@ public class Sala {
         String Small_chars = "abcdefghijklmnopqrstuvwxyz";
         String numbers = "0123456789";
 
-
         String values = Capital_chars + Small_chars +
                 numbers;
-
         // Using random method
         Random rndm_method = new Random();
 
@@ -125,5 +140,4 @@ public class Sala {
                 ", jugadores=" + jugadores +
                 '}';
     }
-
 }
