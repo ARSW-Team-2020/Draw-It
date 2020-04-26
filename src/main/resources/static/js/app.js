@@ -1,5 +1,16 @@
 var app = (function () {
+    var player="unknown";
 
+    function getPlayer() {
+        return player;
+    }
+    function setPlayer(name) {
+        if(sessionStorage.getItem(name) == null){
+            player = name;
+            sessionStorage.setItem("playerName",player);
+            console.log(player);
+        }
+    }
 
 
     function crearSala() {
@@ -7,8 +18,9 @@ var app = (function () {
             toastr["warning"]("El nombre de usuario no puede ser vacio","Oops! escoge tu nombre");
             return false
         } else {
-            localStorage.setItem("thisPlayer", $("#Nombre").val());
-            api.crearSala($("#Nombre").val());
+            setPlayer($("#Nombre").val());
+            console.log(player);
+            api.crearSala(player);
         }
 
     }
@@ -26,14 +38,17 @@ var app = (function () {
         stompClient.send("/app/union/"+codigo);
     }
 
+    /**
+     * funcion para unirse a una sala
+     */
     function mostrarTabla(){
         if ($("#Nombre").val() == "") {
             toastr["warning"]("El nombre de usuario no puede ser vacio","Oops! escoge tu nombre");
         } else {
-            localStorage.setItem("thisPlayer", $("#Nombre").val());
             $('#table tbody').empty();
             visible();
-            api.getSalas();
+            setPlayer( $("#Nombre").val());
+            api.getSalas(player);
 
         }
     }
@@ -45,13 +60,13 @@ var app = (function () {
             document.getElementById("table").style.display="none";
     }
 
-    function createTable(salas){
+    function createTable(salas,name){
         var fila= $("#filasSala");
         salas.map(function(element){
-            var onclick='api.unirJugadorToSala("'+element.codigo+'/'+ $("#Nombre").val()+'")';
+            var onclick='api.unirJugadorToSala("'+element.codigo+'/'+ $("#Nombre").val()+'",name)';
             var markup = "<tr> <td>"+ element.autor +"</td> <td>"+element.codigo+"</td><td><a type='button' class='btn-get-started' onclick= "+onclick+">Unirse</a></td> </tr>";
             fila.append(markup)
-        })
+        });
     }
 
     function createTableJugadores(jugadores){
@@ -69,6 +84,7 @@ var app = (function () {
     }
 
     function empezar(){
+        console.log(app.getPlayer());
         localStorage.setItem("ronda",1);
         if(localStorage.getItem("autor")!= null){
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"))
@@ -80,6 +96,7 @@ var app = (function () {
 
     var stompClient = null;
     var connect = function () {
+        console.log(app.getPlayer());
         console.info('Connecting to WS...');
         var socket = new SockJS('/stompendpoint');
         stompClient = Stomp.over(socket);
@@ -159,7 +176,9 @@ var app = (function () {
         connect:connect,
         mostrarNombres:mostrarNombres,
         mostrarPalabra:mostrarPalabra,
-        mostrarRonda:mostrarRonda
+        mostrarRonda:mostrarRonda,
+        getPlayer:getPlayer,
+        setPlayer:setPlayer
     }
 
 })();

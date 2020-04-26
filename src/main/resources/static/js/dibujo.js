@@ -1,10 +1,11 @@
 const canvas =document.getElementById("myCanvas");
 const lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
-var player =  localStorage.getItem("thisPlayer");
+var player =  sessionStorage.getItem("playerName");
 var painter = "painter";
 console.log("PLAYER ");
 console.log(player);
+
 
 var x=0,y=0,dibujando=false, color="black",grosor = 3;
 
@@ -24,6 +25,9 @@ function setName(name ) {
 
 function setPainterName(name) {
     painter =name;
+    console.log("key: painter, value: ");
+    console.log(localStorage.getItem(painter));
+
     drawName();
 }
 
