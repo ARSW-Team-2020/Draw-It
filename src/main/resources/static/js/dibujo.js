@@ -3,8 +3,7 @@ const lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
 var player =  sessionStorage.getItem("playerName");
 var painter = "painter";
-console.log("PLAYER ");
-console.log(player);
+
 
 
 var x=0,y=0,dibujando=false, color="black",grosor = 3;
@@ -18,28 +17,31 @@ function defGrosor(g) {
     grosor =g;
 }
 
-function setName(name ) {
-    player = name;
-    console.log(name);
+function getPainter(){
+    sendPainter();
 }
 
-function setPainterName(name) {
-    painter =name;
-    console.log("key: painter, value: ");
-    console.log(localStorage.getItem(painter));
 
-    drawName();
+
+function setPainterNameAndDrawName(name) {
+    if (painter != name) {
+        painter = name;
+        sessionStorage.setItem("painter",painter);
+        console.log("key: painter, value: ");
+        console.log(sessionStorage.getItem("painter"));
+        defBorrar();
+    }
 }
 
-function drawName() {
-
-    lienzo.font = "caption";
-    lienzo.strokeText(painter, 10, 30);
-}
 
 function defBorrar() {
     lienzo.clearRect(0, 0, canvas.width, canvas.height);
     drawName();
+}
+
+function drawName(){
+    lienzo.font = "caption";
+    lienzo.strokeText(painter, 10, 30);
 }
 
 canvas.addEventListener('mousedown',function (e) {

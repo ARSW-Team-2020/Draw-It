@@ -23,6 +23,7 @@ function onConnectedDibujar() {
         console.log(eventbody.body);
         //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
     });
+    sendPainter();
 }
 
 function sendPalabra(palabra){
@@ -84,12 +85,14 @@ function onBorrandoReceived(payload) {
 function onPainterNameReceived(payload) {
     var painterName = JSON.parse(payload.body);
     defBorrar();
-    setPainterName(painterName.content);
+    setPainterNameAndDrawName(painterName.content);
 }
 
 
 function onRoundReceived(payload) {
     var round = JSON.parse(payload.body);
     console.log(round);
+    avanzarPalabra();
+    sendPainter();
 
 }

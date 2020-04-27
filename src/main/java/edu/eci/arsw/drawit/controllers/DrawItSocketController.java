@@ -50,9 +50,9 @@ public class DrawItSocketController {
     @SendTo("/topic/{name}/palabra/{equipo}")
     public String cambiaPalabra(@DestinationVariable String name,@DestinationVariable int equipo) throws DrawItException{
         System.out.println("Se cambia la palabra para "+name+" del equipo "+equipo);
-        Sala s = cache.getSala(name);
-        s.cambiarPalabra(equipo);
-        return s.getPalabra(equipo);
+        String palabra = cache.getPalabra(name,equipo);
+        System.out.println(palabra);
+        return palabra;
     }
 
     @MessageMapping("/{name}/dibujar/{equipo}")

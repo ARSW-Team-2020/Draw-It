@@ -37,7 +37,9 @@ function onRondaRecieved(payload){
         var ronda = localStorage.getItem("ronda");
         localStorage.setItem("ronda",parseInt(ronda,10)+1);
         app.mostrarRonda();
+        console.log("solicitar pintor");
         sendPainter();
+
         countdown(payload.body,"clock");
     }
 }
@@ -62,10 +64,10 @@ function send() {
     var equipo = localStorage.getItem("equipo");
     var palabra = localStorage.getItem("palabra");
     if(messageInput.value == palabra){
-
+        sendRound();
         toastr["success"]("Has acertado","¡Correcto!");
 
-        avanzarPalabra();
+
 
     }else{
         var chatMessage = {

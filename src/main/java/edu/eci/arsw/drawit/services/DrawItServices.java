@@ -56,7 +56,7 @@ public class DrawItServices {
         return drawitPersistence.getEquiposBySalaAndAuthor(codigo,autor);
     }
 
-    public String getPalabra (String codigo,int equipo) throws DrawItException {
+    public String getPalabra(String codigo,int equipo) throws DrawItException {
         return drawitPersistence.getPalabra(codigo,equipo);
     }
 
