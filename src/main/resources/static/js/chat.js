@@ -37,6 +37,7 @@ function onRondaRecieved(payload){
         var ronda = localStorage.getItem("ronda");
         localStorage.setItem("ronda",parseInt(ronda,10)+1);
         app.mostrarRonda();
+        sendPainter();
         countdown(payload.body,"clock");
     }
 }
@@ -47,6 +48,7 @@ function avanzarRonda(){
     var now  = new Date();
     now.setMinutes(now.getMinutes()+2);
     stompClient.send("/app/"+codigo+"/ronda/"+ronda,{},now.toString());
+
 }
 
 function avanzarPalabra(){

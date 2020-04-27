@@ -151,6 +151,7 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         String[] equipo = null;
         String[] equipo2 = null;
         String team="";
+
         for(int i=0; i<salaI.getEquipos().get(0).getJugadores().length; i++){
             if(salaI.getEquipos().get(0).getJugadores()[i].equals(usuario)){
                 equipo = salaI.getEquipos().get(0).getJugadores();
@@ -188,7 +189,7 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
             for(Equipo e: localSala.getEquipos()){
                 System.out.println(e.getNombre()+" "+equipo);
                 if(e.getNombre().contains("equipo"+equipo)){
-                    painter = e.getJugadores()[0];
+                    painter = e.getPainterTurno().getUsuario();
                 }
             }
         }else{

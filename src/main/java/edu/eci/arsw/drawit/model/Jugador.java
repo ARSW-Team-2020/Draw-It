@@ -12,6 +12,7 @@ public class Jugador {
     public Jugador(String usuario) {
         this.usuario = usuario;
         this.puntaje = 0;
+
     }
 
     public String getUsuario() {

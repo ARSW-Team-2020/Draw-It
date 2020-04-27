@@ -23,7 +23,6 @@ function onConnectedDibujar() {
         console.log(eventbody.body);
         //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
     });
-    sendPainter();
 }
 
 function sendPalabra(palabra){
@@ -33,7 +32,7 @@ function sendPalabra(palabra){
 }
 
 function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
-    //console.log("Se va a enviar!!!");
+
     var codigo = localStorage.getItem("codigo");
     var equipo = localStorage.getItem("equipo");
     var line = {
@@ -44,7 +43,6 @@ function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
         color : currentColor,
         grosor : currentGrosor
     };
-    //console.log("/app/"+codigo+"/chat/"+equipo);
     stompClient.send("/app/"+codigo+"/dibujar/"+equipo, {},JSON.stringify(line));
 }
 
@@ -69,18 +67,15 @@ function sendPainter() {
 
 function onArrayReceived(payload) {
     var arrayDibujo = JSON.parse(payload.body);
-    //console.log(arrayDibujo);
     dibujar(arrayDibujo.x1,arrayDibujo.y1,arrayDibujo.x2,arrayDibujo.y2,arrayDibujo.color, arrayDibujo.grosor );
 }
 function onBorrandoReceived(payload) {
-
-    //console.log("received borrar");
     var message = JSON.parse(payload.body);
     defBorrar();
 }
 
 function onPainterNameReceived(payload) {
     var painterName = JSON.parse(payload.body);
-    //console.log(painterName+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    defBorrar();
     setPainterName(painterName.content);
 }

@@ -45,7 +45,7 @@ function defBorrar() {
 canvas.addEventListener('mousedown',function (e) {
     if(player==painter){
         x=e.clientX - delta.left;
-        y=e.clientY -delta.top;
+        y=e.clientY -delta.top; 
         //console.log(x,y);
 
         dibujando=true;
