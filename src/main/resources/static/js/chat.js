@@ -64,10 +64,9 @@ function send() {
     var equipo = localStorage.getItem("equipo");
     var palabra = localStorage.getItem("palabra");
     if(messageInput.value == palabra){
+        //ademas de avanzar la palabra avanzamos tambien el jugador
         sendRound();
         toastr["success"]("Has acertado","¡Correcto!");
-
-
 
     }else{
         var chatMessage = {

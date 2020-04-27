@@ -30,6 +30,7 @@ function setPainterNameAndDrawName(name) {
         console.log("key: painter, value: ");
         console.log(sessionStorage.getItem("painter"));
         defBorrar();
+        toastr["warning"](painter+" Va a dibujar","¡Atentos!");
     }
 }
 
