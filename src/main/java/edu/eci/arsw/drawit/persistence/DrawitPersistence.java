@@ -28,4 +28,6 @@ public interface DrawitPersistence {
 
     public String getPainterName(String sala, String equipo) throws DrawItException;
 
+    public void siguienteTurno(String Sala, String equipo) throws DrawItException;
+
 }

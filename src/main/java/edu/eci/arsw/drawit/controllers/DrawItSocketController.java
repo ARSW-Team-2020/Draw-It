@@ -91,4 +91,14 @@ public class DrawItSocketController {
         System.out.println("No se avanzo");
         return "-";
     }
+
+    @MessageMapping("/{name}/round/{equipo}")
+    @SendTo("/topic/{name}/round/{equipo}")
+    public ChatMessage sendNextRound(@DestinationVariable String name, @DestinationVariable String equipo,@Payload ChatMessage round) throws Exception{
+        cache.siguienteTurno(name,equipo);
+
+        System.out.println(" Next Round ");
+        return round;
+    }
+
 }

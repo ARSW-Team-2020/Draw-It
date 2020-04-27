@@ -1,6 +1,7 @@
 package edu.eci.arsw.drawit.persistence.impl;
 
 
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
@@ -136,10 +137,16 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
                 return returnEquipo(salaI,usuario);
 
             }else{
+                String[] equipo1 = new String[4];
+                String[] equipo2 = new String[4];
                 for(int i=0; i<4; i++){
-                    salaI.getEquipos().get(0).getJugadores()[i]=salaI.getJugadores().get(i).getUsuario();
-                    salaI.getEquipos().get(1).getJugadores()[i]=salaI.getJugadores().get(i+4).getUsuario();
+                    equipo1[i] = salaI.getJugadores().get(i).getUsuario();
+                    equipo2[i] = salaI.getJugadores().get(i+4).getUsuario();
                 }
+
+                salaI.getEquipos().get(0).setJugadores(equipo1);
+                salaI.getEquipos().get(1).setJugadores(equipo2);
+
                 return returnEquipo(salaI,usuario);
             }
         }else{
@@ -173,28 +180,57 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         return nuevo;
     }
 
+    /**
+     *
+     * @param codigo de la sala
+     * @param equipo al que pertenece el solicitante
+     * @return palabra a dibujar en el turno
+     * @throws DrawItException
+     */
     @Override
     public String getPalabra(String codigo,int equipo) throws DrawItException {
         if (!salas1.containsKey(codigo)){
             throw new DrawItException("La sala no existe");
         }
-        return salas1.get(codigo).getPalabra(equipo);
+        //return salas1.get(codigo).getPalabra(equipo);
+        System.out.println("equipos "+ equipo);
+        System.out.println(salas1.get(codigo).getEquipos().get(equipo-1));
+        System.out.println(salas1.get(codigo).getEquipos().size()+" equipos en arrayList");
+        return salas1.get(codigo).getEquipos().get(equipo-1).getPalabraTurno().getPalabra();
     }
 
+    /**
+     *
+     * @param sala (codigo referente a la sala)
+     * @param equipo (numero del equipo (0/1))
+     * @return nombre del painter de turno
+     * @throws DrawItException
+     */
     @Override
     public String getPainterName(String sala, String equipo) throws DrawItException{
         String painter="player";
         if(hashIterator(sala)){
-            Sala localSala = salas1.get(sala);
-            for(Equipo e: localSala.getEquipos()){
-                System.out.println(e.getNombre()+" "+equipo);
-                if(e.getNombre().contains("equipo"+equipo)){
-                    painter = e.getPainterTurno().getUsuario();
-                }
-            }
+            painter = salas1.get(sala).getEquipos().get(Integer.parseInt(equipo)-1).getPainterTurno().getUsuario();
+            System.out.println(painter);
+
         }else{
             throw new DrawItException("La sala no existe");
         }
         return painter;
+    }
+
+    /**
+     *
+     * @param sala
+     * @param equipo
+     * @throws DrawItException
+     */
+    @Override
+    public void siguienteTurno(String sala, String equipo) throws DrawItException {
+        if(hashIterator(sala)){
+            salas1.get(sala).getEquipos().get(Integer.parseInt(equipo)-1).nextTurno();
+        }else {
+            throw new DrawItException("La sala no existe");
+        }
     }
 }

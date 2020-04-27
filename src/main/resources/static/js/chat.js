@@ -62,8 +62,11 @@ function send() {
     var equipo = localStorage.getItem("equipo");
     var palabra = localStorage.getItem("palabra");
     if(messageInput.value == palabra){
+
         toastr["success"]("Has acertado","¡Correcto!");
+
         avanzarPalabra();
+
     }else{
         var chatMessage = {
             content: messageInput.value,

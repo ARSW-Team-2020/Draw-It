@@ -20,7 +20,9 @@ public class Equipo {
         this.nombre = nombre;
         this.rondasGanadas = 0;
         this.tablero = new Tablero();
+        this.players =  new ArrayList<>();
     }
+
 
     public String getNombre() {
         return nombre;
@@ -50,10 +52,13 @@ public class Equipo {
     public void setJugadores(String[] jugadores) {
         this.jugadores = jugadores;
         // creamos los jugadores apartir de los nombres para tener los puntajes
+        players.clear();
         for(String namePlayer: jugadores){
+            System.out.println(namePlayer);
             Jugador player = new Jugador(namePlayer);
             players.add(player);
         }
+        System.out.println("Equipos creados");
         nextTurno();
     }
 
@@ -83,8 +88,10 @@ public class Equipo {
     }
 
     public void nextTurno(){
+        System.out.println(turno%4+" "+ players.size());
         setPainterTurno(players.get( (turno%4)));
         tablero.cambiarPalabra();
         turno++;
+        System.out.println("Round # "+turno);
     }
 }

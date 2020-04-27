@@ -14,7 +14,9 @@ public class Tablero {
             "Piel","Boca","Trampa","Terraza","Bolsa","Frio","Asteroide","Arruga","Picante"));
 
     public Tablero(){
+
         super();
+        this.palabra= new Palabra();
     }
     public Tablero(Jugador player, Palabra palabra){
         this.pintor = player;
