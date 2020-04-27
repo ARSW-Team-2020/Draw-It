@@ -4,6 +4,7 @@ public class ChatMessage {
     private String content;
     private String sender;
 
+
     public String getContent() {
         return content;
     }

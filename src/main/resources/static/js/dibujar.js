@@ -17,10 +17,22 @@ function onConnectedDibujar() {
     var equipo = localStorage.getItem("equipo");
     stompClient.subscribe('/topic/'+codigo+'/dibujar/'+equipo, onArrayReceived);
     stompClient.subscribe('/topic/'+codigo+'/borrar/'+equipo, onBorrandoReceived);
+    stompClient.subscribe('/topic/'+codigo+'/painterName/'+equipo, onPainterNameReceived);
+    stompClient.subscribe('/topic/'+codigo+'/round/'+equipo,onRoundReceived );
+    stompClient.subscribe('/topic/'+codigo+'/palabra/', function (eventbody) {
+        console.log(eventbody.body);
+        //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
+    });
+}
+
+function sendPalabra(palabra){
+    var codigo = localStorage.getItem("codigo");
+    stompClient.send("app/"+codigo+"/palabra/", {},JSON.stringify(palabra))
+
 }
 
 function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
-    //console.log("Se va a enviar!!!");
+
     var codigo = localStorage.getItem("codigo");
     var equipo = localStorage.getItem("equipo");
     var line = {
@@ -31,7 +43,6 @@ function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
         color : currentColor,
         grosor : currentGrosor
     };
-    //console.log("/app/"+codigo+"/chat/"+equipo);
     stompClient.send("/app/"+codigo+"/dibujar/"+equipo, {},JSON.stringify(line));
 }
 
@@ -44,14 +55,41 @@ function sendBorrar() {
     };
     stompClient.send("/app/"+codigo+"/borrar/"+equipo,{},JSON.stringify(erase));
 }
+
+function sendPainter() {
+    var codigo = localStorage.getItem("codigo");
+    var equipo = localStorage.getItem("equipo");
+    var painter = {
+        content: "player",
+    };
+    stompClient.send("/app/"+codigo+"/painterName/"+equipo,{},JSON.stringify(painter));
+}
+function sendRound() {
+    var codigo = localStorage.getItem("codigo");
+    var equipo = localStorage.getItem("equipo");
+    var round = {
+        content: "round",
+    };
+    stompClient.send("/app/"+codigo+"/round/"+equipo,{},JSON.stringify(round));
+}
 function onArrayReceived(payload) {
     var arrayDibujo = JSON.parse(payload.body);
-    //console.log(arrayDibujo);
     dibujar(arrayDibujo.x1,arrayDibujo.y1,arrayDibujo.x2,arrayDibujo.y2,arrayDibujo.color, arrayDibujo.grosor );
 }
 function onBorrandoReceived(payload) {
-
-    //console.log("received borrar");
     var message = JSON.parse(payload.body);
     defBorrar();
+}
+
+function onPainterNameReceived(payload) {
+    var painterName = JSON.parse(payload.body);
+    defBorrar();
+    setPainterName(painterName.content);
+}
+
+
+function onRoundReceived(payload) {
+    var round = JSON.parse(payload.body);
+    console.log(round);
+
 }

@@ -69,6 +69,15 @@ public class DrawItSocketController {
         return erase;
     }
 
+    @MessageMapping("/{name}/painterName/{equipo}")
+    @SendTo("/topic/{name}/painterName/{equipo}")
+    public ChatMessage sendPainterName(@DestinationVariable String name, @DestinationVariable String equipo,@Payload ChatMessage painter) throws Exception{
+        String localName = cache.getPainterName(name, equipo);
+        painter.setContent(localName);
+        System.out.println(localName+" Going to Draw");
+        return painter;
+    }
+
     @MessageMapping("/{name}/ronda/{numero}")
     @SendTo("/topic/{name}/ronda/")
     public String avanzarRonda(@DestinationVariable String name,@DestinationVariable int numero,@Payload String fechaFin) throws DrawItException{
@@ -78,8 +87,18 @@ public class DrawItSocketController {
             s.avanzarRonda();
             System.out.println("Se avanzo");
             return fechaFin;
-        }   
+        }
         System.out.println("No se avanzo");
         return "-";
     }
+
+    @MessageMapping("/{name}/round/{equipo}")
+    @SendTo("/topic/{name}/round/{equipo}")
+    public ChatMessage sendNextRound(@DestinationVariable String name, @DestinationVariable String equipo,@Payload ChatMessage round) throws Exception{
+        cache.siguienteTurno(name,equipo);
+
+        System.out.println(" Next Round ");
+        return round;
+    }
+
 }
