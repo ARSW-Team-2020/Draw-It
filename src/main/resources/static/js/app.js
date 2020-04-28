@@ -106,10 +106,16 @@ var app = (function () {
         });
     };
 
+    /**
+     *
+     * @param equipo
+     */
     function organizar(equipo){
         location.assign("webApp/juego.html");
-        console.log(equipo);
 
+        console.log(equipo);
+        console.log("este es el equipo al que pertenezco");
+        sessionStorage.setItem("myTeam",equipo[0]);
         localStorage.setItem("equipo",equipo[0]);
         localStorage.setItem("jugador1",equipo[1]);
         localStorage.setItem("jugador2",equipo[2]);

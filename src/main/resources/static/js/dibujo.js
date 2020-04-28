@@ -3,7 +3,7 @@ const lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
 var player =  sessionStorage.getItem("playerName");
 var painter = "painter";
-
+var team = 0;
 
 
 var x=0,y=0,dibujando=false, color="black",grosor = 3;

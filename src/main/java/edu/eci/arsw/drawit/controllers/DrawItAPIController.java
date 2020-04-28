@@ -88,7 +88,9 @@ public class DrawItAPIController {
     @RequestMapping(value = {"/{codigo}/{autor}"}, method = RequestMethod.GET)
     public ResponseEntity<?> getEquiposBySalaAndAuthor(@PathVariable() String codigo, @PathVariable() String autor) {
         try {
-            return new ResponseEntity<>(drawItServices.getEquiposBySalaAndAuthor(codigo,autor), HttpStatus.ACCEPTED);
+            String[] teamAndUsers = drawItServices.getEquiposBySalaAndAuthor(codigo, autor);
+            System.out.println(autor+" este es el equipo al que perteneces" + teamAndUsers[0]);
+            return new ResponseEntity<>(teamAndUsers, HttpStatus.ACCEPTED);
         } catch (DrawItException e) {
             Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
