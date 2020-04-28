@@ -147,7 +147,7 @@ var app = (function () {
         countdown(localStorage.getItem("hora"),"clock");
         mostrarRonda();
         //api.getPalabra(localStorage.getItem("codigo"),localStorage.getItem("equipo"));
-        api.getPalabra(localStorage.getItem("codigo"),sessionStorage.getItem("myTeam"));
+
         var left = document.getElementById("team1");
         var right = document.getElementById("team2");
         var divL;
@@ -170,13 +170,20 @@ var app = (function () {
             left.append(divL);
             right.append(divR);
         }
+        api.getPalabra(localStorage.getItem("codigo"),sessionStorage.getItem("myTeam"));
     }
 
     function mostrarPalabra(data){
         var pal = document.getElementById("palabra");
         localStorage.setItem("palabra",data);
         sessionStorage.setItem("palabra",data);
-        pal.innerText = data;
+        console.log(sessionStorage.getItem("playerName") +" "+ sessionStorage.getItem("painter"));
+        if(sessionStorage.getItem("playerName") == sessionStorage.getItem("painter")){
+            pal.innerText = data;
+        }else{
+          pal.innerText = "";
+        }
+
     }
 
     return {

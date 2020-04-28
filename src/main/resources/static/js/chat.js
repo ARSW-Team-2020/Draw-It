@@ -20,7 +20,7 @@ function connect() {
 function onConnected() {
     // Subscribe to the Public Topic
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
+    var equipo = sessionStorage.getItem("myTeam");
     stompClient.subscribe('/topic/'+codigo+'/chat/'+equipo, onMessageReceived);
     stompClient.subscribe('/topic/'+codigo+'/palabra/'+equipo, onPalabraRecieved);
     stompClient.subscribe('/topic/'+codigo+'/ronda/', onRondaRecieved);
@@ -60,8 +60,8 @@ function avanzarPalabra(){
 
 function send() {
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
-    var palabra = localStorage.getItem("palabra");
+    var equipo = sessionStorage.getItem("myTeam");
+    var palabra = sessionStorage.getItem("palabra");
     if(messageInput.value == palabra){
         //ademas de avanzar la palabra avanzamos tambien el jugador
         sendRound();
@@ -70,7 +70,7 @@ function send() {
     }else{
         var chatMessage = {
             content: messageInput.value,
-            sender: localStorage.getItem("usuario")
+            sender: sessionStorage.getItem("playerName")
         };
         if (messageInput.value != ""){
             console.log("/app/"+codigo+"/chat/"+equipo);

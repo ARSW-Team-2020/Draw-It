@@ -29,15 +29,18 @@ function setPainterNameAndDrawName(name) {
         sessionStorage.setItem("painter",painter);
         console.log("key: painter, value: ");
         console.log(sessionStorage.getItem("painter"));
-        defBorrar();
+        lienzo.clearRect(0, 0, canvas.width, canvas.height);
+        drawName();
         toastr["warning"](painter+" Va a dibujar","¡Atentos!");
     }
 }
 
 
 function defBorrar() {
-    lienzo.clearRect(0, 0, canvas.width, canvas.height);
-    drawName();
+    if(player==painter) {
+      lienzo.clearRect(0, 0, canvas.width, canvas.height);
+      drawName();
+    }
 }
 
 function drawName(){

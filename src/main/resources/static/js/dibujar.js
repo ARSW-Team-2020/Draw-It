@@ -91,13 +91,12 @@ function onPainterNameReceived(payload) {
     console.log("Este es el pintor de tu equipo");
     console.log(painterName.content);
     setPainterNameAndDrawName(painterName.content);
+    avanzarPalabra();
 }
 
 
 function onRoundReceived(payload) {
     var round = JSON.parse(payload.body);
     console.log(round);
-    avanzarPalabra();
     sendPainter();
-
 }

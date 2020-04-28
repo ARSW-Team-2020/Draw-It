@@ -52,7 +52,7 @@ var api = (function () {
         location.assign("crearSala.html");
         localStorage.setItem("codigo",info[0]);
         localStorage.setItem(usuario,info[1]);
-
+        sessionStorage.setItem(usuario,info[1]);
     }
 
     function getEquipoBySalaAndUsuario(sala,usuario){
