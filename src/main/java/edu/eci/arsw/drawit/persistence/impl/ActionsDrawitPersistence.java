@@ -1,8 +1,7 @@
 package edu.eci.arsw.drawit.persistence.impl;
 
 
-import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
-import edu.eci.arsw.drawit.model.Equipo;
+
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
