@@ -50,9 +50,9 @@ public class DrawItSocketController {
     @SendTo("/topic/{name}/palabra/{equipo}")
     public String cambiaPalabra(@DestinationVariable String name,@DestinationVariable int equipo) throws DrawItException{
         System.out.println("Se cambia la palabra para "+name+" del equipo "+equipo);
-        Sala s = cache.getSala(name);
-        s.cambiarPalabra(equipo);
-        return s.getPalabra(equipo);
+        String palabra = cache.getPalabra(name,equipo);
+        System.out.println(palabra);
+        return palabra;
     }
 
     @MessageMapping("/{name}/dibujar/{equipo}")
@@ -72,6 +72,7 @@ public class DrawItSocketController {
     @MessageMapping("/{name}/painterName/{equipo}")
     @SendTo("/topic/{name}/painterName/{equipo}")
     public ChatMessage sendPainterName(@DestinationVariable String name, @DestinationVariable String equipo,@Payload ChatMessage painter) throws Exception{
+        System.out.println("Para el equipo: "+equipo+" Quien dibuja");
         String localName = cache.getPainterName(name, equipo);
         painter.setContent(localName);
         System.out.println(localName+" Going to Draw");
