@@ -14,7 +14,9 @@ function connectDibujar() {
 function onConnectedDibujar() {
     // Subscribe to the Public Topic
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
+
+    //var equipo = localStorage.getItem("equipo");
+    var equipo = sessionStorage.getItem("myTeam");
     stompClient.subscribe('/topic/'+codigo+'/dibujar/'+equipo, onArrayReceived);
     stompClient.subscribe('/topic/'+codigo+'/borrar/'+equipo, onBorrandoReceived);
     stompClient.subscribe('/topic/'+codigo+'/painterName/'+equipo, onPainterNameReceived);
@@ -35,7 +37,7 @@ function sendPalabra(palabra){
 function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
 
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
+    var equipo = sessionStorage.getItem("myTeam");
     var line = {
         x1  : thisX1,
         y1 : thisY1,
@@ -50,7 +52,7 @@ function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
 function sendBorrar() {
     //console.log("send borrar");
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
+    var equipo = sessionStorage.getItem("myTeam");
     var erase = {
         content: "",
     };
@@ -59,7 +61,7 @@ function sendBorrar() {
 
 function sendPainter() {
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
+    var equipo = sessionStorage.getItem("myTeam");
     var painter = {
         content: "player",
     };
@@ -67,7 +69,7 @@ function sendPainter() {
 }
 function sendRound() {
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
+    var equipo = sessionStorage.getItem("myTeam");
     var round = {
         content: "round",
     };
@@ -84,7 +86,10 @@ function onBorrandoReceived(payload) {
 
 function onPainterNameReceived(payload) {
     var painterName = JSON.parse(payload.body);
+
     defBorrar();
+    console.log("Este es el pintor de tu equipo");
+    console.log(painterName.content);
     setPainterNameAndDrawName(painterName.content);
 }
 

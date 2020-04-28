@@ -89,7 +89,6 @@ public class DrawItAPIController {
     public ResponseEntity<?> getEquiposBySalaAndAuthor(@PathVariable() String codigo, @PathVariable() String autor) {
         try {
             String[] teamAndUsers = drawItServices.getEquiposBySalaAndAuthor(codigo, autor);
-            System.out.println(autor+" este es el equipo al que perteneces" + teamAndUsers[0]);
             return new ResponseEntity<>(teamAndUsers, HttpStatus.ACCEPTED);
         } catch (DrawItException e) {
             Logger.getLogger(DrawItAPIController.class.getName()).log(Level.SEVERE, null, e);

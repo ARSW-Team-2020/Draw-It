@@ -85,11 +85,20 @@ var app = (function () {
 
     function empezar(){
         console.log(app.getPlayer());
-        localStorage.setItem("ronda",1);
+        sessionStorage.setItem("ronda",1);
+        /*
         if(localStorage.getItem("autor")!= null){
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"))
         }else{
             api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("usuario"))
+        }
+        */
+        if(sessionStorage.getItem("playerName") != null){
+            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),sessionStorage.getItem("playerName"));
+        }else if(localStorage.getItem("autor")!= null){
+            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"));
+        }else{
+            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("usuario"));
         }
         stompClient.disconnect();
     }
@@ -128,7 +137,8 @@ var app = (function () {
     }
 
     function mostrarRonda(){
-        var ronda = localStorage.getItem("ronda");
+        //var ronda = localStorage.getItem("ronda");
+        var ronda = sessionStorage.getItem("ronda");
         var text = document.getElementById("ronda");
         text.innerText = "Ronda "+ronda;
     }
@@ -136,7 +146,8 @@ var app = (function () {
     function mostrarNombres(){
         countdown(localStorage.getItem("hora"),"clock");
         mostrarRonda();
-        api.getPalabra(localStorage.getItem("codigo"),localStorage.getItem("equipo"));
+        //api.getPalabra(localStorage.getItem("codigo"),localStorage.getItem("equipo"));
+        api.getPalabra(localStorage.getItem("codigo"),sessionStorage.getItem("myTeam"));
         var left = document.getElementById("team1");
         var right = document.getElementById("team2");
         var divL;
@@ -164,6 +175,7 @@ var app = (function () {
     function mostrarPalabra(data){
         var pal = document.getElementById("palabra");
         localStorage.setItem("palabra",data);
+        sessionStorage.setItem("palabra",data);
         pal.innerText = data;
     }
 

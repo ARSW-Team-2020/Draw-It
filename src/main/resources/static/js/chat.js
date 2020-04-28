@@ -34,19 +34,18 @@ function onPalabraRecieved(payload){
 function onRondaRecieved(payload){
     if(payload.body != "-"){
         cancelar();
-        var ronda = localStorage.getItem("ronda");
+        var ronda = sessionStorage.getItem("ronda");
         localStorage.setItem("ronda",parseInt(ronda,10)+1);
         app.mostrarRonda();
         console.log("solicitar pintor");
         sendPainter();
-
         countdown(payload.body,"clock");
     }
 }
 
 function avanzarRonda(){
     var codigo = localStorage.getItem("codigo");
-    var ronda  = localStorage.getItem("ronda");
+    var ronda  = sessionStorage.getItem("ronda");
     var now  = new Date();
     now.setMinutes(now.getMinutes()+2);
     stompClient.send("/app/"+codigo+"/ronda/"+ronda,{},now.toString());
@@ -55,7 +54,7 @@ function avanzarRonda(){
 
 function avanzarPalabra(){
     var codigo = localStorage.getItem("codigo");
-    var equipo = localStorage.getItem("equipo");
+    var equipo = sessionStorage.getItem("myTeam");
     stompClient.send("/app/"+codigo+"/palabra/"+equipo);
 }
 

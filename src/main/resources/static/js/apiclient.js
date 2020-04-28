@@ -44,22 +44,15 @@ var api = (function () {
     function cookie (respuesta,playerName){
         codigo= respuesta.split('/');
         storage(codigo,"usuario");
-        console.log("el nombre despues de la respuesta del servidor es: ");
-        console.log(app.getPlayer());
-        //app.setPlayer(playerName);
 
     }
 
     function storage(info,usuario){
-        console.log("despues de recibir resúesta del servidor player es :");
 
-        console.log(app.getPlayer());
         location.assign("crearSala.html");
         localStorage.setItem("codigo",info[0]);
         localStorage.setItem(usuario,info[1]);
-        console.log("despues de recibir resúesta del servidor player es :");
-        console.log(app.getPlayer());
-        //app.setPlayer(usuario);
+
     }
 
     function getEquipoBySalaAndUsuario(sala,usuario){

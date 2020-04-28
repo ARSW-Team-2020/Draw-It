@@ -72,6 +72,7 @@ public class DrawItSocketController {
     @MessageMapping("/{name}/painterName/{equipo}")
     @SendTo("/topic/{name}/painterName/{equipo}")
     public ChatMessage sendPainterName(@DestinationVariable String name, @DestinationVariable String equipo,@Payload ChatMessage painter) throws Exception{
+        System.out.println("Para el equipo: "+equipo+" Quien dibuja");
         String localName = cache.getPainterName(name, equipo);
         painter.setContent(localName);
         System.out.println(localName+" Going to Draw");
