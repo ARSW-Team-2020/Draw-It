@@ -14,10 +14,7 @@
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
-
-
   <name>Draw It</name>
-
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -54,43 +51,13 @@
       <artifactId>gson</artifactId>
       <version>2.8.5</version>
     </dependency>
-
-    <dependency>
-      <groupId>org.webjars.npm</groupId>
-      <artifactId>alertifyjs</artifactId>
-      <version>1.8.0</version>
-    </dependency>
     
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
     </dependency>
-    
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-web-api</artifactId>
-      <version>8.0</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-      <version>1.2</version>
-    </dependency>
-    <!-- Configuracion del ORM de spring boot para persistencia -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-
+  
     <!-- Websockets-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -113,18 +80,22 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>toastr</artifactId>
 			<version>2.1.2</version>
-		</dependency>
+		</dependency>	
+
+    <dependency>
+        <groupId>org.webjars.npm</groupId>
+        <artifactId>sweetalert2</artifactId>
+        <version>9.10.12</version>
+    </dependency>
 
     <dependency>
       <groupId>org.webjars</groupId>
       <artifactId>webjars-locator</artifactId>
       <version>0.30</version>
     </dependency>
-
   </dependencies>
 
   <build>
-
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -135,33 +106,6 @@
         <artifactId>heroku-maven-plugin</artifactId>
         <version>2.0.11</version>
       </plugin>
-
-      <!-- Plugin configuration for Heroku compatibility.
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.6</version> <$NO-MVN-MAN-VER$>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>copy</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>com.github.jsimone</groupId>
-                  <artifactId>webapp-runner</artifactId>
-                  <version>8.0.30.2</version>
-                  <destFileName>webapp-runner.jar</destFileName>
-                </artifactItem>
-              </artifactItems>
-
-            </configuration>
-          </execution>
-
-        </executions>
-      </plugin-->
     </plugins>
   </build>
 
@@ -172,13 +116,4 @@
       <url>https://repo.spring.io/milestone</url>
     </repository>
   </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>spring-milestones</id>
-      <name>Spring Milestones</name>
-      <url>https://repo.spring.io/milestone</url>
-    </pluginRepository>
-  </pluginRepositories>
-
-
 </project>

@@ -19,8 +19,9 @@ var api = (function () {
         .catch(error => console.log(error));
     }
 
-    function unirJugadorToSala(direccion,playerName){
-        console.log(playerName);
+    function unirJugadorToSala(direccion){
+        var playerName = $("#Nombre").val();
+        direccion += "/"+playerName;
         axios({
             method:'put',
             url: "/drawIt/"+direccion ,
@@ -50,8 +51,8 @@ var api = (function () {
     function storage(info,usuario){
 
         location.assign("crearSala.html");
-        localStorage.setItem("codigo",info[0]);
-        localStorage.setItem(usuario,info[1]);
+        sessionStorage.setItem("codigo",info[0]);
+        sessionStorage.setItem(usuario,info[1]);
         sessionStorage.setItem(usuario,info[1]);
     }
 
@@ -81,8 +82,4 @@ var api = (function () {
         getEquipoBySalaAndUsuario:getEquipoBySalaAndUsuario,
         getPalabra:getPalabra
     }
-
-
-
-
 })();

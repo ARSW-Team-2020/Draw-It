@@ -1,31 +1,17 @@
 package edu.eci.arsw.drawit.services;
 
-
-import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.persistence.DrawitPersistence;
-import edu.eci.arsw.drawit.repository.JugadorRepository;
-import edu.eci.arsw.drawit.repository.SalaRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
 @Service("drawItServices")
 public class DrawItServices {
-
-    @Autowired
-    @Qualifier("jugador")
-    JugadorRepository jugadorRepository;
-
-    @Autowired
-    @Qualifier("sala")
-    SalaRepository salaRepository;
 
     @Autowired
     @Qualifier("Action")

@@ -26,13 +26,13 @@ var app = (function () {
     }
 
     function subSala(){
-        var codigo =  localStorage.getItem("codigo");
+        var codigo =  sessionStorage.getItem("codigo");
         stompClient.subscribe('/topic/'+codigo,function (eventbody) {
             var jugadores = JSON.parse(eventbody.body);
             createTableJugadores(jugadores);
         },{id:codigo});
         stompClient.subscribe('/topic/'+codigo+'/empezar',function (eventbody) {
-            localStorage.setItem("hora",eventbody.body);
+            sessionStorage.setItem("hora",eventbody.body);
             empezar();
         },{id:codigo+'/empezar'});
         stompClient.send("/app/union/"+codigo);
@@ -63,7 +63,7 @@ var app = (function () {
     function createTable(salas,name){
         var fila= $("#filasSala");
         salas.map(function(element){
-            var onclick='api.unirJugadorToSala("'+element.codigo+'/'+ $("#Nombre").val()+'",name)';
+            var onclick='api.unirJugadorToSala("'+element.codigo+'")';
             var markup = "<tr> <td>"+ element.autor +"</td> <td>"+element.codigo+"</td><td><a type='button' class='btn-get-started' onclick= "+onclick+">Unirse</a></td> </tr>";
             fila.append(markup)
         });
@@ -77,7 +77,6 @@ var app = (function () {
             fila.append(markup)
         })
         $("jugadores").append(fila);
-        //if(localStorage.getItem("autor")!= null && jugadores.length >=8){
         if(jugadores.length >=8){
             document.getElementById("empezar").style.display="block";
         }
@@ -86,19 +85,12 @@ var app = (function () {
     function empezar(){
         console.log(app.getPlayer());
         sessionStorage.setItem("ronda",1);
-        /*
-        if(localStorage.getItem("autor")!= null){
-            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"))
-        }else{
-            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("usuario"))
-        }
-        */
         if(sessionStorage.getItem("playerName") != null){
-            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),sessionStorage.getItem("playerName"));
-        }else if(localStorage.getItem("autor")!= null){
-            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("autor"));
+            api.getEquipoBySalaAndUsuario(sessionStorage.getItem("codigo"),sessionStorage.getItem("playerName"));
+        }else if(sessionStorage.getItem("autor")!= null){
+            api.getEquipoBySalaAndUsuario(sessionStorage.getItem("codigo"),sessionStorage.getItem("autor"));
         }else{
-            api.getEquipoBySalaAndUsuario(localStorage.getItem("codigo"),localStorage.getItem("usuario"));
+            api.getEquipoBySalaAndUsuario(sessionStorage.getItem("codigo"),sessionStorage.getItem("usuario"));
         }
         stompClient.disconnect();
     }
@@ -120,34 +112,31 @@ var app = (function () {
      * @param equipo
      */
     function organizar(equipo){
-        location.assign("webApp/juego.html");
-
         console.log(equipo);
         console.log("este es el equipo al que pertenezco");
         sessionStorage.setItem("myTeam",equipo[0]);
-        localStorage.setItem("equipo",equipo[0]);
-        localStorage.setItem("jugador1",equipo[1]);
-        localStorage.setItem("jugador2",equipo[2]);
-        localStorage.setItem("jugador3",equipo[3]);
-        localStorage.setItem("jugador4",equipo[4]);
-        localStorage.setItem("jugador5",equipo[5]);
-        localStorage.setItem("jugador6",equipo[6]);
-        localStorage.setItem("jugador7",equipo[7]);
-        localStorage.setItem("jugador8",equipo[8]);
+        sessionStorage.setItem("equipo",equipo[0]);
+        sessionStorage.setItem("jugador1",equipo[1]);
+        sessionStorage.setItem("jugador2",equipo[2]);
+        sessionStorage.setItem("jugador3",equipo[3]);
+        sessionStorage.setItem("jugador4",equipo[4]);
+        sessionStorage.setItem("jugador5",equipo[5]);
+        sessionStorage.setItem("jugador6",equipo[6]);
+        sessionStorage.setItem("jugador7",equipo[7]);
+        sessionStorage.setItem("jugador8",equipo[8]);
+        location.assign("webApp/juego.html");
     }
 
     function mostrarRonda(){
-        //var ronda = localStorage.getItem("ronda");
+        //var ronda =   Storage.getItem("ronda");
         var ronda = sessionStorage.getItem("ronda");
         var text = document.getElementById("ronda");
         text.innerText = "Ronda "+ronda;
     }
 
     function mostrarNombres(){
-        countdown(localStorage.getItem("hora"),"clock");
+        countdown(sessionStorage.getItem("hora"),"clock");
         mostrarRonda();
-        //api.getPalabra(localStorage.getItem("codigo"),localStorage.getItem("equipo"));
-
         var left = document.getElementById("team1");
         var right = document.getElementById("team2");
         var divL;
@@ -160,28 +149,31 @@ var app = (function () {
             divR = document.createElement('div');
             divR.classList.add('item');
             textElement = document.createElement('p');
-            messageText = document.createTextNode(localStorage.getItem("jugador"+i));
+            messageText = document.createTextNode(sessionStorage.getItem("jugador"+i));
             textElement.append(messageText);
             divL.append(textElement);
             textElement = document.createElement('p');
-            messageText = document.createTextNode(localStorage.getItem("jugador"+(i+4)));
+            messageText = document.createTextNode(sessionStorage.getItem("jugador"+(i+4)));
             textElement.append(messageText);
             divR.append(textElement);
             left.append(divL);
             right.append(divR);
         }
-        api.getPalabra(localStorage.getItem("codigo"),sessionStorage.getItem("myTeam"));
+        api.getPalabra(sessionStorage.getItem("codigo"),sessionStorage.getItem("myTeam"));
     }
 
     function mostrarPalabra(data){
         var pal = document.getElementById("palabra");
-        localStorage.setItem("palabra",data);
         sessionStorage.setItem("palabra",data);
         console.log(sessionStorage.getItem("playerName") +" "+ sessionStorage.getItem("painter"));
         if(sessionStorage.getItem("playerName") == sessionStorage.getItem("painter")){
             pal.innerText = data;
         }else{
-          pal.innerText = "";
+            var s = "";
+            for(var i = 0;i<data.length;i++){
+                s+="_ "
+            }
+            pal.innerText = s;
         }
 
     }
@@ -192,9 +184,9 @@ var app = (function () {
         createTable:createTable,
         createTableJugadores:createTableJugadores,
         empezar:function(){
-            var codigo = localStorage.getItem("codigo");
+            var codigo = sessionStorage.getItem("codigo");
             var now  = new Date();
-            now.setMinutes(now.getMinutes()+1);
+            now.setMinutes(now.getMinutes()+2);
             stompClient.send("/app/"+codigo+"/empezar",{},now.toString());
         },
         organizar:organizar,

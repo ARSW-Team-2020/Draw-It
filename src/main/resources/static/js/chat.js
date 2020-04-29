@@ -19,7 +19,7 @@ function connect() {
 
 function onConnected() {
     // Subscribe to the Public Topic
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     var equipo = sessionStorage.getItem("myTeam");
     stompClient.subscribe('/topic/'+codigo+'/chat/'+equipo, onMessageReceived);
     stompClient.subscribe('/topic/'+codigo+'/palabra/'+equipo, onPalabraRecieved);
@@ -35,7 +35,7 @@ function onRondaRecieved(payload){
     if(payload.body != "-"){
         cancelar();
         var ronda = sessionStorage.getItem("ronda");
-        localStorage.setItem("ronda",parseInt(ronda,10)+1);
+        sessionStorage.setItem("ronda",parseInt(ronda,10)+1);
         app.mostrarRonda();
         console.log("solicitar pintor");
         sendPainter();
@@ -44,25 +44,46 @@ function onRondaRecieved(payload){
 }
 
 function avanzarRonda(){
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     var ronda  = sessionStorage.getItem("ronda");
-    var now  = new Date();
-    now.setMinutes(now.getMinutes()+2);
-    stompClient.send("/app/"+codigo+"/ronda/"+ronda,{},now.toString());
+    if (ronda == "5"){
+        mostrarFinal();
+    }else{
+        var now  = new Date();
+        now.setMinutes(now.getMinutes()+2);
+        stompClient.send("/app/"+codigo+"/ronda/"+ronda,{},now.toString());
+    }
+}
 
+function mostrarFinal(){
+    Swal.fire({
+        title: 'La partida a acabado',
+        text: "Los puntajes fueron: ",
+        icon: 'success',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Ok!'
+      }).then((result) => {
+        if (result.value) {
+            sessionStorage.clear();
+            location.assign("../index.html");
+        }
+      })
 }
 
 function avanzarPalabra(){
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     var equipo = sessionStorage.getItem("myTeam");
     stompClient.send("/app/"+codigo+"/palabra/"+equipo);
 }
 
 function send() {
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     var equipo = sessionStorage.getItem("myTeam");
     var palabra = sessionStorage.getItem("palabra");
-    if(messageInput.value == palabra){
+    var jugador = sessionStorage.getItem("playerName");
+    var painter = sessionStorage.getItem("painter");
+
+    if(messageInput.value == palabra && painter != jugador){
         //ademas de avanzar la palabra avanzamos tambien el jugador
         sendRound();
         toastr["success"]("Has acertado","¡Correcto!");
@@ -70,7 +91,7 @@ function send() {
     }else{
         var chatMessage = {
             content: messageInput.value,
-            sender: sessionStorage.getItem("playerName")
+            sender: jugador
         };
         if (messageInput.value != ""){
             console.log("/app/"+codigo+"/chat/"+equipo);

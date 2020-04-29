@@ -32,8 +32,16 @@ public class DrawItSocketController {
     @SendTo("/topic/{name}/empezar")
     public String empezarPartida(@DestinationVariable String name,@Payload String fechaFin) throws DrawItException {
         System.out.println("La partida "+name+" ha empezado");
-        System.out.println("Fecha fin "+fechaFin);
         Sala sala = cache.getSala(name);
+        String[] equipo1 = new String[4];
+        String[] equipo2 = new String[4];
+        for(int i=0; i<4; i++){
+            equipo1[i] = sala.getJugadores().get(i).getUsuario();
+            equipo2[i] = sala.getJugadores().get(i+4).getUsuario();
+        }
+
+        sala.getEquipos().get(0).setJugadores(equipo1);
+        sala.getEquipos().get(1).setJugadores(equipo2);
         sala.crearRonda();
         return fechaFin.toString();
     }
@@ -58,14 +66,12 @@ public class DrawItSocketController {
     @MessageMapping("/{name}/dibujar/{equipo}")
     @SendTo("/topic/{name}/dibujar/{equipo}")
     public Line dibujarTableroEquipo(@DestinationVariable String name, @DestinationVariable String equipo, Line linea){
-        //System.out.println("Mensaje en la sala "+name+" del equipo "+equipo+" con mensaje: "+linea.toString());
         return linea;
     }
 
     @MessageMapping("/{name}/borrar/{equipo}")
     @SendTo("/topic/{name}/borrar/{equipo}")
     public ChatMessage borrarTableroEquipo(@DestinationVariable String name, @DestinationVariable String equipo, @Payload ChatMessage erase){
-        //System.out.println
         return erase;
     }
 
@@ -84,12 +90,11 @@ public class DrawItSocketController {
     public String avanzarRonda(@DestinationVariable String name,@DestinationVariable int numero,@Payload String fechaFin) throws DrawItException{
         System.out.println("Se avanza la ronda de :"+name);
         Sala s = cache.getSala(name);
-        if (s.getRonda() == numero && s.cambiar()){
+        if (s.getRonda() == numero && s.cambiar() && s.getRonda() < 5){
             s.avanzarRonda();
             System.out.println("Se avanzo");
             return fechaFin;
         }
-        System.out.println("No se avanzo");
         return "-";
     }
 

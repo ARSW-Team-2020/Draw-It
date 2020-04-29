@@ -193,7 +193,6 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         }
         //return salas1.get(codigo).getPalabra(equipo);
         System.out.println("equipos "+ equipo);
-        System.out.println(salas1.get(codigo).getEquipos().get(equipo-1));
         System.out.println(salas1.get(codigo).getEquipos().size()+" equipos en arrayList");
         return salas1.get(codigo).getEquipos().get(equipo-1).getPalabraTurno().getPalabra();
     }

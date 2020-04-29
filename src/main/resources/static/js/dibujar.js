@@ -13,7 +13,7 @@ function connectDibujar() {
 
 function onConnectedDibujar() {
     // Subscribe to the Public Topic
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
 
     //var equipo = localStorage.getItem("equipo");
     var equipo = sessionStorage.getItem("myTeam");
@@ -29,14 +29,14 @@ function onConnectedDibujar() {
 }
 
 function sendPalabra(palabra){
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     stompClient.send("app/"+codigo+"/palabra/", {},JSON.stringify(palabra))
 
 }
 
 function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
 
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     var equipo = sessionStorage.getItem("myTeam");
     var line = {
         x1  : thisX1,
@@ -51,16 +51,18 @@ function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
 
 function sendBorrar() {
     //console.log("send borrar");
-    var codigo = localStorage.getItem("codigo");
-    var equipo = sessionStorage.getItem("myTeam");
-    var erase = {
-        content: "",
-    };
-    stompClient.send("/app/"+codigo+"/borrar/"+equipo,{},JSON.stringify(erase));
+    if (painter == name) {
+        var codigo = sessionStorage.getItem("codigo");
+        var equipo = sessionStorage.getItem("myTeam");
+        var erase = {
+            content: "",
+        };
+        stompClient.send("/app/"+codigo+"/borrar/"+equipo,{},JSON.stringify(erase));
+    }
 }
 
 function sendPainter() {
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     var equipo = sessionStorage.getItem("myTeam");
     var painter = {
         content: "player",
@@ -68,7 +70,7 @@ function sendPainter() {
     stompClient.send("/app/"+codigo+"/painterName/"+equipo,{},JSON.stringify(painter));
 }
 function sendRound() {
-    var codigo = localStorage.getItem("codigo");
+    var codigo = sessionStorage.getItem("codigo");
     var equipo = sessionStorage.getItem("myTeam");
     var round = {
         content: "round",

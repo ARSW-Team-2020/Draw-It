@@ -1,6 +1,5 @@
 package edu.eci.arsw.drawit.model;
 
-import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;

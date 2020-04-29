@@ -37,10 +37,8 @@ function setPainterNameAndDrawName(name) {
 
 
 function defBorrar() {
-    if(player==painter) {
-      lienzo.clearRect(0, 0, canvas.width, canvas.height);
-      drawName();
-    }
+    lienzo.clearRect(0, 0, canvas.width, canvas.height);
+    //drawName();
 }
 
 function drawName(){
@@ -51,9 +49,7 @@ function drawName(){
 canvas.addEventListener('mousedown',function (e) {
     if(player==painter){
         x=e.clientX - delta.left;
-        y=e.clientY -delta.top;
-        //console.log(x,y);
-
+        y=e.clientY - delta.top;
         dibujando=true;
     }
 
