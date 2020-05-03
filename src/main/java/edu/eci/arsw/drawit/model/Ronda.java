@@ -9,10 +9,9 @@ public class Ronda {
     private String palabra;
     private Date fecha_fin;
     private ArrayList<String> palabras = new ArrayList<String>(Arrays.asList("Koala","Conejo","Mono","Mantarraya","Elefante", "Caballo",
-            "Cerdo","Mariposa","Cabra","Lobo","Dentista","Carnicero","Escritor","Cocinera","Cirujano",
-            "Mecanico","Profesora","Arquitecto","Granjero","Bombero","Agricultor","Espalda","Mente",
-            "Piel","Boca","Trampa","Terraza","Bolsa","Frio","Asteroide","Arruga","Picante"));
-
+            "Cerdo","Mariposa","Cabra","Lobo","Dentista","Lapiz","Reloj","Dado","Ojo",
+            "Pizza","Flor","Gafas","Escalera","Estrella","Fresa","Sol","Camara",
+            "Gato","Boca","Iglesia","Delfin","Nariz","Frio","Huevo","Carro","Arbol"));
 
     public Ronda(){
 

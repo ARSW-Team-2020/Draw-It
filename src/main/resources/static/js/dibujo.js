@@ -38,7 +38,7 @@ function setPainterNameAndDrawName(name) {
 
 function defBorrar() {
     lienzo.clearRect(0, 0, canvas.width, canvas.height);
-    //drawName();
+    drawName();
 }
 
 function drawName(){

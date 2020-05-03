@@ -6,16 +6,19 @@ var api = (function () {
             method:'get',
             url: "/drawIt/1/" +  autor ,
         })
-        .then(response => storage(response.data,"autor"))
+        .then(function(response){
+            storage(response.data,"autor");
+        })
         .catch(error => console.log(error));
     }
 
-    function getSalas(playerName){
+
+    function getSalas(){
         axios({
             method:'get',
             url: "/drawIt" ,
         })
-        .then(response => app.createTable(response.data, playerName))
+        .then(response => app.createTable(response.data))
         .catch(error => console.log(error));
     }
 
@@ -26,7 +29,10 @@ var api = (function () {
             method:'put',
             url: "/drawIt/"+direccion ,
         })
-        .then(response => cookie(direccion,playerName))
+        .then(function(response){
+            sendGeneral();
+            cookie(direccion,playerName);
+        })
         .catch(function(error){
             toastr["warning"]("Ya hay un jugador en con tu nombre","Oops! Cambia de nombre");
             console.log(error);
@@ -45,7 +51,6 @@ var api = (function () {
     function cookie (respuesta,playerName){
         codigo= respuesta.split('/');
         storage(codigo,"usuario");
-
     }
 
     function storage(info,usuario){

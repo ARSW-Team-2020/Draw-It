@@ -15,7 +15,7 @@ public class Sala {
     private ArrayList<Equipo> equipos;
     private Ronda[] rondasActuales;
     private boolean cambiar;
-    private boolean empezo;
+    private boolean completa;
 
     public Sala() {
         this.codigo = crearCodigo(8);
@@ -32,15 +32,15 @@ public class Sala {
         equipos.add(new Equipo("equipo2"));
         rondasActuales = new Ronda[2];
         cambiar = true;
-        empezo = false;
+        completa = false;
     }
 
-    public boolean isEmpezo() {
-        return empezo;
+    public boolean isCompleta() {
+        return completa;
     }
 
-    public void setEmpezo(boolean empezo) {
-        this.empezo = empezo;
+    public void setCompleta(boolean completa) {
+        this.completa = completa;
     }
 
     public String getAutor() {

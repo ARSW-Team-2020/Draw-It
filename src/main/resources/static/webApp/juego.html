@@ -23,10 +23,10 @@
 
 
     </head>
-     <body onload="connect();app.mostrarNombres()">
+     <body onload="connect();app.mostrarNombres()" onbeforeunload="sendSalir()">
         <header>
             <div class="container">
-                <input type="button" class="btn btn-outline-danger btn-sm" onclick="sendSalir()" value="Salir"/>
+                <input type="button" class="btn btn-outline-danger btn-sm" onclick="salir()" value="Salir"/>
             </div>
         </header>
         <div class="container">

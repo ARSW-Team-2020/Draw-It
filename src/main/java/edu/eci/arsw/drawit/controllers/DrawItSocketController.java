@@ -42,7 +42,6 @@ public class DrawItSocketController {
         sala.getEquipos().get(0).setJugadores(equipo1);
         sala.getEquipos().get(1).setJugadores(equipo2);
         sala.crearRonda();
-        sala.setEmpezo(true);
         return fechaFin.toString();
     }
 
@@ -114,6 +113,12 @@ public class DrawItSocketController {
         Sala s  = cache.getSala(name);
         s.quitarJugador(equipo-1,player);
         return player;
+    }
+
+    @MessageMapping("/general")
+    @SendTo("/topic/general/")
+    public String salasGeneral() throws Exception{
+        return "";
     }
 
 }

@@ -85,7 +85,7 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         Iterator<Map.Entry<String, Sala>> iterator = salas1.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Sala> entry = iterator.next();
-            if (!entry.getValue().isEmpezo())
+            if (!entry.getValue().isCompleta())
                 listaSalas.add(entry.getValue());
         }
         return listaSalas;
@@ -107,6 +107,9 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
             if(!esta && salaI.getJugadores().size()<8){
                 salaI.getJugadores().add(jg);
                 ex=false;
+            }
+            if (salaI.getJugadores().size() == 8){
+                salaI.setCompleta(true);
             }
         }
         if(ex){throw new DrawItException("La sala no existe o ya hay un jugador con ese nombre");}

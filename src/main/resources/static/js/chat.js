@@ -32,6 +32,9 @@ function onSalir(payload) {
     toastr["error"]("¡"+payload.body+"! ha salido!","Oops!");
 }
 
+function salir() {
+    location.assign("../index.html");
+}
 function sendSalir() {
     var playerName = sessionStorage.getItem("playerName");
     var codigo = sessionStorage.getItem("codigo");
@@ -41,7 +44,6 @@ function sendSalir() {
         sendRound();
     }
     stompClient.send("/app/"+codigo+"/salir/"+equipo,{},playerName);
-    location.assign("../index.html");
 }
 
 function onPalabraRecieved(payload){
@@ -100,7 +102,7 @@ function send() {
     var jugador = sessionStorage.getItem("playerName");
     var painter = sessionStorage.getItem("painter");
 
-    if(messageInput.value == palabra && painter != jugador){
+    if(messageInput.value.toLocaleLowerCase() == palabra.toLocaleLowerCase() && painter != jugador){
         //ademas de avanzar la palabra avanzamos tambien el jugador
         sendRound();
         toastr["success"]("Has acertado","¡Correcto!");

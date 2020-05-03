@@ -21,6 +21,7 @@ var app = (function () {
             setPlayer($("#Nombre").val());
             console.log(player);
             api.crearSala(player);
+            sendGeneral();
         }
 
     }
@@ -48,8 +49,7 @@ var app = (function () {
             $('#table tbody').empty();
             visible();
             setPlayer( $("#Nombre").val());
-            api.getSalas(player);
-
+            api.getSalas();
         }
     }
 
@@ -60,7 +60,7 @@ var app = (function () {
             document.getElementById("table").style.display="none";
     }
 
-    function createTable(salas,name){
+    function createTable(salas){
         var fila= $("#filasSala");
         salas.map(function(element){
             var onclick='api.unirJugadorToSala("'+element.codigo+'")';
