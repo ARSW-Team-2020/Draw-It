@@ -85,7 +85,8 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
         Iterator<Map.Entry<String, Sala>> iterator = salas1.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Sala> entry = iterator.next();
-            listaSalas.add(entry.getValue());
+            if (!entry.getValue().isEmpezo())
+                listaSalas.add(entry.getValue());
         }
         return listaSalas;
     }

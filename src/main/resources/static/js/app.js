@@ -4,6 +4,7 @@ var app = (function () {
     function getPlayer() {
         return player;
     }
+
     function setPlayer(name) {
         if(sessionStorage.getItem(name) == null){
             player = name;
@@ -11,7 +12,6 @@ var app = (function () {
             console.log(player);
         }
     }
-
 
     function crearSala() {
         if ($("#Nombre").val() == "") {

@@ -62,7 +62,6 @@ public class Equipo {
         nextTurno();
     }
 
-
     /**
      * obtener el pintor de turno
      * @return Jugador pintor del tablero
@@ -89,9 +88,17 @@ public class Equipo {
 
     public void nextTurno(){
         System.out.println(turno%4+" "+ players.size());
-        setPainterTurno(players.get( (turno%4)));
+        setPainterTurno(players.get( (turno%players.size())));
         tablero.cambiarPalabra();
         turno++;
         System.out.println("Round # "+turno);
+    }
+
+    public void eliminar(String player) {
+        for (int i = 0; i < players.size(); i++) {
+            if (player.equals(players.get(i).getUsuario())){
+                players.remove(i);
+            }
+        }
     }
 }

@@ -24,7 +24,24 @@ function onConnected() {
     stompClient.subscribe('/topic/'+codigo+'/chat/'+equipo, onMessageReceived);
     stompClient.subscribe('/topic/'+codigo+'/palabra/'+equipo, onPalabraRecieved);
     stompClient.subscribe('/topic/'+codigo+'/ronda/', onRondaRecieved);
+    stompClient.subscribe('/topic/'+codigo+'/salir/', onSalir);
     connectDibujar();
+}
+
+function onSalir(payload) {
+    toastr["error"]("¡"+payload.body+"! ha salido!","Oops!");
+}
+
+function sendSalir() {
+    var playerName = sessionStorage.getItem("playerName");
+    var codigo = sessionStorage.getItem("codigo");
+    var painter = sessionStorage.getItem("painter");
+    var equipo = sessionStorage.getItem("myTeam");
+    if (painter == playerName){
+        sendRound();
+    }
+    stompClient.send("/app/"+codigo+"/salir/"+equipo,{},playerName);
+    location.assign("../index.html");
 }
 
 function onPalabraRecieved(payload){

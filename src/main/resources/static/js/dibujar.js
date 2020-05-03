@@ -50,8 +50,9 @@ function sendDibujar(thisX1,thisY1,thisX2,thisY2, currentColor, currentGrosor) {
 }
 
 function sendBorrar() {
-    //console.log("send borrar");
-    if (painter == name) {
+    var painter  = sessionStorage.getItem("painter");
+    var playername = sessionStorage.getItem("playerName")
+    if (painter == playername) {
         var codigo = sessionStorage.getItem("codigo");
         var equipo = sessionStorage.getItem("myTeam");
         var erase = {

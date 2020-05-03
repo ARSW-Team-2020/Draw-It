@@ -39,10 +39,10 @@ public class DrawItSocketController {
             equipo1[i] = sala.getJugadores().get(i).getUsuario();
             equipo2[i] = sala.getJugadores().get(i+4).getUsuario();
         }
-
         sala.getEquipos().get(0).setJugadores(equipo1);
         sala.getEquipos().get(1).setJugadores(equipo2);
         sala.crearRonda();
+        sala.setEmpezo(true);
         return fechaFin.toString();
     }
 
@@ -105,6 +105,15 @@ public class DrawItSocketController {
 
         System.out.println(" Next Round ");
         return round;
+    }
+
+    @MessageMapping("/{name}/salir/{equipo}")
+    @SendTo("/topic/{name}/salir/")
+    public String salirSala(@DestinationVariable String name,@DestinationVariable int equipo, @Payload String player) throws Exception{
+        System.out.println("Se salio "+player+" de la sala "+name+" del equipo "+equipo);
+        Sala s  = cache.getSala(name);
+        s.quitarJugador(equipo-1,player);
+        return player;
     }
 
 }
