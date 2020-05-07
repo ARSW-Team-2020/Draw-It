@@ -21,7 +21,15 @@ function getPainter(){
     sendPainter();
 }
 
-
+function setPuntajeEquipo(newPuntaje){
+    if(sessionStorage.getItem("myTeam")==1){
+        var puntajeEquipo = document.getElementById("puntosL");
+        puntajeEquipo.innerText = "Puntos: "+newPuntaje;
+    }else{
+      var puntajeEquipo = document.getElementById("puntosR");
+      puntajeEquipo.innerText = "Puntos: "+newPuntaje;
+    }
+}
 
 function setPainterNameAndDrawName(name) {
     if (painter != name) {

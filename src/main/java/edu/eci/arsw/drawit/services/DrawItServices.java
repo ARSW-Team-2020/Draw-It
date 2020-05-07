@@ -49,4 +49,11 @@ public class DrawItServices {
     public String getPainterName(String sala, String equipo) throws DrawItException {
         return drawitPersistence.getPainterName(sala,equipo);
     }
+
+    public int getPuntajeByEquipo(String sala, String equipo) throws DrawItException{
+        return drawitPersistence.getPuntajeByEquipo(sala,equipo);
+    }
+    public int updatePuntajeByEquipo(String sala, String equipo) throws DrawItException{
+        return drawitPersistence.updatePuntaje(sala, equipo);
+    }
 }
