@@ -25,6 +25,10 @@ Sin embargo, **Draw it** cuenta con una dinámica diferente y con algunas reglas
  
  [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://drawitt.herokuapp.com/)
  
+ ## Despliegue en Azure
+ 
+ https://draw-it.azurewebsites.net/
+ 
 ## Descripción del juego
 
 El juego consiste en que 2 equipos, de 4 jugadores cada uno, se enfrentan entre sí para competir por quién es el mejor **pintor** y **adivinador**. Cada partida tiene 5 rondas, con una duración aproximada de 2 minutos cada una.
