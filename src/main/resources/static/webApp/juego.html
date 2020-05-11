@@ -65,19 +65,12 @@
                     </div>
                 </div>
                 <div class="container col-md-7" align="center" onload="connectDibujar()">
-                    <div class="row ">
-                        <div class="col-md-12">
-                            <p class="font-weight-bolder" id="palabra">
-                            </p>
-                            <div id="clock"></div>
-                            <input class="ml-4" type="color" id="colorcito" oninput="defColor(this.value);"/>
-                            <input class="ml-4" type="range" id="grosor"  oninput="defGrosor(this.value);" min="1" max="5" value="3"/>
-                            <input type="button" class="btn btn-outline-danger btn-sm" onclick="sendBorrar()" id="borrar"  value="Borrar"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <canvas width="600px" height="480px" id="myCanvas" ></canvas>
-                    </div>
+                    <div id="clock"></div>
+                    <p class="font-weight-bolder" id="palabra"></p>
+                    <input class="ml-4" type="color" id="colorcito" oninput="defColor(this.value);"/>
+                    <input class="ml-4" type="range" id="grosor"  oninput="defGrosor(this.value);" min="1" max="5" value="3"/>
+                    <input type="button" class="btn btn-outline-danger btn-sm" onclick="sendBorrar()" id="borrar"  value="Borrar"/>
+                    <canvas width="600px" height="480px" id="myCanvas" ></canvas>
                 </div>
             </div>
         </div>

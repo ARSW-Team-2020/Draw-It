@@ -1,4 +1,4 @@
-const canvas =document.getElementById("myCanvas");
+var canvas =document.getElementById("myCanvas");
 const lienzo = canvas.getContext("2d");
 var delta  = canvas.getBoundingClientRect();
 var player =  sessionStorage.getItem("playerName");
@@ -47,6 +47,8 @@ function drawName(){
 }
 
 canvas.addEventListener('mousedown',function (e) {
+    canvas = document.getElementById("myCanvas");
+    delta = canvas.getBoundingClientRect();
     if(player==painter){
         x=e.clientX - delta.left;
         y=e.clientY - delta.top;
@@ -56,6 +58,9 @@ canvas.addEventListener('mousedown',function (e) {
 });
 
 canvas.addEventListener('mousemove',function (e) {
+    canvas = document.getElementById("myCanvas");
+    delta = canvas.getBoundingClientRect();
+    alert(e.clientX +" "+e.clientY);
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
         sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top,color,grosor);
@@ -65,6 +70,8 @@ canvas.addEventListener('mousemove',function (e) {
 });
 
 canvas.addEventListener('mouseup',function (e) {
+    canvas = document.getElementById("myCanvas");
+    delta  = canvas.getBoundingClientRect();
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
         sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top,color,grosor);
