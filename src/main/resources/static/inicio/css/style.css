@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
   display: inline-block;
   padding: 8px 20px;
-  border-radius: 2px;
+  border-radius: 25px;
   transition: 0.5s;
   margin: 10px;
 }
@@ -165,6 +165,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #03C4EB;
   border: 2px solid #03C4EB;
   color: #fff;
+
 }
 
 #hero .btn-get-started:hover {
@@ -785,6 +786,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0 2px;
 }
 
+
 /* Contact Section
 --------------------------------*/
 #contact {
@@ -842,6 +844,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 #contact .form input, #contact .form textarea {
   border-radius: 0;
   box-shadow: none;
+}
+
+#hero #Nombre{
+  font-size: 16px;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 #contact .form button[type="submit"] {

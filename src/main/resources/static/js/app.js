@@ -6,11 +6,8 @@ var app = (function () {
     }
 
     function setPlayer(name) {
-        if(sessionStorage.getItem(name) == null){
-            player = name;
-            sessionStorage.setItem("playerName",player);
-            console.log(player);
-        }
+        player = name;
+        sessionStorage.setItem("playerName",player);
     }
 
     function crearSala() {
@@ -104,8 +101,26 @@ var app = (function () {
         stompClient.connect({}, function (frame) {
             console.log('Connected: ' + frame);
             subSala();
-        });
+        },onConnectError);
     };
+
+    function onConnectError(message){
+        Swal.fire({
+            title: 'Whoops!',
+            text: "¡Hubo un problema para conectar al servidor!",
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Refrescar!',
+            showCancelButton: true,
+            cancelButtonText: 'Salir'
+        }).then((result) => {
+            if (result.value) {
+                location.reload();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                location.assign("../index.html");
+            }
+        })
+    }
 
     /**
      *

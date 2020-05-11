@@ -7,8 +7,7 @@ function connectDibujar() {
     stompClient.connect({}, function (frame) {
         console.log("dibujar Connected: " + frame);
         onConnectedDibujar();
-
-    });
+    },onConnectError);
 }
 
 function onConnectedDibujar() {
@@ -23,6 +22,8 @@ function onConnectedDibujar() {
     stompClient.subscribe('/topic/'+codigo+'/round/'+equipo,onRoundReceived );
     stompClient.subscribe('/topic/'+codigo+'/puntaje/'+equipo, onPuntajeReceived);
     stompClient.subscribe('/topic/'+codigo+'/updatePuntaje/'+equipo, onUpdatePuntajeReceived);
+    alert(equipo+" "+(equipo%2)+" "+((equipo%2)+1));
+    stompClient.subscribe('/topic/'+codigo+'/updatePuntaje/'+((equipo%2)+1), onUpdatePuntajeReceived);
     stompClient.subscribe('/topic/'+codigo+'/palabra/', function (eventbody) {
         console.log(eventbody.body);
         //var eventInterval = setInterval(function(){api.getPalabra(); },5000);
@@ -82,6 +83,7 @@ function sendRound() {
     stompClient.send("/app/"+codigo+"/round/"+equipo,{},JSON.stringify(round));
     var puntaje = {
         content: "10",
+        sender: equipo
     };
     stompClient.send("/app/"+codigo+"/updatePuntaje/"+equipo,{},JSON.stringify(puntaje));
 }
@@ -125,5 +127,5 @@ function onPuntajeReceived(payload){
 
 function onUpdatePuntajeReceived(payload){
     var puntaje = JSON.parse(payload.body);
-    setPuntajeEquipo(puntaje.content);
+    setPuntajeEquipo(puntaje.content,puntaje.sender);
 }

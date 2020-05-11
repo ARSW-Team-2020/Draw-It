@@ -14,7 +14,25 @@ function connect() {
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         onConnected();
-    });
+    },onConnectError);
+}
+
+function onConnectError(message){
+    Swal.fire({
+        title: 'Whoops!',
+        text: "¡Hubo un problema para conectar al servidor!",
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Refrescar!',
+        showCancelButton: true,
+        cancelButtonText: 'Salir'
+    }).then((result) => {
+        if (result.value) {
+            location.reload();
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            location.assign("../index.html");
+        }
+    })
 }
 
 function onConnected() {
@@ -75,15 +93,28 @@ function avanzarRonda(){
 }
 
 function mostrarFinal(){
+    var text;
+    var icono;
+    var puntos1 = document.getElementById("puntosL").innerText;
+    var puntos2 = document.getElementById("puntosR").innerText;
+    if (puntos1 == puntos2){
+        text = "¡Empate!";
+        icono = "question";
+    }else if (puntos1 > puntos2){
+        text = "¡Has ganado!";
+        icono = "success";
+    }else{
+        text = "Has perdido!";
+        icono = "error";
+    }
     Swal.fire({
-        title: 'La partida a acabado',
-        text: "Los puntajes fueron: ",
-        icon: 'success',
+        title: text,
+        text: 'Dale ok para salir!',
+        icon: icono,
         confirmButtonColor: '#3085d6',
         confirmButtonText: 'Ok!'
       }).then((result) => {
         if (result.value) {
-            sessionStorage.clear();
             location.assign("../index.html");
         }
       })

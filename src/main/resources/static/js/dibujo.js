@@ -21,13 +21,13 @@ function getPainter(){
     sendPainter();
 }
 
-function setPuntajeEquipo(newPuntaje){
-    if(sessionStorage.getItem("myTeam")==1){
+function setPuntajeEquipo(newPuntaje,equipo){
+    if(equipo == sessionStorage.getItem("myTeam")){
         var puntajeEquipo = document.getElementById("puntosL");
         puntajeEquipo.innerText = "Puntos: "+newPuntaje;
     }else{
-      var puntajeEquipo = document.getElementById("puntosR");
-      puntajeEquipo.innerText = "Puntos: "+newPuntaje;
+        var puntajeEquipo = document.getElementById("puntosR");
+        puntajeEquipo.innerText = "Puntos: "+newPuntaje;
     }
 }
 
@@ -69,7 +69,6 @@ canvas.addEventListener('mousedown',function (e) {
 canvas.addEventListener('mousemove',function (e) {
     canvas = document.getElementById("myCanvas");
     delta = canvas.getBoundingClientRect();
-    alert(e.clientX +" "+e.clientY);
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
         var delta  = canvas.getBoundingClientRect();

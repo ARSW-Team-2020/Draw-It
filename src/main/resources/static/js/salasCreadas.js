@@ -17,25 +17,25 @@ var stompClient = null;
 function connectGeneral() {
     console.info('Connecting to WS...');
     var socket = new SockJS('/stompendpoint');
-    socket.onopen = function(event){
-        alert("se abrio");
-    }
-    socket.onclose = function(event){
-        alert(event.code);
-        alert("se cerro");
-    }
-    socket.onmessage = function(event){
-        alert("Mensaje");
-    }
-    socket.onerror = function(event){
-        alert("hubo error");
-    }
 
     stompClient = Stomp.over(socket);
-    sto
+
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
         subGeneral();
-    });
-
+    },onConnectError);
 };
+
+function onConnectError(message){
+    Swal.fire({
+        title: 'Whoops!',
+        text: "¡Hubo un problema para conectar al servidor!",
+        icon: 'error',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Refrescar!'
+    }).then((result) => {
+        if (result.value) {
+            location.reload();
+        }
+    })
+}

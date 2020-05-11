@@ -58,7 +58,7 @@ var api = (function () {
         location.assign("crearSala.html");
         sessionStorage.setItem("codigo",info[0]);
         sessionStorage.setItem(usuario,info[1]);
-        sessionStorage.setItem(usuario,info[1]);
+        sessionStorage.setItem("playerName",info[1]);
     }
 
     function getEquipoBySalaAndUsuario(sala,usuario){
