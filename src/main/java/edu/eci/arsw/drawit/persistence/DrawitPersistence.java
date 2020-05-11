@@ -29,4 +29,8 @@ public interface DrawitPersistence {
 
     public void siguienteTurno(String Sala, String equipo) throws DrawItException;
 
+    public int updatePuntaje(String sala, String equipo) throws DrawItException;
+
+    public int getPuntajeByEquipo(String sala, String equipo) throws DrawItException;
+
 }

@@ -1,6 +1,6 @@
 var canvas =document.getElementById("myCanvas");
 const lienzo = canvas.getContext("2d");
-var delta  = canvas.getBoundingClientRect();
+
 var player =  sessionStorage.getItem("playerName");
 var painter = "painter";
 var team = 0;
@@ -21,7 +21,15 @@ function getPainter(){
     sendPainter();
 }
 
-
+function setPuntajeEquipo(newPuntaje){
+    if(sessionStorage.getItem("myTeam")==1){
+        var puntajeEquipo = document.getElementById("puntosL");
+        puntajeEquipo.innerText = "Puntos: "+newPuntaje;
+    }else{
+      var puntajeEquipo = document.getElementById("puntosR");
+      puntajeEquipo.innerText = "Puntos: "+newPuntaje;
+    }
+}
 
 function setPainterNameAndDrawName(name) {
     if (painter != name) {
@@ -50,6 +58,7 @@ canvas.addEventListener('mousedown',function (e) {
     canvas = document.getElementById("myCanvas");
     delta = canvas.getBoundingClientRect();
     if(player==painter){
+        var delta  = canvas.getBoundingClientRect();
         x=e.clientX - delta.left;
         y=e.clientY - delta.top;
         dibujando=true;
@@ -63,6 +72,7 @@ canvas.addEventListener('mousemove',function (e) {
     alert(e.clientX +" "+e.clientY);
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
+        var delta  = canvas.getBoundingClientRect();
         sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top,color,grosor);
         x = e.clientX-delta.left;
         y = e.clientY -delta.top;
@@ -74,6 +84,7 @@ canvas.addEventListener('mouseup',function (e) {
     delta  = canvas.getBoundingClientRect();
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
+        var delta  = canvas.getBoundingClientRect();
         sendDibujar(x,y,e.clientX-delta.left,e.clientY-delta.top,color,grosor);
         x = 0;
         y = 0;

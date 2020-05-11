@@ -62,7 +62,7 @@ public class DrawItSocketController {
         return palabra;
     }
 
-    @MessageMapping("/{name}/dibujar/{equipo}")
+        @MessageMapping("/{name}/dibujar/{equipo}")
     @SendTo("/topic/{name}/dibujar/{equipo}")
     public Line dibujarTableroEquipo(@DestinationVariable String name, @DestinationVariable String equipo, Line linea){
         return linea;
@@ -121,4 +121,16 @@ public class DrawItSocketController {
         return "";
     }
 
+    @MessageMapping("/{name}/puntaje/{equipo}")
+    @SendTo("/topic/{name}/puntaje/{equipo}")
+    public String getPuntajeByEquipos(@DestinationVariable String name, @DestinationVariable String equipo) throws DrawItException{
+        return String.valueOf(cache.getPuntajeByEquipo(name,equipo));
+    }
+
+    @MessageMapping("/{name}/updatePuntaje/{equipo}")
+    @SendTo("/topic/{name}/updatePuntaje/{equipo}")
+    public ChatMessage updatePuntaje(@DestinationVariable String name, @DestinationVariable String equipo,@Payload ChatMessage puntaje) throws Exception{
+        puntaje.setContent(String.valueOf(cache.updatePuntaje(name,equipo)));
+        return puntaje;
+    }
 }

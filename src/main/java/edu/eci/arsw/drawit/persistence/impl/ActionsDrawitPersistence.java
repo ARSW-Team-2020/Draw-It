@@ -2,6 +2,7 @@ package edu.eci.arsw.drawit.persistence.impl;
 
 
 
+import edu.eci.arsw.drawit.model.Equipo;
 import edu.eci.arsw.drawit.model.Jugador;
 import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
@@ -231,6 +232,26 @@ public class ActionsDrawitPersistence implements DrawitPersistence {
     public void siguienteTurno(String sala, String equipo) throws DrawItException {
         if(hashIterator(sala)){
             salas1.get(sala).getEquipos().get(Integer.parseInt(equipo)-1).nextTurno();
+        }else {
+            throw new DrawItException("La sala no existe");
+        }
+    }
+
+    @Override
+    public int updatePuntaje(String sala, String equipo) throws DrawItException {
+        if(hashIterator(sala)){
+            Equipo team = salas1.get(sala).getEquipos().get(Integer.parseInt(equipo)-1);
+            team.setPuntaje(team.getPuntaje()+10);
+            return team.getPuntaje();
+        }else {
+            throw new DrawItException("La sala no existe");
+        }
+    }
+
+    @Override
+    public int getPuntajeByEquipo(String sala, String equipo) throws DrawItException {
+        if(hashIterator(sala)){
+            return salas1.get(sala).getEquipos().get(Integer.parseInt(equipo)-1).getPuntaje();
         }else {
             throw new DrawItException("La sala no existe");
         }

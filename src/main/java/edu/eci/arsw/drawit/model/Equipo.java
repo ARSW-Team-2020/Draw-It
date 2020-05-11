@@ -9,6 +9,15 @@ public class Equipo {
     private String[] jugadores = new String[4];
     private ArrayList<Jugador> players;
 
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    private int puntaje;
     private Tablero tablero;
     private int turno = 0;
     public Equipo() {
@@ -21,6 +30,7 @@ public class Equipo {
         this.rondasGanadas = 0;
         this.tablero = new Tablero();
         this.players =  new ArrayList<>();
+        this.puntaje = 0;
     }
 
 
