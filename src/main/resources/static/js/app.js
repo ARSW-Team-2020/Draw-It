@@ -185,7 +185,8 @@ var app = (function () {
             pal.innerText = data;
         }else{
             var s = "";
-            for(var i = 0;i<data.length;i++){
+            var l = data.length;
+            for(var i = 0; i<l ;i++){
                 s+="_ "
             }
             pal.innerText = s;

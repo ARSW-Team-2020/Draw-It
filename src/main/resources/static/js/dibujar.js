@@ -107,8 +107,7 @@ function onPainterNameReceived(payload) {
     var painterName = JSON.parse(payload.body);
 
     defBorrar();
-    console.log("Este es el pintor de tu equipo");
-    console.log(painterName.content);
+
     setPainterNameAndDrawName(painterName.content);
     avanzarPalabra();
 }
@@ -116,7 +115,7 @@ function onPainterNameReceived(payload) {
 
 function onRoundReceived(payload) {
     var round = JSON.parse(payload.body);
-    console.log(round);
+
     sendPainter();
 }
 
