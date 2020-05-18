@@ -172,14 +172,19 @@ PARA PODER conocer cual fue el equipo ganador.
 
 ![4](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Mockups%20nuevos/4.jpg)
 
-## Modelo E-R (Entidad-Relación)
+## Diagra de componentes
 
-![ER1](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/EntidadRelacion.PNG)
+![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Component%20API.png)
+
+![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Component%20Sockets.png)
 
 ## Diagrama de clases
 
-![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/clases1.PNG)
+![clases](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Diagrama%20de%20clases.png)
 
+## Diagrama de despliegue 
+
+![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Despliegue.png)
 
 # Descripción del proceso
 

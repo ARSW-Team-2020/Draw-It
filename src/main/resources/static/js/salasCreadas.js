@@ -24,6 +24,7 @@ function connectGeneral() {
         console.log('Connected: ' + frame);
         subGeneral();
     },onConnectError);
+    stompClient.debug = null;
 };
 
 function onConnectError(message){

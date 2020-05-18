@@ -5,9 +5,10 @@ function connectDibujar() {
     var socketDibujar = new SockJS("/stompendpoint");
     stompClient = Stomp.over(socketDibujar);
     stompClient.connect({}, function (frame) {
-        console.log("dibujar Connected: " + frame);
+        console.log("Dibujar Connected: " + frame);
         onConnectedDibujar();
     },onConnectError);
+    stompClient.debug = null;
 }
 
 function onConnectedDibujar() {
@@ -22,7 +23,6 @@ function onConnectedDibujar() {
     stompClient.subscribe('/topic/'+codigo+'/round/'+equipo,onRoundReceived );
     stompClient.subscribe('/topic/'+codigo+'/puntaje/'+equipo, onPuntajeReceived);
     stompClient.subscribe('/topic/'+codigo+'/updatePuntaje/'+equipo, onUpdatePuntajeReceived);
-    alert(equipo+" "+(equipo%2)+" "+((equipo%2)+1));
     stompClient.subscribe('/topic/'+codigo+'/updatePuntaje/'+((equipo%2)+1), onUpdatePuntajeReceived);
     stompClient.subscribe('/topic/'+codigo+'/palabra/', function (eventbody) {
         console.log(eventbody.body);

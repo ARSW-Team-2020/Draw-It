@@ -102,6 +102,7 @@ var app = (function () {
             console.log('Connected: ' + frame);
             subSala();
         },onConnectError);
+        stompClient.debug = null;
     };
 
     function onConnectError(message){

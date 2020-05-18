@@ -15,6 +15,7 @@ function connect() {
         console.log('Connected: ' + frame);
         onConnected();
     },onConnectError);
+    stompClient.debug = null;
 }
 
 function onConnectError(message){
