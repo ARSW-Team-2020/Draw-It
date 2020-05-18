@@ -27,7 +27,7 @@ Sin embargo, **Draw it** cuenta con una dinámica diferente y con algunas reglas
  
  ## Despliegue en Azure
  
- https://draw-it.azurewebsites.net/
+ http://draw-it.azurewebsites.net/
  
 ## Descripción del juego
 

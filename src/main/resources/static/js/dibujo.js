@@ -3,7 +3,7 @@ const lienzo = canvas.getContext("2d");
 
 var player =  sessionStorage.getItem("playerName");
 var painter = "painter";
-var team = 0;
+
 
 
 var x=0,y=0,dibujando=false, color="black",grosor = 3;
@@ -23,11 +23,9 @@ function getPainter(){
 
 function setPuntajeEquipo(newPuntaje,equipo){
     if(equipo == sessionStorage.getItem("myTeam")){
-        var puntajeEquipo = document.getElementById("puntosL");
-        puntajeEquipo.innerText = "Puntos: "+newPuntaje;
+        document.getElementById("puntosL").innerText = "Puntos: "+newPuntaje;
     }else{
-        var puntajeEquipo = document.getElementById("puntosR");
-        puntajeEquipo.innerText = "Puntos: "+newPuntaje;
+        document.getElementById("puntosR").innerText = "Puntos: "+newPuntaje;
     }
 }
 
@@ -35,8 +33,6 @@ function setPainterNameAndDrawName(name) {
     if (painter != name) {
         painter = name;
         sessionStorage.setItem("painter",painter);
-        console.log("key: painter, value: ");
-        console.log(sessionStorage.getItem("painter"));
         lienzo.clearRect(0, 0, canvas.width, canvas.height);
         drawName();
         toastr["warning"](painter+" Va a dibujar","¡Atentos!");
@@ -55,8 +51,7 @@ function drawName(){
 }
 
 canvas.addEventListener('mousedown',function (e) {
-    canvas = document.getElementById("myCanvas");
-    delta = canvas.getBoundingClientRect();
+
     if(player==painter){
         var delta  = canvas.getBoundingClientRect();
         x=e.clientX - delta.left;
@@ -67,8 +62,7 @@ canvas.addEventListener('mousedown',function (e) {
 });
 
 canvas.addEventListener('mousemove',function (e) {
-    canvas = document.getElementById("myCanvas");
-    delta = canvas.getBoundingClientRect();
+
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
         var delta  = canvas.getBoundingClientRect();
@@ -79,8 +73,6 @@ canvas.addEventListener('mousemove',function (e) {
 });
 
 canvas.addEventListener('mouseup',function (e) {
-    canvas = document.getElementById("myCanvas");
-    delta  = canvas.getBoundingClientRect();
     if(dibujando) {
         //dibujar(x,y,e.clientX-delta.left, e.clientY-delta.top);
         var delta  = canvas.getBoundingClientRect();
