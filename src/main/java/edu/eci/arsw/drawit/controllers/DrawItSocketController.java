@@ -48,7 +48,7 @@ public class DrawItSocketController {
 
     @MessageMapping("/{name}/chat/{equipo}")
     @SendTo("/topic/{name}/chat/{equipo}")
-    public ChatMessage chatPartidaEquipo(@DestinationVariable String name,@DestinationVariable String equipo,@Payload ChatMessage chatMessage){
+    public ChatMessage chatPartidaEquipo(@DestinationVariable String name, @DestinationVariable String equipo, @Payload ChatMessage chatMessage){
         System.out.println("Mensaje en la sala "+name+" del equipo "+equipo+" con mensaje: "+chatMessage.getContent());
         return chatMessage;
     }

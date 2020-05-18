@@ -6,8 +6,9 @@
 package edu.eci.arsw.drawit.controllers;
 
 import edu.eci.arsw.drawit.model.Jugador;
-import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
+import edu.eci.arsw.drawit.model.Sala;
+import edu.eci.arsw.drawit.persistence.DrawitPersistence;
 import edu.eci.arsw.drawit.services.DrawItServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,7 +28,7 @@ public class DrawItAPIController {
     DrawItServices drawItServices;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> crearSala(@RequestBody String usuario) {
+    public ResponseEntity<?> crearSala(@RequestBody String usuario){
         usuario=usuario.substring(0,usuario.length()-1);
         Jugador autor= new Jugador(usuario);
         Sala sala= new Sala(autor);
@@ -76,7 +77,6 @@ public class DrawItAPIController {
 
     @RequestMapping(value = {"/{codigo}"}, method = RequestMethod.GET)
     public ResponseEntity<?> getJugadoresBySala(@PathVariable() String codigo) {
-        System.out.println(codigo);
         try {
             return new ResponseEntity<>(drawItServices.getJugadoresBySala(codigo), HttpStatus.ACCEPTED);
         } catch (DrawItException e) {

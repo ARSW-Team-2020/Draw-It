@@ -1,9 +1,9 @@
 package edu.eci.arsw.drawit.services;
 
 import edu.eci.arsw.drawit.model.Jugador;
-import edu.eci.arsw.drawit.model.Sala;
 import edu.eci.arsw.drawit.persistence.DrawItException;
 import edu.eci.arsw.drawit.persistence.DrawitPersistence;
+import edu.eci.arsw.drawit.model.Sala;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -57,6 +57,7 @@ public class DrawItServices {
     public int getPuntajeByEquipo(String sala, String equipo) throws DrawItException{
         return drawitPersistence.getPuntajeByEquipo(sala,equipo);
     }
+
     public int updatePuntajeByEquipo(String sala, String equipo) throws DrawItException{
         return drawitPersistence.updatePuntaje(sala, equipo);
     }
