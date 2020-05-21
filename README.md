@@ -189,7 +189,7 @@ PARA PODER conocer cual fue el equipo ganador.
 
 # Requerimientos no funcionales
 
-https://drive.google.com/file/d/1d1-TKKMX6yICWX3tzw-_zVKHTiWYfx3U/view?usp=sharing
+https://drive.google.com/file/d/17e2AuLyyZx4HuO_CP-T_mGVuGae4Yqr7/view?usp=sharing
 
 
 
