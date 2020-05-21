@@ -186,15 +186,10 @@ PARA PODER conocer cual fue el equipo ganador.
 
 ![](https://github.com/ARSW-Team-2020/Draw-It/blob/master/img/Despliegue.png)
 
-# Descripción del proceso
 
-## Sprint 1
+# Requerimientos no funcionales
 
-## Sprint 2
-
-## Sprint 3
-
-
+https://drive.google.com/file/d/1d1-TKKMX6yICWX3tzw-_zVKHTiWYfx3U/view?usp=sharing
 
 
 
